@@ -1,0 +1,100 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.cursor/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Data files
+data/raw/*
+data/processed/*
+data/models/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/models/.gitkeep
+
+# ML artifacts
+mlruns/
+wandb/
+*.h5
+*.pkl
+*.joblib
+*.pt
+*.pth
+*.onnx
+
+# Vector databases
+chroma_db/
+*.faiss
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Security - Never commit these
+*.pem
+*.key
+*.crt
+*.p12
+secrets/
+credentials/
+
+# Large files
+*.zip
+*.tar.gz
+*.7z
+*.rar
+*.exe
+*.dll
+*.bin
+*.dump
+*.vmem
+*.raw
+
+# Malware samples (be careful!)
+samples/
+malware/
+!samples/.gitkeep
+
