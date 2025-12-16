@@ -4,6 +4,23 @@ Complete guide to setting up your AI security development environment with all t
 
 ---
 
+## 🚀 Quick Start
+
+**Want to get started fast?** Check out the [Quick Start Guide](./guides/quickstart-guide.md) for a 15-minute setup.
+
+---
+
+## 📚 Detailed Guides
+
+| Guide | Description |
+|-------|-------------|
+| [Quick Start Guide](./guides/quickstart-guide.md) | Get running in 15 minutes |
+| [Cursor IDE Guide](./guides/cursor-ide-guide.md) | Complete Cursor setup and workflows |
+| [Claude Code Guide](./guides/claude-code-guide.md) | Claude API, SDK, and agent development |
+| [GitHub Workflow Guide](./guides/github-workflow-guide.md) | Git, GitHub CLI, Actions, and collaboration |
+
+---
+
 ## 📋 Table of Contents
 
 1. [IDE & Code Editors](#ide--code-editors)
