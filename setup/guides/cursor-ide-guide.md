@@ -21,13 +21,13 @@ The AI-native IDE that supercharges your security tool development.
 
 Cursor is built on VS Code but adds native AI capabilities that are essential for building AI-powered security tools:
 
-| Feature | Benefit for Security Development |
-|---------|----------------------------------|
-| **Inline AI Chat** | Get instant explanations of malware code, log formats, or attack techniques |
-| **Codebase-Aware Completions** | AI understands your entire security tool codebase |
-| **Multi-File Editing** | Refactor detection rules across multiple files simultaneously |
-| **Composer Mode** | Build entire security agents from natural language descriptions |
-| **Terminal Integration** | Run security tools with AI-assisted command building |
+| Feature                        | Benefit for Security Development                                            |
+| ------------------------------ | --------------------------------------------------------------------------- |
+| **Inline AI Chat**             | Get instant explanations of malware code, log formats, or attack techniques |
+| **Codebase-Aware Completions** | AI understands your entire security tool codebase                           |
+| **Multi-File Editing**         | Refactor detection rules across multiple files simultaneously               |
+| **Composer Mode**              | Build entire security agents from natural language descriptions             |
+| **Terminal Integration**       | Run security tools with AI-assisted command building                        |
 
 ---
 
@@ -79,6 +79,7 @@ chmod +x cursor-*.AppImage
 ### 1. Sign In / Create Account
 
 When you first launch Cursor:
+
 1. Click "Sign In" or "Create Account"
 2. You can use GitHub, Google, or email
 3. Free tier includes limited AI requests
@@ -87,6 +88,7 @@ When you first launch Cursor:
 ### 2. Import VS Code Settings
 
 If you have VS Code installed:
+
 1. Cursor will prompt to import settings
 2. Select "Import from VS Code"
 3. This brings over extensions, themes, and keybindings
@@ -210,13 +212,13 @@ Reference specific context in prompts:
 
 ### Available Models
 
-| Model | Best For | Speed | Cost |
-|-------|----------|-------|------|
-| **claude-sonnet-4-20250514** | Complex security analysis, long context | Medium | $$ |
-| **claude-3-opus** | Deepest reasoning, architecture design | Slow | $$$ |
-| **gpt-4-turbo** | General coding, function calling | Medium | $$ |
-| **gpt-4o** | Fast responses, balanced quality | Fast | $ |
-| **cursor-small** | Quick completions, simple tasks | Very Fast | $ |
+| Model                        | Best For                                | Speed     | Cost |
+| ---------------------------- | --------------------------------------- | --------- | ---- |
+| **claude-sonnet-4-20250514** | Complex security analysis, long context | Medium    | $$   |
+| **claude-3-opus**            | Deepest reasoning, architecture design  | Slow      | $$$  |
+| **gpt-4-turbo**              | General coding, function calling        | Medium    | $$   |
+| **gpt-4o**                   | Fast responses, balanced quality        | Fast      | $    |
+| **cursor-small**             | Quick completions, simple tasks         | Very Fast | $    |
 
 ### Model-Specific Settings
 
@@ -260,17 +262,17 @@ If you prefer using your own API keys:
 
 ### Essential Shortcuts
 
-| Action | Windows/Linux | macOS |
-|--------|--------------|-------|
-| **Inline Chat** | `Ctrl+L` | `Cmd+L` |
-| **Composer** | `Ctrl+I` | `Cmd+I` |
-| **Codebase Chat** | `Ctrl+Shift+L` | `Cmd+Shift+L` |
-| **Terminal AI** | `Ctrl+K` (in terminal) | `Cmd+K` |
-| **Accept Suggestion** | `Tab` | `Tab` |
-| **Reject Suggestion** | `Escape` | `Escape` |
-| **Next Suggestion** | `Alt+]` | `Option+]` |
-| **Previous Suggestion** | `Alt+[` | `Option+[` |
-| **Trigger Suggestion** | `Ctrl+Space` | `Cmd+Space` |
+| Action                  | Windows/Linux          | macOS         |
+| ----------------------- | ---------------------- | ------------- |
+| **Inline Chat**         | `Ctrl+L`               | `Cmd+L`       |
+| **Composer**            | `Ctrl+I`               | `Cmd+I`       |
+| **Codebase Chat**       | `Ctrl+Shift+L`         | `Cmd+Shift+L` |
+| **Terminal AI**         | `Ctrl+K` (in terminal) | `Cmd+K`       |
+| **Accept Suggestion**   | `Tab`                  | `Tab`         |
+| **Reject Suggestion**   | `Escape`               | `Escape`      |
+| **Next Suggestion**     | `Alt+]`                | `Option+]`    |
+| **Previous Suggestion** | `Alt+[`                | `Option+[`    |
+| **Trigger Suggestion**  | `Ctrl+Space`           | `Cmd+Space`   |
 
 ### Custom Keybindings for Security Work
 
@@ -382,27 +384,32 @@ Create `.cursorrules` in your project root to customize AI behavior:
 # .cursorrules
 
 ## Project Context
+
 This is an AI-powered security tool for threat detection and incident response.
 
 ## Code Style
+
 - Use type hints for all Python functions
 - Follow PEP 8 style guidelines
 - Include docstrings with security considerations
 - Log all security-relevant actions
 
 ## Security Requirements
+
 - Never log sensitive data (passwords, API keys, PII)
 - Validate all external inputs
 - Use parameterized queries for databases
 - Implement proper error handling without exposing internals
 
 ## Preferred Libraries
+
 - Use `langchain` for LLM operations
 - Use `pydantic` for data validation
 - Use `loguru` for logging
 - Use `httpx` for async HTTP requests
 
 ## Response Format
+
 - Include MITRE ATT&CK references where applicable
 - Add IOC extraction for malware analysis
 - Reference relevant CVEs when discussing vulnerabilities
@@ -411,11 +418,13 @@ This is an AI-powered security tool for threat detection and incident response.
 ### 2. Provide Context in Prompts
 
 ❌ Bad prompt:
+
 ```
 "Fix this code"
 ```
 
 ✅ Good prompt:
+
 ```
 "This function parses Windows Event Log 4688 (Process Creation).
 It's currently missing extraction of:
@@ -505,12 +514,7 @@ Update all relevant files to support this new threat type."
 {
   "cursor.privacyMode": true,
   "cursor.enableTelemetry": false,
-  "cursor.excludeFromIndexing": [
-    "**/secrets/**",
-    "**/.env",
-    "**/credentials/**",
-    "**/samples/**"
-  ]
+  "cursor.excludeFromIndexing": ["**/secrets/**", "**/.env", "**/credentials/**", "**/samples/**"]
 }
 ```
 

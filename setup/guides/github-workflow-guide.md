@@ -571,47 +571,47 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
-      
+
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
           pip install pytest pytest-cov
-      
+
       - name: Run tests
         run: pytest --cov=src tests/
-      
+
       - name: Upload coverage
         uses: codecov/codecov-action@v3
 
   lint:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      
+
       - name: Install linters
         run: pip install ruff black mypy
-      
+
       - name: Run ruff
         run: ruff check .
-      
+
       - name: Run black
         run: black --check .
-      
+
       - name: Run mypy
         run: mypy src/
 ```
@@ -636,10 +636,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Run Dependabot
         uses: dependabot/fetch-metadata@v1
-      
+
       - name: Safety check
         run: |
           pip install safety
@@ -649,12 +649,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
         with:
           languages: python
-      
+
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
 
@@ -664,7 +664,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
+
       - name: TruffleHog scan
         uses: trufflesecurity/trufflehog@main
         with:
@@ -675,12 +675,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Run Bandit
         run: |
           pip install bandit
           bandit -r src/ -f json -o bandit-report.json || true
-      
+
       - name: Upload Bandit report
         uses: actions/upload-artifact@v3
         with:
@@ -708,12 +708,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Install YARA
         run: |
           sudo apt-get update
           sudo apt-get install -y yara
-      
+
       - name: Validate YARA rules
         run: |
           for rule in rules/yara/*.yar; do
@@ -725,21 +725,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      
+
       - name: Install sigma tools
         run: pip install pysigma
-      
+
       - name: Validate Sigma rules
         run: |
           python -c "
           import yaml
           from pathlib import Path
-          
+
           for rule_file in Path('rules/sigma').glob('*.yml'):
               print(f'Validating {rule_file}')
               with open(rule_file) as f:
@@ -799,7 +799,7 @@ updates:
       - "dependencies"
     commit-message:
       prefix: "chore(deps)"
-    
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -936,4 +936,3 @@ git branch -d release/v1.0.0
 ---
 
 **Next**: [Quick Start Guide](./quickstart-guide.md)
-

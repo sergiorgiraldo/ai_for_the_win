@@ -21,21 +21,21 @@ Master Claude for AI-powered security development.
 
 Claude (by Anthropic) excels at security-related tasks due to:
 
-| Capability | Security Application |
-|------------|---------------------|
+| Capability                     | Security Application                              |
+| ------------------------------ | ------------------------------------------------- |
 | **Long Context (200K tokens)** | Analyze entire malware codebases, large log files |
-| **Code Understanding** | Reverse engineering, vulnerability analysis |
-| **Structured Output** | Generate STIX/TAXII, JSON IOCs, YARA rules |
-| **Reasoning** | Threat attribution, attack chain analysis |
-| **Safety Training** | Appropriate handling of sensitive security topics |
+| **Code Understanding**         | Reverse engineering, vulnerability analysis       |
+| **Structured Output**          | Generate STIX/TAXII, JSON IOCs, YARA rules        |
+| **Reasoning**                  | Threat attribution, attack chain analysis         |
+| **Safety Training**            | Appropriate handling of sensitive security topics |
 
 ### Model Comparison
 
-| Model | Best For | Context | Cost |
-|-------|----------|---------|------|
-| **Claude 3.5 Sonnet** | Daily development, code analysis | 200K | $3/M input, $15/M output |
-| **Claude 3 Opus** | Complex reasoning, architecture | 200K | $15/M input, $75/M output |
-| **Claude 3 Haiku** | Quick tasks, high volume | 200K | $0.25/M input, $1.25/M output |
+| Model                 | Best For                         | Context | Cost                          |
+| --------------------- | -------------------------------- | ------- | ----------------------------- |
+| **Claude 3.5 Sonnet** | Daily development, code analysis | 200K    | $3/M input, $15/M output      |
+| **Claude 3 Opus**     | Complex reasoning, architecture  | 200K    | $15/M input, $75/M output     |
+| **Claude 3 Haiku**    | Quick tasks, high volume         | 200K    | $0.25/M input, $1.25/M output |
 
 ---
 
@@ -152,7 +152,7 @@ anthropic messages create \
 
 Create a `claude-cli.py` for security tasks:
 
-```python
+````python
 #!/usr/bin/env python3
 """
 Claude CLI for Security Analysis
@@ -261,7 +261,7 @@ if __name__ == "__main__":
         print(generate_yara(args.description))
     else:
         parser.print_help()
-```
+````
 
 ---
 
@@ -388,7 +388,9 @@ MALWARE_ANALYSIS_PROMPT = """Analyze this malware sample:
 
 Code/Data:
 ```
+
 {sample_data}
+
 ```
 
 Provide:
@@ -404,14 +406,15 @@ Provide:
 
 #### Vulnerability Assessment
 
-```python
+````python
 VULN_ASSESSMENT_PROMPT = """Review this code for security vulnerabilities:
 
 ```{language}
 {code}
-```
+````
 
 For each vulnerability found, provide:
+
 1. **Severity**: Critical/High/Medium/Low
 2. **Type**: CWE classification
 3. **Location**: Line number(s)
@@ -419,15 +422,18 @@ For each vulnerability found, provide:
 5. **Exploitation**: How could it be exploited
 6. **Remediation**: Code fix with example
 7. **References**: CVE if applicable"""
-```
+
+````
 
 #### Log Analysis
 
 ```python
 LOG_ANALYSIS_PROMPT = """Analyze these security logs for suspicious activity:
 
-```
+````
+
 {logs}
+
 ```
 
 Identify:
@@ -459,7 +465,7 @@ Output as structured JSON."""
 
 ### Few-Shot Prompting
 
-```python
+````python
 def generate_sigma_rule(log_description: str) -> str:
     response = client.messages.create(
         model="claude-sonnet-4-20250514",
@@ -493,37 +499,39 @@ level: medium
 tags:
     - attack.execution
     - attack.t1059.001
-```
+````
 
 Example 2:
 Input: "Detect scheduled task creation"
 Output:
+
 ```yaml
 title: Scheduled Task Created
 id: 8ec1bd25-9b7c-45a1-9c42-c9e1b0a5d8e6
 status: experimental
 description: Detects creation of scheduled tasks
 logsource:
-    category: process_creation
-    product: windows
+  category: process_creation
+  product: windows
 detection:
-    selection:
-        Image|endswith: '\schtasks.exe'
-        CommandLine|contains: '/create'
-    condition: selection
+  selection:
+    Image|endswith: '\schtasks.exe'
+    CommandLine|contains: '/create'
+  condition: selection
 level: medium
 tags:
-    - attack.persistence
-    - attack.t1053.005
+  - attack.persistence
+  - attack.t1053.005
 ```
 
 Now generate a Sigma rule for:
 Input: "{log_description}"
 Output:"""
-        }]
-    )
-    return response.content[0].text
-```
+}]
+)
+return response.content[0].text
+
+````
 
 ---
 
@@ -653,7 +661,7 @@ Analyze these IOCs from a recent incident:
 Provide a threat assessment.
 """)
 print(result)
-```
+````
 
 ---
 
