@@ -8,19 +8,19 @@ A comprehensive training curriculum for security practitioners who want to lever
 
 ## 📚 Repository Contents
 
-| Document | Description |
-|----------|-------------|
-| [Training Program](./curriculum/ai-security-training-program.md) | Complete 24-week curriculum with modules, labs, and projects |
-| [Development Environment Setup](./setup/dev-environment-setup.md) | Tools, IDEs, and configuration guides |
-| [Resources & Tools](./resources/tools-and-resources.md) | Curated links, datasets, APIs, and learning materials |
-| [Lab Exercises](./labs/) | Hands-on exercises for each module |
+| Document                                                          | Description                                                  |
+| ----------------------------------------------------------------- | ------------------------------------------------------------ |
+| [Training Program](./curriculum/ai-security-training-program.md)  | Complete 24-week curriculum with modules, labs, and projects |
+| [Development Environment Setup](./setup/dev-environment-setup.md) | Tools, IDEs, and configuration guides                        |
+| [Resources & Tools](./resources/tools-and-resources.md)           | Curated links, datasets, APIs, and learning materials        |
+| [Lab Exercises](./labs/)                                          | Hands-on exercises for each module                           |
 
 ---
 
 ## 🎯 Program Overview
 
-**Duration**: 24 weeks (part-time) or 12 weeks (intensive)  
-**Format**: Self-paced with optional cohort sessions  
+**Duration**: 24 weeks (part-time) or 12 weeks (intensive)
+**Format**: Self-paced with optional cohort sessions
 **Prerequisites**: Python proficiency, security fundamentals
 
 ### Learning Tracks
@@ -77,4 +77,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## ⚠️ Disclaimer
 
 This training material is intended for educational purposes and authorized security testing only. Users are responsible for ensuring compliance with all applicable laws and obtaining proper authorization before using any offensive techniques.
-

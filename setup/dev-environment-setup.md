@@ -35,6 +35,7 @@ https://cursor.sh/
 ```
 
 **Recommended Cursor Settings:**
+
 ```json
 {
   "cursor.aiProvider": "anthropic",
@@ -46,6 +47,7 @@ https://cursor.sh/
 ```
 
 **Essential Extensions:**
+
 - Python (Microsoft)
 - Pylance
 - Jupyter
@@ -81,19 +83,21 @@ jupyter lab
 **Setup Options:**
 
 1. **Claude Pro Subscription** ($20/month)
+
    - Web interface: https://claude.ai
    - Best for: Long conversations, document analysis, complex reasoning
 
 2. **Claude API**
+
    ```bash
    pip install anthropic
    ```
-   
+
    ```python
    import anthropic
-   
+
    client = anthropic.Anthropic(api_key="your-api-key")
-   
+
    message = client.messages.create(
        model="claude-sonnet-4-20250514",
        max_tokens=4096,
@@ -104,10 +108,11 @@ jupyter lab
    ```
 
 3. **Claude Code (CLI)**
+
    ```bash
    # Install Claude Code CLI
    npm install -g @anthropic-ai/claude-code
-   
+
    # Or use in Cursor with built-in integration
    ```
 
@@ -271,6 +276,7 @@ wandb>=0.16.0
 ```
 
 Install:
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -506,6 +512,7 @@ pip install pre-commit
 ```
 
 Create `.pre-commit-config.yaml`:
+
 ```yaml
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -534,6 +541,7 @@ repos:
 ```
 
 Install hooks:
+
 ```bash
 pre-commit install
 ```
@@ -563,7 +571,7 @@ services:
   jupyter:
     image: jupyter/scipy-notebook:latest
     ports:
-      - "8888:8888"
+      - '8888:8888'
     volumes:
       - ./notebooks:/home/jovyan/work
     environment:
@@ -572,14 +580,14 @@ services:
   chromadb:
     image: chromadb/chroma:latest
     ports:
-      - "8000:8000"
+      - '8000:8000'
     volumes:
       - chroma_data:/chroma/chroma
 
   ollama:
     image: ollama/ollama:latest
     ports:
-      - "11434:11434"
+      - '11434:11434'
     volumes:
       - ollama_data:/root/.ollama
     deploy:
@@ -596,15 +604,15 @@ services:
       - discovery.type=single-node
       - xpack.security.enabled=false
     ports:
-      - "9200:9200"
+      - '9200:9200'
     volumes:
       - es_data:/usr/share/elasticsearch/data
 
   misp:
     image: coolacid/misp-docker:core-latest
     ports:
-      - "443:443"
-      - "80:80"
+      - '443:443'
+      - '80:80'
     environment:
       - MISP_ADMIN_EMAIL=admin@admin.test
       - MISP_ADMIN_PASSPHRASE=admin
@@ -618,6 +626,7 @@ volumes:
 ### Environment Variables
 
 Create `.env.example`:
+
 ```bash
 # AI API Keys
 ANTHROPIC_API_KEY=sk-ant-...
@@ -639,6 +648,7 @@ LOG_FORMAT=json
 ```
 
 Copy and configure:
+
 ```bash
 cp .env.example .env
 # Edit .env with your actual keys
@@ -730,6 +740,7 @@ echo "  4. (Optional) Start services: docker compose up -d"
 ```
 
 Run setup:
+
 ```bash
 chmod +x setup.sh
 ./setup.sh
@@ -793,15 +804,15 @@ ai-security-training/
 
 ## 🔑 API Keys Checklist
 
-| Service | Required | Free Tier | Link |
-|---------|----------|-----------|------|
-| Anthropic Claude | ✅ | $5 credit | https://console.anthropic.com |
-| OpenAI | Optional | $5 credit | https://platform.openai.com |
-| GitHub | ✅ | Free | https://github.com |
-| Hugging Face | ✅ | Free | https://huggingface.co |
-| VirusTotal | Recommended | Free (limited) | https://virustotal.com |
-| Shodan | Recommended | Free (limited) | https://shodan.io |
-| Pinecone | Optional | Free tier | https://pinecone.io |
+| Service          | Required    | Free Tier      | Link                          |
+| ---------------- | ----------- | -------------- | ----------------------------- |
+| Anthropic Claude | ✅          | $5 credit      | https://console.anthropic.com |
+| OpenAI           | Optional    | $5 credit      | https://platform.openai.com   |
+| GitHub           | ✅          | Free           | https://github.com            |
+| Hugging Face     | ✅          | Free           | https://huggingface.co        |
+| VirusTotal       | Recommended | Free (limited) | https://virustotal.com        |
+| Shodan           | Recommended | Free (limited) | https://shodan.io             |
+| Pinecone         | Optional    | Free tier      | https://pinecone.io           |
 
 ---
 
@@ -838,4 +849,3 @@ python -c "import yara; print('YARA: OK')"
 ---
 
 **Next**: Proceed to [Resources & Tools](../resources/tools-and-resources.md) for learning materials and datasets.
-
