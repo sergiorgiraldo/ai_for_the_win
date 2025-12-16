@@ -76,7 +76,7 @@ Derived Features:
 def load_network_data(filepath: str) -> pd.DataFrame:
     """
     Load network flow data.
-    
+
     Expected columns:
     - timestamp: Flow start time
     - src_ip, dst_ip: IP addresses
@@ -86,7 +86,7 @@ def load_network_data(filepath: str) -> pd.DataFrame:
     - packets_sent, packets_recv: Packet counts
     - duration: Flow duration in seconds
     - label: (optional) normal/attack
-    
+
     TODO:
     1. Load data
     2. Parse timestamps
@@ -102,7 +102,7 @@ def load_network_data(filepath: str) -> pd.DataFrame:
 def engineer_network_features(df: pd.DataFrame) -> pd.DataFrame:
     """
     Create anomaly detection features.
-    
+
     TODO: Create these features:
     1. bytes_per_second: Total bytes / duration
     2. packets_per_second: Total packets / duration
@@ -121,14 +121,14 @@ def engineer_network_features(df: pd.DataFrame) -> pd.DataFrame:
 def statistical_baseline(df: pd.DataFrame, feature: str) -> pd.Series:
     """
     Simple statistical anomaly detection.
-    
+
     Args:
         df: Network data
         feature: Column to analyze
-        
+
     Returns:
         Boolean series (True = anomaly)
-        
+
     TODO:
     1. Calculate mean and std
     2. Flag values > 3 standard deviations
@@ -143,14 +143,14 @@ def statistical_baseline(df: pd.DataFrame, feature: str) -> pd.Series:
 def train_isolation_forest(X: np.ndarray, contamination: float = 0.01):
     """
     Train Isolation Forest for anomaly detection.
-    
+
     Args:
         X: Feature matrix
         contamination: Expected proportion of anomalies
-        
+
     Returns:
         Trained model and anomaly scores
-        
+
     TODO:
     1. Initialize IsolationForest
     2. Fit to data
@@ -166,14 +166,14 @@ def train_isolation_forest(X: np.ndarray, contamination: float = 0.01):
 def train_autoencoder(X: np.ndarray, encoding_dim: int = 8):
     """
     Train autoencoder for anomaly detection.
-    
+
     Args:
         X: Feature matrix (normalized)
         encoding_dim: Bottleneck size
-        
+
     Returns:
         Trained model, reconstruction errors
-        
+
     TODO:
     1. Build encoder: input → encoding_dim
     2. Build decoder: encoding_dim → input
@@ -190,14 +190,14 @@ def train_autoencoder(X: np.ndarray, encoding_dim: int = 8):
 def evaluate_detector(y_true: np.ndarray, scores: np.ndarray) -> dict:
     """
     Evaluate anomaly detector performance.
-    
+
     Args:
         y_true: True labels (1 = anomaly)
         scores: Anomaly scores
-        
+
     Returns:
         Metrics dict: precision, recall, F1, AUC
-        
+
     TODO:
     1. Calculate ROC AUC
     2. Find optimal threshold (F1 maximizing)
@@ -311,4 +311,3 @@ optimal_threshold = thresholds[optimal_idx]
 ---
 
 **Next Lab**: [Lab 04 - LLM Log Analysis](../lab04-llm-log-analysis/)
-

@@ -41,6 +41,7 @@ pip install langchain langchain-anthropic langgraph python-dotenv requests rich
 ### What is an AI Agent?
 
 An AI agent is an LLM that can:
+
 1. **Reason** about a task
 2. **Plan** steps to accomplish it
 3. **Use tools** to gather information
@@ -410,6 +411,7 @@ result = agent.run("Investigate this IP: 185.143.223.47")
 ```
 
 **Expected behavior:**
+
 1. Agent looks up IP reputation
 2. Finds it's associated with C2 servers
 3. Provides geolocation and ASN info
@@ -427,6 +429,7 @@ result = investigate_incident(agent, iocs)
 ```
 
 **Expected behavior:**
+
 1. Agent investigates each IOC
 2. Correlates findings (e.g., domain resolves to IP)
 3. Identifies attack pattern

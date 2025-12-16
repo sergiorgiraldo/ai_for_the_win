@@ -13,11 +13,11 @@ Practical labs for building AI-powered security tools.
 | [03](./lab03-anomaly-detection/) | Network Anomaly Detection | ⭐⭐ Intermediate | 60-75 min | ✅ Ready |
 | [04](./lab04-llm-log-analysis/) | LLM-Powered Log Analysis | ⭐⭐ Intermediate | 60-90 min | ✅ Ready |
 | [05](./lab05-threat-intel-agent/) | Threat Intelligence Agent | ⭐⭐⭐ Advanced | 90-120 min | ✅ Ready |
-| 06 | RAG for Security Docs | ⭐⭐ Intermediate | 75 min | 🚧 Coming |
-| 07 | YARA Rule Generator | ⭐⭐ Intermediate | 60 min | 🚧 Coming |
-| 08 | Vulnerability Scanner AI | ⭐⭐⭐ Advanced | 90 min | 🚧 Coming |
-| 09 | Threat Detection Pipeline | ⭐⭐⭐ Advanced | 120 min | 🚧 Coming |
-| 10 | IR Copilot Agent | ⭐⭐⭐ Advanced | 120 min | 🚧 Coming |
+| [06](./lab06-security-rag/) | RAG for Security Docs | ⭐⭐ Intermediate | 75-90 min | ✅ Ready |
+| [07](./lab07-yara-generator/) | AI YARA Rule Generator | ⭐⭐ Intermediate | 60-75 min | ✅ Ready |
+| [08](./lab08-vuln-scanner-ai/) | Vulnerability Scanner AI | ⭐⭐⭐ Advanced | 90-120 min | ✅ Ready |
+| [09](./lab09-detection-pipeline/) | Threat Detection Pipeline | ⭐⭐⭐ Advanced | 120-150 min | ✅ Ready |
+| [10](./lab10-ir-copilot/) | IR Copilot Agent | ⭐⭐⭐ Advanced | 120-150 min | ✅ Ready |
 
 ---
 

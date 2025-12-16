@@ -13,7 +13,8 @@ A comprehensive training curriculum for security practitioners who want to lever
 | [Training Program](./curriculum/ai-security-training-program.md)  | Complete 24-week curriculum with modules, labs, and projects |
 | [Development Environment Setup](./setup/dev-environment-setup.md) | Tools, IDEs, and configuration guides                        |
 | [Resources & Tools](./resources/tools-and-resources.md)           | Curated links, datasets, APIs, and learning materials        |
-| [Lab Exercises](./labs/)                                          | Hands-on exercises for each module                           |
+| [Lab Exercises](./labs/)                                          | 10 hands-on labs with starter code, solutions, and data      |
+| [Capstone Projects](./capstone-projects/)                         | 4 comprehensive projects to demonstrate mastery              |
 
 ---
 
@@ -55,10 +56,25 @@ cat setup/dev-environment-setup.md
 
 ## 📖 How to Use This Repository
 
-1. **Start with Setup** - Configure your development environment
+1. **Start with Setup** - Configure your development environment using [setup guides](./setup/guides/)
 2. **Follow the Curriculum** - Work through modules sequentially
-3. **Complete Labs** - Hands-on exercises reinforce concepts
-4. **Build Projects** - Apply skills to capstone projects
+3. **Complete Labs** - 10 hands-on labs with starter code and solutions
+4. **Build Capstone** - Choose from 4 comprehensive projects to demonstrate skills
+
+### Labs Available
+
+| # | Lab | Skills |
+|---|-----|--------|
+| 01 | Phishing Classifier | ML text classification |
+| 02 | Malware Clustering | Unsupervised learning |
+| 03 | Anomaly Detection | Isolation Forest, Autoencoders |
+| 04 | LLM Log Analysis | Prompt engineering, IOC extraction |
+| 05 | Threat Intel Agent | ReAct agents, tool use |
+| 06 | Security RAG | Vector search, document QA |
+| 07 | YARA Generator | LLM code generation |
+| 08 | Vuln Scanner AI | Risk prioritization |
+| 09 | Detection Pipeline | Multi-stage ML/LLM pipeline |
+| 10 | IR Copilot | Conversational AI for IR |
 
 ---
 

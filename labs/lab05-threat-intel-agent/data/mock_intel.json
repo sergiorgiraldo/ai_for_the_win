@@ -1,0 +1,284 @@
+{
+  "ip_intelligence": {
+    "185.143.223.47": {
+      "is_malicious": true,
+      "abuse_score": 95,
+      "country": "RU",
+      "city": "Moscow",
+      "asn": "AS48666",
+      "isp": "Bulletproof Hosting Ltd",
+      "threat_types": ["C2", "Malware Distribution"],
+      "first_seen": "2023-06-15",
+      "last_seen": "2024-01-15",
+      "reports": 847,
+      "tags": ["APT29", "CozyBear", "CobaltStrike"],
+      "related_domains": ["evil-c2.com", "malware-drop.net"]
+    },
+    "91.234.99.100": {
+      "is_malicious": true,
+      "abuse_score": 78,
+      "country": "NL",
+      "city": "Amsterdam",
+      "asn": "AS12345",
+      "isp": "VPS Provider BV",
+      "threat_types": ["Botnet", "Scanner", "Brute Force"],
+      "first_seen": "2024-01-01",
+      "last_seen": "2024-01-14",
+      "reports": 156,
+      "tags": ["Mirai", "Botnet"],
+      "related_domains": []
+    },
+    "8.8.8.8": {
+      "is_malicious": false,
+      "abuse_score": 0,
+      "country": "US",
+      "city": "Mountain View",
+      "asn": "AS15169",
+      "isp": "Google LLC",
+      "threat_types": [],
+      "first_seen": "2010-01-01",
+      "last_seen": "2024-01-15",
+      "reports": 0,
+      "tags": ["DNS", "Google"],
+      "related_domains": ["google.com"]
+    }
+  },
+  "domain_intelligence": {
+    "evil-c2.com": {
+      "is_malicious": true,
+      "category": "C2",
+      "registrar": "PrivacyGuard Inc",
+      "creation_date": "2024-01-10",
+      "expiration_date": "2025-01-10",
+      "dns_records": {
+        "A": ["185.143.223.47"],
+        "MX": [],
+        "NS": ["ns1.privatedns.com", "ns2.privatedns.com"]
+      },
+      "ssl_info": {
+        "issuer": "Let's Encrypt",
+        "valid_from": "2024-01-10",
+        "valid_to": "2024-04-10",
+        "subject": "evil-c2.com"
+      },
+      "whois": {
+        "registrant": "REDACTED FOR PRIVACY",
+        "admin_email": "abuse@privacyguard.com"
+      },
+      "threat_intel": {
+        "malware_families": ["Cobalt Strike", "Beacon"],
+        "campaigns": ["APT29-2024-01"],
+        "first_seen": "2024-01-10",
+        "confidence": "high"
+      }
+    },
+    "malware-drop.net": {
+      "is_malicious": true,
+      "category": "Malware Distribution",
+      "registrar": "Shady Registrar LLC",
+      "creation_date": "2023-12-20",
+      "expiration_date": "2024-12-20",
+      "dns_records": {
+        "A": ["91.234.99.100", "91.234.99.101"],
+        "MX": [],
+        "NS": ["ns1.shadydns.net"]
+      },
+      "ssl_info": null,
+      "whois": {
+        "registrant": "REDACTED",
+        "admin_email": "unknown"
+      },
+      "threat_intel": {
+        "malware_families": ["Emotet", "TrickBot", "QakBot"],
+        "campaigns": [],
+        "first_seen": "2023-12-20",
+        "confidence": "high"
+      }
+    },
+    "google.com": {
+      "is_malicious": false,
+      "category": "Search Engine",
+      "registrar": "MarkMonitor Inc.",
+      "creation_date": "1997-09-15",
+      "expiration_date": "2028-09-14",
+      "dns_records": {
+        "A": ["142.250.185.206"],
+        "MX": ["smtp.google.com"],
+        "NS": ["ns1.google.com"]
+      },
+      "ssl_info": {
+        "issuer": "Google Trust Services LLC",
+        "valid_from": "2024-01-01",
+        "valid_to": "2024-04-01"
+      },
+      "whois": {
+        "registrant": "Google LLC",
+        "admin_email": "dns-admin@google.com"
+      },
+      "threat_intel": {
+        "malware_families": [],
+        "campaigns": [],
+        "first_seen": "1997-09-15",
+        "confidence": "none"
+      }
+    }
+  },
+  "hash_intelligence": {
+    "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2": {
+      "is_malicious": true,
+      "hash_type": "sha256",
+      "detection_ratio": "52/72",
+      "malware_family": "Cobalt Strike",
+      "file_type": "PE32 executable (GUI) Intel 80386, for MS Windows",
+      "file_size": 245760,
+      "first_seen": "2024-01-12",
+      "last_seen": "2024-01-15",
+      "names": ["beacon.exe", "payload.exe", "update.exe"],
+      "behavior": [
+        "Creates scheduled task for persistence",
+        "Contacts C2 server over HTTPS",
+        "Injects into legitimate processes",
+        "Performs system reconnaissance"
+      ],
+      "yara_matches": ["CobaltStrike_Beacon", "HKTL_CobaltStrike"],
+      "related_iocs": {
+        "ips": ["185.143.223.47"],
+        "domains": ["evil-c2.com"]
+      }
+    },
+    "deadbeef12345678deadbeef12345678deadbeef12345678deadbeef12345678": {
+      "is_malicious": true,
+      "hash_type": "sha256",
+      "detection_ratio": "45/72",
+      "malware_family": "Emotet",
+      "file_type": "PE32 executable (DLL) Intel 80386, for MS Windows",
+      "file_size": 180224,
+      "first_seen": "2024-01-05",
+      "last_seen": "2024-01-14",
+      "names": ["qwerty.dll", "random123.dll"],
+      "behavior": [
+        "Spreads via malicious email attachments",
+        "Downloads additional payloads",
+        "Steals browser credentials"
+      ],
+      "yara_matches": ["Emotet_E5", "Trojan_Emotet"],
+      "related_iocs": {
+        "ips": ["91.234.99.100"],
+        "domains": ["malware-drop.net"]
+      }
+    }
+  },
+  "cve_intelligence": {
+    "CVE-2024-1234": {
+      "description": "Remote code execution vulnerability in Apache HTTP Server 2.4.x before 2.4.58 allows unauthenticated attackers to execute arbitrary code via a crafted request.",
+      "cvss_score": 9.8,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "severity": "CRITICAL",
+      "cwe": "CWE-94",
+      "affected_products": [
+        "Apache HTTP Server 2.4.0 - 2.4.57"
+      ],
+      "exploited_in_wild": true,
+      "exploit_available": true,
+      "patch_available": true,
+      "patch_url": "https://httpd.apache.org/security/vulnerabilities_24.html",
+      "references": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2024-1234",
+        "https://httpd.apache.org/security/"
+      ],
+      "published_date": "2024-01-10",
+      "last_modified": "2024-01-12"
+    },
+    "CVE-2023-44487": {
+      "description": "HTTP/2 Rapid Reset Attack allows denial of service.",
+      "cvss_score": 7.5,
+      "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "severity": "HIGH",
+      "cwe": "CWE-400",
+      "affected_products": [
+        "Multiple HTTP/2 implementations"
+      ],
+      "exploited_in_wild": true,
+      "exploit_available": true,
+      "patch_available": true,
+      "references": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2023-44487"
+      ],
+      "published_date": "2023-10-10"
+    }
+  },
+  "mitre_techniques": {
+    "T1059.001": {
+      "name": "PowerShell",
+      "tactic": "Execution",
+      "tactic_id": "TA0002",
+      "description": "Adversaries may abuse PowerShell commands and scripts for execution. PowerShell is a powerful interactive command-line interface and scripting environment included in the Windows operating system.",
+      "platforms": ["Windows"],
+      "detection": [
+        "Monitor for PowerShell execution, especially encoded commands",
+        "Enable PowerShell script block logging (Event ID 4104)",
+        "Watch for PowerShell download cradles",
+        "Alert on PowerShell spawning network connections"
+      ],
+      "mitigations": [
+        "Disable PowerShell for users who don't need it",
+        "Enable PowerShell Constrained Language Mode",
+        "Use AppLocker to restrict PowerShell execution",
+        "Enable script block logging and module logging"
+      ],
+      "related_groups": ["APT29", "APT28", "FIN7", "Lazarus Group"],
+      "data_sources": [
+        "Command: Command Execution",
+        "Process: Process Creation",
+        "Script: Script Execution"
+      ]
+    },
+    "T1053.005": {
+      "name": "Scheduled Task",
+      "tactic": "Persistence",
+      "tactic_id": "TA0003",
+      "description": "Adversaries may abuse the Windows Task Scheduler to perform task scheduling for initial or recurring execution of malicious code.",
+      "platforms": ["Windows"],
+      "detection": [
+        "Monitor scheduled task creation (Event ID 4698)",
+        "Watch for schtasks.exe execution",
+        "Alert on tasks created by unusual processes",
+        "Monitor Task Scheduler operational logs"
+      ],
+      "mitigations": [
+        "Limit task creation to administrators",
+        "Audit scheduled task changes",
+        "Monitor for suspicious task names and actions"
+      ],
+      "related_groups": ["APT29", "Lazarus Group", "FIN7"],
+      "data_sources": [
+        "Scheduled Job: Scheduled Job Creation",
+        "Command: Command Execution"
+      ]
+    },
+    "T1105": {
+      "name": "Ingress Tool Transfer",
+      "tactic": "Command and Control",
+      "tactic_id": "TA0011",
+      "description": "Adversaries may transfer tools or other files from an external system into a compromised environment.",
+      "platforms": ["Windows", "Linux", "macOS"],
+      "detection": [
+        "Monitor for unusual file downloads",
+        "Watch for certutil, bitsadmin, or PowerShell download activity",
+        "Alert on downloads from suspicious domains",
+        "Network traffic analysis for large transfers"
+      ],
+      "mitigations": [
+        "Network intrusion prevention systems",
+        "Web proxy filtering",
+        "Application allowlisting"
+      ],
+      "related_groups": ["APT29", "APT28", "Turla"],
+      "data_sources": [
+        "File: File Creation",
+        "Network Traffic: Network Connection Creation"
+      ]
+    }
+  }
+}
+

@@ -198,13 +198,13 @@ MOCK_MITRE_DATA = {
 def lookup_ip(ip: str) -> dict:
     """
     Look up reputation and geolocation for an IP address.
-    
+
     Args:
         ip: IPv4 or IPv6 address
-        
+
     Returns:
         Threat intelligence data for the IP
-        
+
     TODO:
     1. Validate IP format
     2. Check mock data (or real API in production)
@@ -212,17 +212,17 @@ def lookup_ip(ip: str) -> dict:
     4. Handle unknown IPs gracefully
     """
     # YOUR CODE HERE
-    
+
     # Basic validation
     # if not is_valid_ip(ip):
     #     return {"error": f"Invalid IP format: {ip}"}
-    
+
     # Check mock data
     # if ip in MOCK_IP_DATA:
     #     data = MOCK_IP_DATA[ip].copy()
     #     data["ip"] = ip
     #     return data
-    
+
     # Unknown IP - return neutral response
     # return {
     #     "ip": ip,
@@ -231,20 +231,20 @@ def lookup_ip(ip: str) -> dict:
     #     "country": "Unknown",
     #     "message": "No threat intelligence found for this IP"
     # }
-    
+
     pass
 
 
 def analyze_domain(domain: str) -> dict:
     """
     Analyze a domain for threat indicators.
-    
+
     Args:
         domain: Domain name to analyze
-        
+
     Returns:
         Domain analysis results
-        
+
     TODO:
     1. Normalize domain (lowercase, remove protocol)
     2. Check mock data (or real API)
@@ -257,13 +257,13 @@ def analyze_domain(domain: str) -> dict:
 def check_hash(file_hash: str) -> dict:
     """
     Check file hash against threat intelligence.
-    
+
     Args:
         file_hash: MD5, SHA1, or SHA256 hash
-        
+
     Returns:
         Hash analysis results
-        
+
     TODO:
     1. Identify hash type by length
     2. Normalize to lowercase
@@ -277,13 +277,13 @@ def check_hash(file_hash: str) -> dict:
 def search_cve(cve_id: str) -> dict:
     """
     Get details about a CVE.
-    
+
     Args:
         cve_id: CVE identifier (e.g., CVE-2024-1234)
-        
+
     Returns:
         CVE details
-        
+
     TODO:
     1. Validate CVE format
     2. Normalize to uppercase
@@ -297,13 +297,13 @@ def search_cve(cve_id: str) -> dict:
 def get_attack_technique(technique_id: str) -> dict:
     """
     Get details about a MITRE ATT&CK technique.
-    
+
     Args:
         technique_id: ATT&CK technique ID (e.g., T1059.001)
-        
+
     Returns:
         Technique details
-        
+
     TODO:
     1. Normalize technique ID format
     2. Check mock data (or real API)
@@ -358,11 +358,11 @@ def normalize_domain(domain: str) -> str:
 def get_tools():
     """
     Get list of tools configured for LangChain agent.
-    
+
     TODO: Create StructuredTool instances for each function
     """
     from langchain.tools import StructuredTool
-    
+
     tools = [
         # StructuredTool.from_function(
         #     func=lookup_ip,
@@ -372,7 +372,7 @@ def get_tools():
         # ),
         # ... add other tools
     ]
-    
+
     return tools
 
 
@@ -385,12 +385,11 @@ if __name__ == "__main__":
     print("Testing IP Lookup:")
     result = lookup_ip("185.143.223.47")
     print(json.dumps(result, indent=2))
-    
+
     print("\nTesting Domain Analysis:")
     result = analyze_domain("evil-c2.com")
     print(json.dumps(result, indent=2))
-    
+
     print("\nTesting Hash Check:")
     result = check_hash("a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2")
     print(json.dumps(result, indent=2))
-
