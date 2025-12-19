@@ -1,0 +1,36 @@
+2024-01-15 08:00:01 INFO [sshd] Accepted publickey for admin from 192.168.1.50 port 52341 ssh2
+2024-01-15 08:00:15 INFO [systemd] Started Session 1 of user admin.
+2024-01-15 08:01:22 INFO [sudo] admin : TTY=pts/0 ; PWD=/home/admin ; USER=root ; COMMAND=/bin/systemctl status nginx
+2024-01-15 08:05:33 INFO [nginx] 192.168.1.100 - - "GET /api/users HTTP/1.1" 200 1523
+2024-01-15 08:05:34 INFO [nginx] 192.168.1.100 - - "GET /api/dashboard HTTP/1.1" 200 4521
+2024-01-15 08:10:45 WARNING [sshd] Failed password for invalid user test from 10.0.0.55 port 43521 ssh2
+2024-01-15 08:10:46 WARNING [sshd] Failed password for invalid user test from 10.0.0.55 port 43522 ssh2
+2024-01-15 08:10:47 WARNING [sshd] Failed password for invalid user admin from 10.0.0.55 port 43523 ssh2
+2024-01-15 08:10:48 WARNING [sshd] Failed password for invalid user root from 10.0.0.55 port 43524 ssh2
+2024-01-15 08:10:49 WARNING [sshd] Failed password for invalid user administrator from 10.0.0.55 port 43525 ssh2
+2024-01-15 08:15:00 INFO [cron] (root) CMD (/usr/local/bin/backup.sh)
+2024-01-15 08:15:05 INFO [backup] Starting daily backup to /backup/daily/
+2024-01-15 08:20:12 INFO [nginx] 192.168.1.101 - - "POST /api/login HTTP/1.1" 200 256
+2024-01-15 08:20:15 INFO [app] User jsmith successfully authenticated from 192.168.1.101
+2024-01-15 08:25:33 ERROR [nginx] 192.168.1.200 - - "GET /../../etc/passwd HTTP/1.1" 400 0
+2024-01-15 08:25:34 ERROR [nginx] 192.168.1.200 - - "GET /admin/../../../etc/shadow HTTP/1.1" 400 0
+2024-01-15 08:25:35 WARNING [modsecurity] [id "930120"] Path Traversal Attack detected from 192.168.1.200
+2024-01-15 08:30:00 INFO [systemd] Starting Docker Container cleanup...
+2024-01-15 08:30:05 INFO [docker] Removed 3 unused containers
+2024-01-15 08:35:22 INFO [nginx] 192.168.1.102 - - "GET /api/reports HTTP/1.1" 200 8934
+2024-01-15 08:40:11 WARNING [kernel] TCP: Possible SYN flooding on port 443. Sending cookies.
+2024-01-15 08:40:12 WARNING [kernel] TCP: Possible SYN flooding on port 443. Sending cookies.
+2024-01-15 08:45:00 INFO [cron] (www-data) CMD (php /var/www/html/cron.php)
+2024-01-15 08:50:33 INFO [sshd] Accepted publickey for developer from 192.168.1.75 port 49123 ssh2
+2024-01-15 08:50:45 INFO [sudo] developer : TTY=pts/1 ; PWD=/home/developer ; USER=root ; COMMAND=/bin/cat /var/log/auth.log
+2024-01-15 08:55:00 INFO [nginx] 192.168.1.103 - - "GET /health HTTP/1.1" 200 15
+2024-01-15 09:00:01 INFO [logrotate] rotating /var/log/nginx/access.log
+2024-01-15 09:00:02 INFO [logrotate] rotating /var/log/nginx/error.log
+2024-01-15 09:05:44 ERROR [app] Database connection failed: timeout after 30s
+2024-01-15 09:05:45 ERROR [app] Retrying database connection (attempt 2/3)
+2024-01-15 09:05:50 INFO [app] Database connection restored
+2024-01-15 09:10:22 INFO [nginx] 192.168.1.104 - - "PUT /api/users/123 HTTP/1.1" 200 89
+2024-01-15 09:15:33 WARNING [fail2ban] Ban 10.0.0.55 for repeated SSH failures
+2024-01-15 09:20:00 INFO [systemd] Started Certbot renewal timer.
+2024-01-15 09:25:11 INFO [nginx] 10.0.0.100 - - "GET /metrics HTTP/1.1" 200 4521
+2024-01-15 09:30:00 INFO [prometheus] Scrape completed for target nginx_exporter

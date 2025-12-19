@@ -1,0 +1,146 @@
+{
+  "name": "IOC Enrichment Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "enrich-ioc",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "operation": "lookup",
+        "resource": "ip",
+        "ip": "={{ $json.ioc }}"
+      },
+      "id": "virustotal",
+      "name": "VirusTotal",
+      "type": "n8n-nodes-base.virusTotal",
+      "typeVersion": 1,
+      "position": [450, 200],
+      "credentials": {
+        "virusTotalApi": {
+          "id": "1",
+          "name": "VirusTotal API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://api.abuseipdb.com/api/v2/check",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "ipAddress",
+              "value": "={{ $json.ioc }}"
+            },
+            {
+              "name": "maxAgeInDays",
+              "value": "90"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Key",
+              "value": "={{ $credentials.abuseipdb.apiKey }}"
+            }
+          ]
+        }
+      },
+      "id": "abuseipdb",
+      "name": "AbuseIPDB",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [450, 400]
+    },
+    {
+      "parameters": {
+        "model": "claude-sonnet-4-20250514",
+        "prompt": "Analyze the following threat intelligence data for IOC {{ $json.ioc }}:\n\nVirusTotal: {{ $node.VirusTotal.json }}\nAbuseIPDB: {{ $node.AbuseIPDB.json }}\n\nProvide a concise threat assessment including:\n1. Classification (Malicious/Suspicious/Clean)\n2. Confidence level\n3. Key findings\n4. Recommended actions"
+      },
+      "id": "ai-analysis",
+      "name": "AI Analysis",
+      "type": "n8n-nodes-base.anthropic",
+      "typeVersion": 1,
+      "position": [650, 300],
+      "credentials": {
+        "anthropicApi": {
+          "id": "2",
+          "name": "Anthropic API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "channel": "#security-alerts",
+        "text": ":mag: *IOC Enrichment Complete*\n\n*IOC:* `{{ $node.Webhook.json.ioc }}`\n*Type:* {{ $node.Webhook.json.type }}\n\n{{ $node['AI Analysis'].json.content }}"
+      },
+      "id": "slack-notify",
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 1,
+      "position": [850, 300],
+      "credentials": {
+        "slackApi": {
+          "id": "3",
+          "name": "Slack API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ success: true, ioc: $node.Webhook.json.ioc, analysis: $node['AI Analysis'].json.content }) }}"
+      },
+      "id": "response",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1050, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          { "node": "VirusTotal", "type": "main", "index": 0 },
+          { "node": "AbuseIPDB", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "VirusTotal": {
+      "main": [
+        [{ "node": "AI Analysis", "type": "main", "index": 0 }]
+      ]
+    },
+    "AbuseIPDB": {
+      "main": [
+        [{ "node": "AI Analysis", "type": "main", "index": 0 }]
+      ]
+    },
+    "AI Analysis": {
+      "main": [
+        [{ "node": "Slack", "type": "main", "index": 0 }]
+      ]
+    },
+    "Slack": {
+      "main": [
+        [{ "node": "Respond", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

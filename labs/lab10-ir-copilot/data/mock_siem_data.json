@@ -1,0 +1,167 @@
+{
+  "siem_events": [
+    {
+      "timestamp": "2024-01-15T08:15:00Z",
+      "source": "email_gateway",
+      "event_type": "email_received",
+      "severity": "medium",
+      "data": {
+        "sender": "billing@vendor-invoices.com",
+        "recipient": "mthompson@company.com",
+        "subject": "Urgent: Q4 Invoice - Payment Required",
+        "attachments": ["Invoice_Q4.xlsx"],
+        "verdict": "suspicious",
+        "headers": {
+          "x-originating-ip": "185.143.223.47",
+          "spf": "fail",
+          "dkim": "none"
+        }
+      }
+    },
+    {
+      "timestamp": "2024-01-15T08:22:00Z",
+      "source": "edr",
+      "event_type": "process_creation",
+      "severity": "high",
+      "host": "WORKSTATION-15",
+      "data": {
+        "process": "powershell.exe",
+        "parent": "EXCEL.EXE",
+        "command_line": "powershell.exe -nop -w hidden -enc <base64>",
+        "user": "mthompson"
+      }
+    },
+    {
+      "timestamp": "2024-01-15T08:25:00Z",
+      "source": "firewall",
+      "event_type": "network_connection",
+      "severity": "high",
+      "host": "WORKSTATION-15",
+      "data": {
+        "src_ip": "192.168.10.115",
+        "dst_ip": "185.143.223.47",
+        "dst_port": 443,
+        "protocol": "TCP",
+        "bytes_out": 2048,
+        "bytes_in": 156789
+      }
+    },
+    {
+      "timestamp": "2024-01-15T08:30:00Z",
+      "source": "edr",
+      "event_type": "credential_access",
+      "severity": "critical",
+      "host": "WORKSTATION-15",
+      "data": {
+        "process": "unknown.exe",
+        "target": "lsass.exe",
+        "technique": "T1003.001",
+        "user": "mthompson"
+      }
+    },
+    {
+      "timestamp": "2024-01-15T09:00:00Z",
+      "source": "windows_security",
+      "event_type": "logon",
+      "severity": "medium",
+      "host": "FINSERVER-01",
+      "data": {
+        "event_id": 4624,
+        "logon_type": 10,
+        "user": "mthompson",
+        "source_ip": "192.168.10.115",
+        "source_host": "WORKSTATION-15"
+      }
+    },
+    {
+      "timestamp": "2024-01-15T09:05:00Z",
+      "source": "edr",
+      "event_type": "file_creation",
+      "severity": "critical",
+      "host": "FINSERVER-01",
+      "data": {
+        "file_path": "C:\\Windows\\Temp\\svchost.exe",
+        "hash_sha256": "def789ghi012...",
+        "signed": false,
+        "user": "mthompson"
+      }
+    },
+    {
+      "timestamp": "2024-01-15T09:15:00Z",
+      "source": "edr",
+      "event_type": "process_creation",
+      "severity": "critical",
+      "host": "FINSERVER-01",
+      "data": {
+        "process": "svchost.exe",
+        "path": "C:\\Windows\\Temp\\svchost.exe",
+        "command_line": "C:\\Windows\\Temp\\svchost.exe -encrypt",
+        "parent": "cmd.exe",
+        "user": "mthompson"
+      }
+    },
+    {
+      "timestamp": "2024-01-15T09:20:00Z",
+      "source": "windows_security",
+      "event_type": "command_execution",
+      "severity": "critical",
+      "host": "FINSERVER-01",
+      "data": {
+        "command": "vssadmin delete shadows /all /quiet",
+        "user": "SYSTEM",
+        "process": "svchost.exe"
+      }
+    },
+    {
+      "timestamp": "2024-01-15T09:25:00Z",
+      "source": "file_integrity",
+      "event_type": "mass_file_change",
+      "severity": "critical",
+      "host": "FINSERVER-01",
+      "data": {
+        "files_modified": 15234,
+        "new_extension": ".lockbit",
+        "directories_affected": ["D:\\Finance", "D:\\Shared", "D:\\Backup"],
+        "rate": "500 files/minute"
+      }
+    }
+  ],
+  "threat_intel": {
+    "185.143.223.47": {
+      "classification": "malicious",
+      "category": "c2_server",
+      "malware_family": "LockBit",
+      "first_seen": "2024-01-10",
+      "last_seen": "2024-01-15",
+      "confidence": "high",
+      "reports": 45
+    },
+    "vendor-invoices.com": {
+      "classification": "malicious",
+      "category": "phishing",
+      "registered": "2024-01-12",
+      "registrar": "anonymous",
+      "confidence": "high"
+    }
+  },
+  "host_inventory": {
+    "WORKSTATION-15": {
+      "ip": "192.168.10.115",
+      "os": "Windows 10 Enterprise 21H2",
+      "user": "mthompson",
+      "department": "Finance",
+      "last_patched": "2024-01-10",
+      "edr_agent": "installed",
+      "av_status": "enabled"
+    },
+    "FINSERVER-01": {
+      "ip": "192.168.10.50",
+      "os": "Windows Server 2019",
+      "role": "File Server",
+      "shares": ["Finance$", "Shared$", "Backup$"],
+      "last_patched": "2024-01-05",
+      "backup_schedule": "daily",
+      "last_backup": "2024-01-15T02:00:00Z"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+You are a security analyst AI specializing in log analysis and threat detection. Analyze the following log entries to identify potential security threats, anomalies, and indicators of compromise (IOCs).
+
+Log entries to analyze:
+{logs}
+
+Perform the following analysis:
+
+1. **Event Classification**: Categorize each significant event by type:
+   - Authentication events (successful/failed logins)
+   - Authorization events (privilege escalation, sudo usage)
+   - Network events (connections, data transfers)
+   - File system events (file access, modifications)
+   - Process events (command execution, service changes)
+   - Security tool events (firewall, IDS, antivirus)
+
+2. **Threat Detection**: Identify potential security threats:
+   - Brute force attempts (multiple failed logins)
+   - Privilege escalation attempts
+   - Lateral movement indicators
+   - Data exfiltration patterns
+   - Persistence mechanisms
+   - Command and control (C2) activity
+   - Log tampering or evasion techniques
+
+3. **IOC Extraction**: Extract indicators of compromise:
+   - Suspicious IP addresses
+   - Malicious domains/URLs
+   - Suspicious file paths
+   - Unusual user accounts
+   - Suspicious commands or scripts
+
+4. **MITRE ATT&CK Mapping**: Map detected activities to MITRE ATT&CK techniques:
+   - Technique ID and name
+   - Tactic category
+   - Confidence level
+
+5. **Risk Assessment**: Provide an overall risk assessment:
+   - Severity: Critical/High/Medium/Low
+   - Confidence: High/Medium/Low
+   - Recommended actions
+
+Return your analysis in the following JSON format:
+{{
+    "summary": "Brief summary of findings",
+    "events": [
+        {{
+            "timestamp": "...",
+            "type": "...",
+            "description": "...",
+            "severity": "..."
+        }}
+    ],
+    "threats_detected": [
+        {{
+            "type": "...",
+            "description": "...",
+            "evidence": ["..."],
+            "mitre_attack": {{
+                "technique_id": "T####",
+                "technique_name": "...",
+                "tactic": "..."
+            }},
+            "severity": "...",
+            "confidence": "..."
+        }}
+    ],
+    "iocs": {{
+        "ip_addresses": ["..."],
+        "domains": ["..."],
+        "file_paths": ["..."],
+        "user_accounts": ["..."],
+        "commands": ["..."]
+    }},
+    "risk_assessment": {{
+        "overall_severity": "...",
+        "confidence": "...",
+        "recommended_actions": ["..."]
+    }}
+}}

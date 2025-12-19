@@ -1,0 +1,82 @@
+[
+  {
+    "cve_id": "CVE-2024-21762",
+    "description": "A out-of-bounds write vulnerability in Fortinet FortiOS SSL VPN allows a remote unauthenticated attacker to execute arbitrary code or command via specially crafted HTTP requests.",
+    "cvss_score": 9.8,
+    "severity": "CRITICAL",
+    "affected_products": ["FortiOS 7.4.0-7.4.2", "FortiOS 7.2.0-7.2.6", "FortiOS 7.0.0-7.0.13"],
+    "cwe": "CWE-787",
+    "published_date": "2024-02-09",
+    "mitigation": "Update to FortiOS 7.4.3, 7.2.7, or 7.0.14. If patching is not immediately possible, disable SSL VPN."
+  },
+  {
+    "cve_id": "CVE-2024-3400",
+    "description": "A command injection vulnerability in the GlobalProtect feature of Palo Alto Networks PAN-OS software enables an unauthenticated attacker to execute arbitrary code with root privileges on the firewall.",
+    "cvss_score": 10.0,
+    "severity": "CRITICAL",
+    "affected_products": ["PAN-OS 11.1", "PAN-OS 11.0", "PAN-OS 10.2"],
+    "cwe": "CWE-77",
+    "published_date": "2024-04-12",
+    "mitigation": "Apply vendor hotfix immediately. Enable Threat Prevention signatures. Consider disabling GlobalProtect if not required."
+  },
+  {
+    "cve_id": "CVE-2024-1709",
+    "description": "ConnectWise ScreenConnect authentication bypass vulnerability allows an attacker to access the administrative interface without authentication.",
+    "cvss_score": 10.0,
+    "severity": "CRITICAL",
+    "affected_products": ["ScreenConnect 23.9.7 and earlier"],
+    "cwe": "CWE-288",
+    "published_date": "2024-02-19",
+    "mitigation": "Update to ScreenConnect 23.9.8 or later immediately. Cloud-hosted instances are automatically updated."
+  },
+  {
+    "cve_id": "CVE-2024-27198",
+    "description": "Authentication bypass vulnerability in JetBrains TeamCity allows a remote attacker to take administrative control of the TeamCity server.",
+    "cvss_score": 9.8,
+    "severity": "CRITICAL",
+    "affected_products": ["TeamCity before 2023.11.4"],
+    "cwe": "CWE-288",
+    "published_date": "2024-03-04",
+    "mitigation": "Update to TeamCity 2023.11.4 or later. Apply the security patch plugin if update is not possible."
+  },
+  {
+    "cve_id": "CVE-2024-23897",
+    "description": "Jenkins arbitrary file read vulnerability through the CLI allows attackers to read arbitrary files on the Jenkins controller file system.",
+    "cvss_score": 9.8,
+    "severity": "CRITICAL",
+    "affected_products": ["Jenkins weekly up to 2.441", "Jenkins LTS up to 2.426.2"],
+    "cwe": "CWE-22",
+    "published_date": "2024-01-24",
+    "mitigation": "Update to Jenkins 2.442 or LTS 2.426.3. Disable CLI if not needed."
+  },
+  {
+    "cve_id": "CVE-2023-46805",
+    "description": "Ivanti Connect Secure and Policy Secure authentication bypass vulnerability allows remote attackers to access restricted resources.",
+    "cvss_score": 8.2,
+    "severity": "HIGH",
+    "affected_products": ["Ivanti Connect Secure 9.x", "Ivanti Connect Secure 22.x", "Ivanti Policy Secure"],
+    "cwe": "CWE-287",
+    "published_date": "2024-01-10",
+    "mitigation": "Apply vendor patches. Implement additional network segmentation for VPN concentrators."
+  },
+  {
+    "cve_id": "CVE-2024-0204",
+    "description": "GoAnywhere MFT authentication bypass vulnerability allows unauthorized access to the admin console and file transfer capabilities.",
+    "cvss_score": 9.8,
+    "severity": "CRITICAL",
+    "affected_products": ["GoAnywhere MFT 6.x before 6.8.3", "GoAnywhere MFT 7.x before 7.1.1"],
+    "cwe": "CWE-425",
+    "published_date": "2024-01-22",
+    "mitigation": "Update to GoAnywhere MFT 7.1.1 or 6.8.3. Restrict access to admin console from trusted networks only."
+  },
+  {
+    "cve_id": "CVE-2024-20353",
+    "description": "Cisco ASA and FTD denial of service vulnerability in the management and VPN web server allows remote attackers to cause a reload of the device.",
+    "cvss_score": 8.6,
+    "severity": "HIGH",
+    "affected_products": ["Cisco ASA Software", "Cisco FTD Software"],
+    "cwe": "CWE-835",
+    "published_date": "2024-04-24",
+    "mitigation": "Apply Cisco security advisory patches. Limit access to management interfaces."
+  }
+]

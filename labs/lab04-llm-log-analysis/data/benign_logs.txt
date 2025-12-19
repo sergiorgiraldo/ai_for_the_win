@@ -1,0 +1,113 @@
+# Benign Activity Logs - Normal Business Operations
+# Timeline: 2024-01-15 08:00 - 18:00 UTC
+# This log demonstrates typical daily operations for comparison with attack scenarios
+
+# Morning Startup (08:00 - 09:00)
+2024-01-15 08:00:01 INFO [systemd] Started Docker Application Container Engine.
+2024-01-15 08:00:02 INFO [docker] Container app_web_1 started
+2024-01-15 08:00:03 INFO [docker] Container app_db_1 started
+2024-01-15 08:00:04 INFO [docker] Container app_redis_1 started
+2024-01-15 08:00:05 INFO [nginx] nginx/1.24.0 started
+2024-01-15 08:00:10 INFO [app] Application server started on port 8080
+2024-01-15 08:00:15 INFO [app] Connected to database: postgresql://localhost:5432/production
+2024-01-15 08:00:20 INFO [app] Redis connection established: redis://localhost:6379
+2024-01-15 08:05:00 INFO [cron] (root) CMD (/usr/local/bin/health_check.sh)
+2024-01-15 08:05:01 INFO [health] All services healthy
+2024-01-15 08:10:22 INFO [sshd] Accepted publickey for devops from 192.168.1.50 port 52341 ssh2
+2024-01-15 08:10:25 INFO [systemd] Started Session 1 of user devops.
+2024-01-15 08:15:00 INFO [sudo] devops : TTY=pts/0 ; PWD=/home/devops ; USER=root ; COMMAND=/bin/systemctl status nginx
+2024-01-15 08:20:33 INFO [nginx] 192.168.1.100 - - "GET /api/health HTTP/1.1" 200 15
+
+# Regular User Activity (09:00 - 12:00)
+2024-01-15 09:00:01 INFO [nginx] 192.168.1.101 - - "GET / HTTP/1.1" 200 5432
+2024-01-15 09:00:05 INFO [nginx] 192.168.1.101 - - "POST /api/v1/login HTTP/1.1" 200 256
+2024-01-15 09:00:06 INFO [app] User jsmith successfully authenticated from 192.168.1.101
+2024-01-15 09:05:22 INFO [nginx] 192.168.1.101 - - "GET /api/v1/dashboard HTTP/1.1" 200 8934
+2024-01-15 09:10:00 INFO [nginx] 192.168.1.102 - - "POST /api/v1/login HTTP/1.1" 200 256
+2024-01-15 09:10:01 INFO [app] User mjohnson successfully authenticated from 192.168.1.102
+2024-01-15 09:15:33 INFO [nginx] 192.168.1.101 - - "GET /api/v1/reports HTTP/1.1" 200 15234
+2024-01-15 09:20:00 INFO [nginx] 192.168.1.102 - - "POST /api/v1/tickets HTTP/1.1" 201 512
+2024-01-15 09:20:01 INFO [app] New ticket #4521 created by mjohnson
+2024-01-15 09:25:22 INFO [nginx] 192.168.1.103 - - "POST /api/v1/login HTTP/1.1" 200 256
+2024-01-15 09:25:23 INFO [app] User asmith successfully authenticated from 192.168.1.103
+2024-01-15 09:30:00 INFO [nginx] 192.168.1.101 - - "PUT /api/v1/users/profile HTTP/1.1" 200 89
+2024-01-15 09:35:11 INFO [nginx] 192.168.1.102 - - "GET /api/v1/tickets HTTP/1.1" 200 4521
+2024-01-15 09:40:00 INFO [nginx] 192.168.1.103 - - "POST /api/v1/documents HTTP/1.1" 201 156
+2024-01-15 09:40:01 INFO [app] Document 'Q4_Report.pdf' uploaded by asmith
+2024-01-15 09:45:22 INFO [nginx] 192.168.1.101 - - "GET /api/v1/notifications HTTP/1.1" 200 1234
+2024-01-15 09:50:00 INFO [cron] (www-data) CMD (php /var/www/html/scheduler.php)
+2024-01-15 09:50:01 INFO [scheduler] Processed 15 scheduled tasks
+2024-01-15 09:55:33 INFO [nginx] 192.168.1.104 - - "POST /api/v1/login HTTP/1.1" 200 256
+2024-01-15 09:55:34 INFO [app] User bwilson successfully authenticated from 192.168.1.104
+2024-01-15 10:00:00 INFO [cron] (root) CMD (/usr/local/bin/metrics_collector.sh)
+2024-01-15 10:00:05 INFO [prometheus] Metrics collected: cpu=45%, memory=62%, disk=38%
+2024-01-15 10:05:22 INFO [nginx] 192.168.1.101 - - "GET /api/v1/search?q=quarterly%20report HTTP/1.1" 200 2341
+2024-01-15 10:10:00 INFO [nginx] 192.168.1.102 - - "PUT /api/v1/tickets/4521 HTTP/1.1" 200 89
+2024-01-15 10:10:01 INFO [app] Ticket #4521 updated by mjohnson: status changed to 'in_progress'
+2024-01-15 10:15:33 INFO [nginx] 192.168.1.103 - - "GET /api/v1/documents HTTP/1.1" 200 8934
+2024-01-15 10:20:00 INFO [backup] Starting incremental backup to s3://company-backups/
+2024-01-15 10:25:22 INFO [backup] Incremental backup completed: 156 files, 45MB
+2024-01-15 10:30:00 INFO [nginx] 192.168.1.104 - - "POST /api/v1/comments HTTP/1.1" 201 256
+2024-01-15 10:35:11 INFO [nginx] 192.168.1.101 - - "GET /api/v1/analytics HTTP/1.1" 200 15234
+2024-01-15 10:40:00 INFO [app] Scheduled report generation started
+2024-01-15 10:45:22 INFO [app] Weekly report generated and emailed to stakeholders
+2024-01-15 10:50:00 INFO [nginx] 192.168.1.102 - - "DELETE /api/v1/notifications/old HTTP/1.1" 200 45
+2024-01-15 10:55:33 INFO [nginx] 192.168.1.103 - - "GET /api/v1/calendar HTTP/1.1" 200 4521
+2024-01-15 11:00:00 INFO [cron] (root) CMD (/usr/local/bin/ssl_check.sh)
+2024-01-15 11:00:05 INFO [ssl] Certificate valid for 45 more days
+2024-01-15 11:05:22 INFO [nginx] 192.168.1.101 - - "POST /api/v1/logout HTTP/1.1" 200 15
+2024-01-15 11:05:23 INFO [app] User jsmith logged out from 192.168.1.101
+2024-01-15 11:10:00 INFO [nginx] 192.168.1.105 - - "POST /api/v1/login HTTP/1.1" 200 256
+2024-01-15 11:10:01 INFO [app] User cjones successfully authenticated from 192.168.1.105
+
+# Lunch Period - Lower Activity (12:00 - 13:00)
+2024-01-15 12:00:00 INFO [cron] (root) CMD (/usr/local/bin/health_check.sh)
+2024-01-15 12:00:01 INFO [health] All services healthy
+2024-01-15 12:05:22 INFO [nginx] 10.0.0.100 - - "GET /metrics HTTP/1.1" 200 4521
+2024-01-15 12:10:00 INFO [prometheus] Scrape completed for all targets
+2024-01-15 12:15:33 INFO [nginx] 192.168.1.102 - - "GET /api/v1/notifications HTTP/1.1" 200 512
+2024-01-15 12:30:00 INFO [logrotate] rotating /var/log/app/access.log
+2024-01-15 12:30:01 INFO [logrotate] rotating /var/log/app/error.log
+2024-01-15 12:45:22 INFO [nginx] 192.168.1.103 - - "GET /api/v1/status HTTP/1.1" 200 89
+
+# Afternoon Activity (13:00 - 17:00)
+2024-01-15 13:00:00 INFO [nginx] 192.168.1.101 - - "POST /api/v1/login HTTP/1.1" 200 256
+2024-01-15 13:00:01 INFO [app] User jsmith successfully authenticated from 192.168.1.101
+2024-01-15 13:05:22 INFO [nginx] 192.168.1.106 - - "POST /api/v1/login HTTP/1.1" 200 256
+2024-01-15 13:05:23 INFO [app] User dlee successfully authenticated from 192.168.1.106
+2024-01-15 13:10:00 INFO [sshd] Accepted publickey for developer from 192.168.1.75 port 49123 ssh2
+2024-01-15 13:10:05 INFO [systemd] Started Session 2 of user developer.
+2024-01-15 13:15:33 INFO [git] Push received: main branch updated by developer
+2024-01-15 13:15:40 INFO [ci] Build #1523 started for commit abc123f
+2024-01-15 13:20:00 INFO [ci] Build #1523 completed successfully
+2024-01-15 13:20:05 INFO [cd] Deploying to staging environment
+2024-01-15 13:25:22 INFO [cd] Deployment to staging completed
+2024-01-15 13:30:00 INFO [nginx] 192.168.1.101 - - "GET /api/v1/projects HTTP/1.1" 200 8934
+2024-01-15 13:35:11 INFO [nginx] 192.168.1.102 - - "PUT /api/v1/tickets/4521 HTTP/1.1" 200 89
+2024-01-15 13:35:12 INFO [app] Ticket #4521 resolved by mjohnson
+2024-01-15 13:40:00 INFO [nginx] 192.168.1.106 - - "POST /api/v1/reviews HTTP/1.1" 201 256
+2024-01-15 13:45:22 INFO [nginx] 192.168.1.103 - - "GET /api/v1/documents/Q4_Report.pdf HTTP/1.1" 200 156234
+2024-01-15 14:00:00 INFO [cron] (root) CMD (/usr/local/bin/database_optimize.sh)
+2024-01-15 14:00:15 INFO [postgresql] VACUUM ANALYZE completed
+2024-01-15 14:05:22 INFO [nginx] 192.168.1.101 - - "POST /api/v1/export HTTP/1.1" 200 45234
+2024-01-15 14:05:23 INFO [app] Data export requested by jsmith: users_report.csv
+2024-01-15 14:10:00 INFO [nginx] 192.168.1.104 - - "GET /api/v1/team HTTP/1.1" 200 2341
+2024-01-15 14:15:33 INFO [sshd] Disconnected from 192.168.1.75 port 49123
+2024-01-15 14:15:34 INFO [systemd] Stopped Session 2 of user developer.
+
+# End of Day (17:00 - 18:00)
+2024-01-15 17:00:00 INFO [nginx] 192.168.1.101 - - "POST /api/v1/logout HTTP/1.1" 200 15
+2024-01-15 17:00:01 INFO [app] User jsmith logged out from 192.168.1.101
+2024-01-15 17:05:22 INFO [nginx] 192.168.1.102 - - "POST /api/v1/logout HTTP/1.1" 200 15
+2024-01-15 17:05:23 INFO [app] User mjohnson logged out from 192.168.1.102
+2024-01-15 17:10:00 INFO [nginx] 192.168.1.103 - - "POST /api/v1/logout HTTP/1.1" 200 15
+2024-01-15 17:15:33 INFO [backup] Starting end-of-day full backup
+2024-01-15 17:30:00 INFO [backup] Full backup completed: 2.3GB to s3://company-backups/daily/
+2024-01-15 17:35:22 INFO [sshd] Disconnected from 192.168.1.50 port 52341
+2024-01-15 17:35:23 INFO [systemd] Stopped Session 1 of user devops.
+2024-01-15 17:40:00 INFO [cron] (root) CMD (/usr/local/bin/security_scan.sh)
+2024-01-15 17:45:11 INFO [security] Daily vulnerability scan completed: 0 critical, 0 high, 2 medium findings
+2024-01-15 17:50:00 INFO [prometheus] Daily metrics summary: avg_cpu=42%, avg_memory=58%, avg_requests=1523/min
+2024-01-15 17:55:22 INFO [app] End of day summary: 156 active users, 423 tickets processed, 45 documents uploaded
+2024-01-15 18:00:00 INFO [cron] (root) CMD (/usr/local/bin/health_check.sh)
+2024-01-15 18:00:01 INFO [health] All services healthy - end of business day

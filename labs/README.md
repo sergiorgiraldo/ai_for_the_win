@@ -193,6 +193,98 @@ Agent capabilities:
 
 ---
 
+### Lab 06: Security RAG System
+
+**Build a Retrieval-Augmented Generation system for security documentation.**
+
+Skills learned:
+- Document loading and chunking
+- Vector embeddings and ChromaDB
+- Semantic search implementation
+- Context-aware LLM responses
+
+Use cases:
+- CVE lookup and analysis
+- MITRE ATT&CK technique queries
+- Playbook recommendations
+- Security policy Q&A
+
+---
+
+### Lab 07: AI YARA Rule Generator
+
+**Use LLMs to automatically generate YARA rules from malware samples.**
+
+Skills learned:
+- Binary analysis basics
+- String and pattern extraction
+- LLM-powered rule generation
+- YARA syntax validation
+
+Key capabilities:
+- Malware sample analysis
+- Suspicious string detection
+- Rule optimization
+- False positive reduction
+
+---
+
+### Lab 08: Vulnerability Scanner AI
+
+**Build an AI-enhanced vulnerability scanner with intelligent prioritization.**
+
+Skills learned:
+- Vulnerability assessment
+- CVSS scoring interpretation
+- Risk-based prioritization
+- Remediation planning
+
+Features:
+- Asset-aware scanning
+- Business context integration
+- Automated report generation
+- Remediation recommendations
+
+---
+
+### Lab 09: Threat Detection Pipeline
+
+**Build a multi-stage threat detection pipeline combining ML and LLMs.**
+
+Skills learned:
+- Event ingestion and normalization
+- ML-based filtering (Isolation Forest)
+- LLM enrichment and analysis
+- Event correlation techniques
+
+Pipeline stages:
+1. Ingest & normalize events
+2. ML filter (reduce noise)
+3. LLM enrich (add context)
+4. Correlate related events
+5. Generate verdicts & alerts
+
+---
+
+### Lab 10: IR Copilot Agent
+
+**Build a conversational AI copilot for incident response.**
+
+Skills learned:
+- Conversational agent design
+- Multi-tool orchestration
+- State management
+- Confirmation workflows
+
+Copilot capabilities:
+- SIEM queries and log analysis
+- IOC lookup and enrichment
+- Host isolation and containment
+- Timeline and report generation
+- Playbook-guided response
+
+---
+
 ## 💡 Tips for Success
 
 ### Before Starting

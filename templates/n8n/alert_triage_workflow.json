@@ -1,0 +1,100 @@
+{
+  "name": "AI Alert Triage Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "alert-triage",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook",
+      "name": "Alert Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "model": "claude-sonnet-4-20250514",
+        "prompt": "You are a security alert triage analyst. Analyze the following alert and provide:\n\n1. Priority Score (1-10, where 10 is most critical)\n2. Classification (True Positive Likely, False Positive Likely, Needs Investigation)\n3. Brief explanation (2-3 sentences)\n4. Recommended immediate actions\n5. MITRE ATT&CK techniques if applicable\n\nAlert Data:\n{{ JSON.stringify($json) }}\n\nRespond in JSON format:\n{\n  \"priority\": <number>,\n  \"classification\": \"<string>\",\n  \"explanation\": \"<string>\",\n  \"actions\": [\"<action1>\", \"<action2>\"],\n  \"mitre_techniques\": [\"<technique_id>\"]\n}"
+      },
+      "id": "ai-triage",
+      "name": "AI Triage",
+      "type": "n8n-nodes-base.anthropic",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ JSON.parse($json.content).priority }}",
+              "operation": "largerEqual",
+              "value2": 8
+            }
+          ]
+        }
+      },
+      "id": "check-priority",
+      "name": "High Priority?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "channel": "#security-critical",
+        "text": ":rotating_light: *HIGH PRIORITY ALERT*\n\n*Alert:* {{ $node['Alert Webhook'].json.title }}\n*Source:* {{ $node['Alert Webhook'].json.source }}\n\n*AI Analysis:*\n{{ $node['AI Triage'].json.content }}\n\n<@oncall-security> Please investigate immediately."
+      },
+      "id": "slack-critical",
+      "name": "Slack Critical",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 1,
+      "position": [850, 200]
+    },
+    {
+      "parameters": {
+        "channel": "#security-alerts",
+        "text": ":warning: *Alert Triaged*\n\n*Alert:* {{ $node['Alert Webhook'].json.title }}\n\n*AI Analysis:*\n{{ $node['AI Triage'].json.content }}"
+      },
+      "id": "slack-normal",
+      "name": "Slack Normal",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 1,
+      "position": [850, 400]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ triaged: true, analysis: JSON.parse($node['AI Triage'].json.content) }) }}"
+      },
+      "id": "response",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1050, 300]
+    }
+  ],
+  "connections": {
+    "Alert Webhook": {
+      "main": [[{ "node": "AI Triage", "type": "main", "index": 0 }]]
+    },
+    "AI Triage": {
+      "main": [[{ "node": "High Priority?", "type": "main", "index": 0 }]]
+    },
+    "High Priority?": {
+      "main": [
+        [{ "node": "Slack Critical", "type": "main", "index": 0 }],
+        [{ "node": "Slack Normal", "type": "main", "index": 0 }]
+      ]
+    },
+    "Slack Critical": {
+      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+    },
+    "Slack Normal": {
+      "main": [[{ "node": "Respond", "type": "main", "index": 0 }]]
+    }
+  }
+}

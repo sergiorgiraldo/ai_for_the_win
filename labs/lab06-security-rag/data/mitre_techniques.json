@@ -1,0 +1,82 @@
+[
+  {
+    "technique_id": "T1059.001",
+    "name": "PowerShell",
+    "tactic": "Execution",
+    "description": "Adversaries may abuse PowerShell commands and scripts for execution. PowerShell is a powerful interactive command-line interface and scripting environment included in the Windows operating system.",
+    "detection": "Monitor for loading of PowerShell modules and script execution. Enable PowerShell logging including Module Logging, Script Block Logging, and Transcription.",
+    "mitigations": ["Disable PowerShell for users who don't need it", "Enable Constrained Language Mode", "Use AppLocker or WDAC to restrict PowerShell execution"]
+  },
+  {
+    "technique_id": "T1566.001",
+    "name": "Spearphishing Attachment",
+    "tactic": "Initial Access",
+    "description": "Adversaries may send spearphishing emails with a malicious attachment in an attempt to gain access to victim systems. Spearphishing attachment is a specific variant of spearphishing.",
+    "detection": "Monitor for suspicious email attachments. Analyze attachment file types and macro content. Use sandboxing for email attachments.",
+    "mitigations": ["User awareness training", "Email filtering and sandboxing", "Disable macros by default", "Mark external emails clearly"]
+  },
+  {
+    "technique_id": "T1078",
+    "name": "Valid Accounts",
+    "tactic": "Defense Evasion, Initial Access, Persistence, Privilege Escalation",
+    "description": "Adversaries may obtain and abuse credentials of existing accounts as a means of gaining Initial Access, Persistence, Privilege Escalation, or Defense Evasion.",
+    "detection": "Monitor for unusual login times, locations, or patterns. Detect impossible travel scenarios. Alert on first-time VPN connections.",
+    "mitigations": ["Multi-factor authentication", "Privileged access management", "Regular credential rotation", "Monitor for credential exposure"]
+  },
+  {
+    "technique_id": "T1486",
+    "name": "Data Encrypted for Impact",
+    "tactic": "Impact",
+    "description": "Adversaries may encrypt data on target systems or on large numbers of systems in a network to interrupt availability to system and network resources. This is commonly associated with ransomware.",
+    "detection": "Monitor for file modifications with known ransomware extensions. Detect high volume of file renames. Alert on shadow copy deletion.",
+    "mitigations": ["Regular backups (offline and immutable)", "Network segmentation", "Endpoint detection and response", "User awareness training"]
+  },
+  {
+    "technique_id": "T1053.005",
+    "name": "Scheduled Task",
+    "tactic": "Execution, Persistence, Privilege Escalation",
+    "description": "Adversaries may abuse the Windows Task Scheduler to perform task scheduling for initial or recurring execution of malicious code.",
+    "detection": "Monitor for new scheduled tasks created via schtasks.exe or the Task Scheduler API. Look for tasks running from unusual directories.",
+    "mitigations": ["Restrict who can create scheduled tasks", "Monitor scheduled task creation", "Use application whitelisting"]
+  },
+  {
+    "technique_id": "T1071.001",
+    "name": "Web Protocols",
+    "tactic": "Command and Control",
+    "description": "Adversaries may communicate using application layer protocols associated with web traffic to avoid detection/network filtering by blending in with existing traffic.",
+    "detection": "Monitor for unusual HTTP/HTTPS traffic patterns. Analyze user agent strings. Detect beaconing behavior.",
+    "mitigations": ["SSL/TLS inspection", "Web proxy with content filtering", "Network traffic analysis"]
+  },
+  {
+    "technique_id": "T1548.002",
+    "name": "Bypass User Account Control",
+    "tactic": "Privilege Escalation, Defense Evasion",
+    "description": "Adversaries may bypass UAC mechanisms to elevate process privileges on system. Windows User Account Control (UAC) allows a program to elevate its privileges.",
+    "detection": "Monitor for UAC bypass techniques such as DLL search order hijacking, environment variable manipulation, or eventvwr.exe abuse.",
+    "mitigations": ["Set UAC to 'Always Notify'", "Require admin approval for admin operations", "Limit local admin accounts"]
+  },
+  {
+    "technique_id": "T1021.001",
+    "name": "Remote Desktop Protocol",
+    "tactic": "Lateral Movement",
+    "description": "Adversaries may use Valid Accounts to log into a computer using the Remote Desktop Protocol (RDP). The adversary may then perform actions as the logged-on user.",
+    "detection": "Monitor for RDP connections from unusual sources. Detect RDP brute force attempts. Alert on RDP from the internet.",
+    "mitigations": ["Use VPN for remote access", "Enable Network Level Authentication", "Limit RDP exposure", "Use MFA for RDP"]
+  },
+  {
+    "technique_id": "T1003.001",
+    "name": "LSASS Memory",
+    "tactic": "Credential Access",
+    "description": "Adversaries may attempt to access credential material stored in the process memory of the Local Security Authority Subsystem Service (LSASS).",
+    "detection": "Monitor for processes accessing LSASS memory. Detect Mimikatz or similar tools. Use Windows Defender Credential Guard.",
+    "mitigations": ["Enable Credential Guard", "Disable WDigest authentication", "Protect LSASS with PPL", "Monitor for suspicious LSASS access"]
+  },
+  {
+    "technique_id": "T1048.003",
+    "name": "Exfiltration Over Unencrypted Non-C2 Protocol",
+    "tactic": "Exfiltration",
+    "description": "Adversaries may steal data by exfiltrating it over an un-encrypted network protocol other than that of the existing command and control channel.",
+    "detection": "Monitor for large outbound data transfers. Detect unusual protocols for data transfer. Analyze traffic to suspicious destinations.",
+    "mitigations": ["Data loss prevention (DLP)", "Network monitoring and alerting", "Egress filtering", "Limit outbound connections"]
+  }
+]
