@@ -1,0 +1,58 @@
+{
+  "assets": [
+    {
+      "ip": "192.168.1.10",
+      "hostname": "web-server-01",
+      "asset_type": "server",
+      "criticality": "high",
+      "business_unit": "IT Infrastructure",
+      "owner": "Web Team",
+      "data_classification": "public",
+      "compliance_requirements": ["PCI-DSS"],
+      "last_patched": "2024-01-01",
+      "notes": "Primary web server for customer-facing applications"
+    },
+    {
+      "ip": "192.168.1.20",
+      "hostname": "app-server-01",
+      "asset_type": "server",
+      "criticality": "critical",
+      "business_unit": "Application Development",
+      "owner": "App Team",
+      "data_classification": "confidential",
+      "compliance_requirements": ["PCI-DSS", "SOC2"],
+      "last_patched": "2023-12-15",
+      "notes": "Hosts core business applications and APIs"
+    },
+    {
+      "ip": "192.168.1.30",
+      "hostname": "file-server-01",
+      "asset_type": "server",
+      "criticality": "high",
+      "business_unit": "IT Infrastructure",
+      "owner": "IT Operations",
+      "data_classification": "internal",
+      "compliance_requirements": ["SOC2"],
+      "last_patched": "2023-11-01",
+      "notes": "Central file storage for all departments"
+    },
+    {
+      "ip": "192.168.1.50",
+      "hostname": "dev-workstation",
+      "asset_type": "workstation",
+      "criticality": "medium",
+      "business_unit": "Application Development",
+      "owner": "Developer",
+      "data_classification": "internal",
+      "compliance_requirements": [],
+      "last_patched": "2024-01-10",
+      "notes": "Development workstation with access to source code"
+    }
+  ],
+  "criticality_definitions": {
+    "critical": "Systems essential for business operations. Downtime causes immediate revenue loss or regulatory violation.",
+    "high": "Important systems supporting key business functions. Downtime causes significant operational impact.",
+    "medium": "Systems supporting regular business activities. Downtime causes moderate inconvenience.",
+    "low": "Non-essential systems. Downtime has minimal business impact."
+  }
+}

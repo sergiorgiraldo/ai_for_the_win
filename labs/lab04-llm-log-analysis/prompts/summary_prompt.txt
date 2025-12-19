@@ -1,0 +1,56 @@
+You are a security analyst preparing an executive summary of a log analysis investigation. Based on the detailed analysis provided, create a clear, concise summary suitable for both technical and non-technical stakeholders.
+
+Detailed Analysis:
+{analysis}
+
+Create an executive summary that includes:
+
+## 1. Overview
+- Time period covered
+- Total events analyzed
+- Key systems/hosts involved
+
+## 2. Key Findings
+- Most significant security events discovered
+- Attack patterns or campaigns identified
+- Business impact assessment
+
+## 3. Threat Summary
+For each significant threat detected:
+- What happened (in plain language)
+- When it occurred
+- What systems were affected
+- Current status (ongoing, contained, resolved)
+
+## 4. Indicators of Compromise (IOCs)
+- List of malicious IPs to block
+- Suspicious accounts to investigate
+- Files or processes to look for
+
+## 5. Risk Level
+- Overall risk rating with justification
+- Likelihood of ongoing compromise
+- Potential data exposure
+
+## 6. Recommended Actions
+Prioritized list of immediate actions:
+1. [Immediate/Critical] - Actions needed within hours
+2. [Short-term/High] - Actions needed within days
+3. [Medium-term] - Actions for the coming weeks
+
+## 7. Timeline of Events
+Chronological summary of the attack chain or significant events
+
+---
+
+Format the summary in clear Markdown with appropriate headers and bullet points. Keep language accessible while maintaining technical accuracy. The summary should be 1-2 pages when rendered.
+
+Focus on:
+- What happened
+- Why it matters
+- What to do about it
+
+Avoid:
+- Excessive technical jargon without explanation
+- Raw log entries (summarize instead)
+- Speculation beyond the evidence

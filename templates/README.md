@@ -8,7 +8,16 @@ Production-ready templates for building AI-powered security tools.
 templates/
 ├── README.md                           # This file
 ├── agents/
-│   └── security-agent-langchain.py     # LangChain security agent template
+│   ├── security_agent_template.py      # LangChain security agent template
+│   └── rag_agent_template.py           # RAG agent for security docs
+├── n8n/
+│   ├── README.md                       # n8n workflow documentation
+│   ├── ioc_enrichment_workflow.json    # IOC enrichment automation
+│   └── alert_triage_workflow.json      # AI alert triage workflow
+├── prompts/
+│   └── security_prompts.md             # Reusable prompt templates
+├── integrations/
+│   └── siem_integrations.py            # SIEM API integrations
 └── mcp-servers/
     ├── threat-intel-mcp-server.py      # Threat intel MCP server
     └── virustotal-mcp-server.py        # VirusTotal integration
@@ -16,63 +25,98 @@ templates/
 
 ## Available Templates
 
-### Security Agent (LangChain)
+### Agent Templates
 
-**File**: `agents/security-agent-langchain.py`
+#### Security Agent (LangChain)
+
+**File**: `agents/security_agent_template.py`
 
 A production-ready template for building security analysis agents using LangChain.
 
 **Features**:
 - ReAct agent pattern implementation
-- Tool integration (IP lookup, domain analysis, hash check)
-- Memory management for conversation context
-- Structured output parsing
+- Tool integration (IP lookup, domain analysis, log query)
+- Configurable via dataclass
 - Error handling and retry logic
 
 **Usage**:
 ```python
-from security_agent import SecurityAgent
+from security_agent_template import SecurityAgent, AgentConfig
 
-agent = SecurityAgent(api_key="your-anthropic-key")
-result = agent.investigate("Analyze this IP: 185.143.223.47")
-print(result)
+config = AgentConfig(name="InvestigationAgent", verbose=True)
+agent = SecurityAgent(config)
+result = agent.run("Analyze this IP: 185.143.223.47")
 ```
+
+#### RAG Agent
+
+**File**: `agents/rag_agent_template.py`
+
+Build knowledge bases for security documentation with semantic search.
+
+**Features**:
+- Document loading (Markdown, JSON)
+- ChromaDB vector storage
+- Semantic search
+- LLM-powered Q&A
+
+### n8n Automation Workflows
+
+Ready-to-import n8n workflows for security automation.
+
+#### IOC Enrichment
+**File**: `n8n/ioc_enrichment_workflow.json`
+
+Automatically enriches IOCs from VirusTotal, AbuseIPDB, and uses AI for summarization.
+
+#### Alert Triage
+**File**: `n8n/alert_triage_workflow.json`
+
+AI-powered alert triage with priority scoring and automatic escalation.
+
+**See**: `n8n/README.md` for full documentation and setup instructions.
+
+### Prompt Templates
+
+**File**: `prompts/security_prompts.md`
+
+Reusable prompt templates for common security AI tasks:
+
+- Log Analysis (parsing, threat detection)
+- IOC Analysis (IP, domain, hash)
+- Incident Response (triage, summaries)
+- Vulnerability Analysis (CVE, prioritization)
+- YARA Rule Generation
+- Report Generation
+
+### SIEM Integrations
+
+**File**: `integrations/siem_integrations.py`
+
+Integration templates for common SIEM platforms:
+
+- **Splunk** - REST API client
+- **Elasticsearch/OpenSearch** - Search and alerts
+- **Microsoft Sentinel** - KQL queries and incidents
+- **Generic Interface** - Abstract SIEM interface
 
 ### MCP Servers
 
 Model Context Protocol (MCP) servers for Claude integration.
 
 #### Threat Intel MCP Server
-
 **File**: `mcp-servers/threat-intel-mcp-server.py`
 
-Provides threat intelligence lookup capabilities to Claude.
-
-**Capabilities**:
-- IP reputation lookup
-- Domain analysis
-- File hash checking
-- CVE information retrieval
-
 #### VirusTotal MCP Server
-
 **File**: `mcp-servers/virustotal-mcp-server.py`
 
-Integrates VirusTotal API with Claude.
-
-**Capabilities**:
-- File hash analysis
-- URL scanning
-- Domain reports
-- IP address reports
-
-## Using Templates
+## Quick Start
 
 ### 1. Copy and Customize
 
 ```bash
 # Copy template to your project
-cp templates/agents/security-agent-langchain.py my_project/agent.py
+cp templates/agents/security_agent_template.py my_project/agent.py
 
 # Edit to customize for your use case
 ```
@@ -80,7 +124,7 @@ cp templates/agents/security-agent-langchain.py my_project/agent.py
 ### 2. Install Dependencies
 
 ```bash
-pip install langchain langchain-anthropic python-dotenv
+pip install langchain langchain-anthropic chromadb python-dotenv
 ```
 
 ### 3. Configure Environment
@@ -99,80 +143,53 @@ agent = SecurityAgent()
 agent.run("Your query here")
 ```
 
-## Template Features
+## Integration Examples
 
-### Agent Template Features
-
-| Feature | Description |
-|---------|-------------|
-| Tool Registry | Easy-to-extend tool definitions |
-| Memory | Conversation and investigation history |
-| Structured Output | Pydantic models for type safety |
-| Logging | Rich console output |
-| Error Handling | Graceful degradation |
-
-### MCP Server Features
-
-| Feature | Description |
-|---------|-------------|
-| Schema Validation | Input/output validation |
-| Caching | Response caching for performance |
-| Rate Limiting | API rate limit handling |
-| Authentication | Secure API key management |
-
-## Extending Templates
-
-### Adding New Tools
+### Combining Templates
 
 ```python
-from langchain.tools import StructuredTool
-from pydantic import BaseModel, Field
+# Use SIEM integration with security agent
+from integrations.siem_integrations import SIEMInterface
+from agents.security_agent_template import SecurityAgent
 
-class MyToolInput(BaseModel):
-    param: str = Field(description="Parameter description")
+# Create SIEM client
+siem = SIEMInterface("elastic", host="elastic.local")
 
-def my_tool_function(param: str) -> dict:
-    """Tool implementation."""
-    return {"result": "data"}
+# Get alerts and investigate with agent
+alerts = siem.get_alerts(severity="high")
+agent = SecurityAgent()
 
-my_tool = StructuredTool.from_function(
-    func=my_tool_function,
-    name="my_tool",
-    description="What this tool does",
-    args_schema=MyToolInput
-)
-
-# Add to agent's tool list
-agent.tools.append(my_tool)
+for alert in alerts:
+    result = agent.run(f"Investigate alert: {alert}")
+    print(result)
 ```
 
-### Adding MCP Capabilities
+### n8n + Python
 
 ```python
-@mcp.tool()
-def new_capability(param: str) -> str:
-    """New MCP capability."""
-    return result
+import requests
+
+# Trigger n8n workflow from Python
+def trigger_enrichment(ioc: str):
+    webhook_url = "http://n8n:5678/webhook/enrich-ioc"
+    return requests.post(webhook_url, json={"ioc": ioc}).json()
 ```
 
 ## Best Practices
 
 ### Security
-
 - Never hardcode API keys
 - Validate all inputs
 - Sanitize outputs for logging
 - Use rate limiting for external APIs
 
 ### Performance
-
 - Cache repeated lookups
 - Batch API calls when possible
 - Use async for I/O-bound operations
 - Implement timeouts
 
 ### Error Handling
-
 - Catch and log all exceptions
 - Provide meaningful error messages
 - Implement retry logic for transient failures

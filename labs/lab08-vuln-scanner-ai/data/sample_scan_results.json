@@ -1,0 +1,151 @@
+{
+  "scan_info": {
+    "target": "192.168.1.0/24",
+    "scan_type": "full",
+    "start_time": "2024-01-15T10:00:00Z",
+    "end_time": "2024-01-15T10:45:00Z",
+    "scanner_version": "1.0.0"
+  },
+  "hosts_scanned": 25,
+  "hosts_up": 18,
+  "vulnerabilities_found": 42,
+  "results": [
+    {
+      "host": "192.168.1.10",
+      "hostname": "web-server-01",
+      "os": "Ubuntu 22.04 LTS",
+      "services": [
+        {"port": 22, "service": "ssh", "version": "OpenSSH 8.9"},
+        {"port": 80, "service": "http", "version": "nginx 1.18.0"},
+        {"port": 443, "service": "https", "version": "nginx 1.18.0"},
+        {"port": 3306, "service": "mysql", "version": "MySQL 8.0.28"}
+      ],
+      "vulnerabilities": [
+        {
+          "id": "CVE-2024-1234",
+          "title": "nginx HTTP/2 Memory Corruption",
+          "severity": "HIGH",
+          "cvss": 8.1,
+          "description": "A memory corruption vulnerability in nginx HTTP/2 implementation allows remote code execution.",
+          "solution": "Update nginx to version 1.25.4 or later",
+          "references": ["https://nvd.nist.gov/vuln/detail/CVE-2024-1234"]
+        },
+        {
+          "id": "CVE-2023-45678",
+          "title": "MySQL Privilege Escalation",
+          "severity": "MEDIUM",
+          "cvss": 6.5,
+          "description": "Authenticated users can escalate privileges through crafted SQL queries.",
+          "solution": "Update MySQL to version 8.0.35 or later",
+          "references": ["https://nvd.nist.gov/vuln/detail/CVE-2023-45678"]
+        }
+      ]
+    },
+    {
+      "host": "192.168.1.20",
+      "hostname": "app-server-01",
+      "os": "Windows Server 2019",
+      "services": [
+        {"port": 80, "service": "http", "version": "IIS 10.0"},
+        {"port": 443, "service": "https", "version": "IIS 10.0"},
+        {"port": 1433, "service": "mssql", "version": "SQL Server 2019"},
+        {"port": 3389, "service": "rdp", "version": "Microsoft Terminal Services"}
+      ],
+      "vulnerabilities": [
+        {
+          "id": "CVE-2024-21762",
+          "title": "Windows RDP Remote Code Execution",
+          "severity": "CRITICAL",
+          "cvss": 9.8,
+          "description": "Remote code execution vulnerability in Windows RDP allows unauthenticated attackers to execute arbitrary code.",
+          "solution": "Apply Microsoft security update KB5034441",
+          "references": ["https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-21762"]
+        },
+        {
+          "id": "CVE-2023-99999",
+          "title": "SQL Server Authentication Bypass",
+          "severity": "CRITICAL",
+          "cvss": 9.1,
+          "description": "Authentication bypass in SQL Server allows remote attackers to access databases without credentials.",
+          "solution": "Apply SQL Server CU18 or later",
+          "references": ["https://nvd.nist.gov/vuln/detail/CVE-2023-99999"]
+        },
+        {
+          "id": "FINDING-001",
+          "title": "RDP Exposed to Network",
+          "severity": "HIGH",
+          "cvss": 7.5,
+          "description": "RDP service is exposed to the internal network without NLA enabled.",
+          "solution": "Enable Network Level Authentication and restrict RDP access via firewall",
+          "references": []
+        }
+      ]
+    },
+    {
+      "host": "192.168.1.30",
+      "hostname": "file-server-01",
+      "os": "Windows Server 2016",
+      "services": [
+        {"port": 445, "service": "smb", "version": "SMB 3.0"},
+        {"port": 139, "service": "netbios-ssn", "version": "NetBIOS"},
+        {"port": 3389, "service": "rdp", "version": "Microsoft Terminal Services"}
+      ],
+      "vulnerabilities": [
+        {
+          "id": "CVE-2017-0144",
+          "title": "EternalBlue SMB Remote Code Execution",
+          "severity": "CRITICAL",
+          "cvss": 9.8,
+          "description": "The SMBv1 server in Microsoft Windows allows remote attackers to execute arbitrary code via crafted packets (EternalBlue).",
+          "solution": "Apply MS17-010 security update and disable SMBv1",
+          "references": ["https://nvd.nist.gov/vuln/detail/CVE-2017-0144"]
+        },
+        {
+          "id": "FINDING-002",
+          "title": "SMBv1 Enabled",
+          "severity": "HIGH",
+          "cvss": 7.0,
+          "description": "SMBv1 protocol is enabled, which has known security vulnerabilities.",
+          "solution": "Disable SMBv1 protocol via PowerShell: Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol",
+          "references": []
+        },
+        {
+          "id": "FINDING-003",
+          "title": "Outdated Operating System",
+          "severity": "MEDIUM",
+          "cvss": 5.0,
+          "description": "Windows Server 2016 is approaching end of mainstream support.",
+          "solution": "Plan migration to Windows Server 2022",
+          "references": []
+        }
+      ]
+    },
+    {
+      "host": "192.168.1.50",
+      "hostname": "dev-workstation",
+      "os": "Windows 10 Pro",
+      "services": [
+        {"port": 22, "service": "ssh", "version": "OpenSSH for Windows"},
+        {"port": 3389, "service": "rdp", "version": "Microsoft Terminal Services"}
+      ],
+      "vulnerabilities": [
+        {
+          "id": "FINDING-004",
+          "title": "Missing Windows Updates",
+          "severity": "MEDIUM",
+          "cvss": 5.5,
+          "description": "System is missing 15 security updates from the last 90 days.",
+          "solution": "Apply all pending Windows security updates",
+          "references": []
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "critical": 3,
+    "high": 4,
+    "medium": 3,
+    "low": 0,
+    "informational": 2
+  }
+}

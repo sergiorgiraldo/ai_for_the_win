@@ -1,0 +1,166 @@
+{
+  "incident": {
+    "id": "INC-2024-0042",
+    "title": "Suspected Ransomware Attack on Finance Server",
+    "severity": "CRITICAL",
+    "status": "active",
+    "created_at": "2024-01-15T14:30:00Z",
+    "updated_at": "2024-01-15T15:45:00Z",
+    "assigned_to": "ir-team",
+    "description": "Multiple users reported inability to access files on FINSERVER-01. Investigation revealed encrypted files with .lockbit extension and ransom notes."
+  },
+  "affected_systems": [
+    {
+      "hostname": "FINSERVER-01",
+      "ip": "192.168.10.50",
+      "os": "Windows Server 2019",
+      "role": "File Server",
+      "criticality": "critical",
+      "status": "compromised",
+      "isolation_status": "isolated"
+    },
+    {
+      "hostname": "WORKSTATION-15",
+      "ip": "192.168.10.115",
+      "os": "Windows 10",
+      "role": "Finance Workstation",
+      "criticality": "high",
+      "status": "potentially_affected",
+      "isolation_status": "isolated"
+    },
+    {
+      "hostname": "WORKSTATION-22",
+      "ip": "192.168.10.122",
+      "os": "Windows 10",
+      "role": "Finance Workstation",
+      "criticality": "high",
+      "status": "investigating",
+      "isolation_status": "monitored"
+    }
+  ],
+  "timeline": [
+    {
+      "timestamp": "2024-01-15T08:15:00Z",
+      "event": "Phishing email received by user mthompson",
+      "source": "email_gateway",
+      "details": "Email with malicious attachment 'Invoice_Q4.xlsx' from spoofed vendor domain"
+    },
+    {
+      "timestamp": "2024-01-15T08:22:00Z",
+      "event": "Malicious macro executed",
+      "source": "edr",
+      "details": "WORKSTATION-15: Excel spawned PowerShell with encoded command"
+    },
+    {
+      "timestamp": "2024-01-15T08:25:00Z",
+      "event": "C2 communication established",
+      "source": "firewall",
+      "details": "Outbound HTTPS connection to 185.143.223.47:443"
+    },
+    {
+      "timestamp": "2024-01-15T08:30:00Z",
+      "event": "Credential theft detected",
+      "source": "edr",
+      "details": "LSASS memory access by unknown process"
+    },
+    {
+      "timestamp": "2024-01-15T09:00:00Z",
+      "event": "Lateral movement to FINSERVER-01",
+      "source": "siem",
+      "details": "RDP connection from WORKSTATION-15 using stolen credentials"
+    },
+    {
+      "timestamp": "2024-01-15T09:15:00Z",
+      "event": "Ransomware deployment",
+      "source": "edr",
+      "details": "LockBit 3.0 executable dropped and executed on FINSERVER-01"
+    },
+    {
+      "timestamp": "2024-01-15T09:20:00Z",
+      "event": "Shadow copies deleted",
+      "source": "windows_events",
+      "details": "vssadmin delete shadows /all /quiet executed"
+    },
+    {
+      "timestamp": "2024-01-15T09:25:00Z",
+      "event": "File encryption started",
+      "source": "edr",
+      "details": "Mass file modifications detected on file shares"
+    },
+    {
+      "timestamp": "2024-01-15T14:30:00Z",
+      "event": "Incident reported",
+      "source": "helpdesk",
+      "details": "Multiple users unable to access finance files"
+    },
+    {
+      "timestamp": "2024-01-15T14:45:00Z",
+      "event": "FINSERVER-01 isolated",
+      "source": "ir_team",
+      "details": "Network isolation initiated via EDR"
+    },
+    {
+      "timestamp": "2024-01-15T15:00:00Z",
+      "event": "WORKSTATION-15 isolated",
+      "source": "ir_team",
+      "details": "Patient zero identified and isolated"
+    }
+  ],
+  "iocs": {
+    "ip_addresses": [
+      {"value": "185.143.223.47", "type": "c2", "confidence": "high"},
+      {"value": "91.234.99.100", "type": "exfil", "confidence": "medium"}
+    ],
+    "domains": [
+      {"value": "vendor-invoices.com", "type": "phishing", "confidence": "high"}
+    ],
+    "file_hashes": [
+      {"value": "abc123def456...", "type": "sha256", "filename": "Invoice_Q4.xlsx", "classification": "dropper"},
+      {"value": "def789ghi012...", "type": "sha256", "filename": "lockbit.exe", "classification": "ransomware"}
+    ],
+    "email_addresses": [
+      {"value": "billing@vendor-invoices.com", "type": "sender", "confidence": "high"}
+    ]
+  },
+  "affected_users": [
+    {"username": "mthompson", "role": "Finance Analyst", "status": "credentials_compromised"},
+    {"username": "svc_backup", "role": "Service Account", "status": "credentials_compromised"}
+  ],
+  "actions_taken": [
+    {
+      "timestamp": "2024-01-15T14:45:00Z",
+      "action": "Network isolation",
+      "target": "FINSERVER-01",
+      "performed_by": "jdoe",
+      "result": "success"
+    },
+    {
+      "timestamp": "2024-01-15T15:00:00Z",
+      "action": "Network isolation",
+      "target": "WORKSTATION-15",
+      "performed_by": "jdoe",
+      "result": "success"
+    },
+    {
+      "timestamp": "2024-01-15T15:15:00Z",
+      "action": "Block IOC",
+      "target": "185.143.223.47",
+      "performed_by": "jdoe",
+      "result": "success"
+    },
+    {
+      "timestamp": "2024-01-15T15:30:00Z",
+      "action": "Disable account",
+      "target": "mthompson",
+      "performed_by": "jdoe",
+      "result": "success"
+    }
+  ],
+  "pending_actions": [
+    "Reset credentials for svc_backup account",
+    "Scan all workstations in Finance department",
+    "Verify backup integrity for FINSERVER-01",
+    "Block phishing domain at email gateway",
+    "Deploy emergency EDR signatures for LockBit 3.0"
+  ]
+}

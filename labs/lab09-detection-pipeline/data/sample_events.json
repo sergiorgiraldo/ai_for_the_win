@@ -1,0 +1,201 @@
+{
+  "events": [
+    {
+      "id": "evt-001",
+      "timestamp": "2024-01-15T09:15:00Z",
+      "source": "sysmon",
+      "event_type": "ProcessCreate",
+      "host": "WORKSTATION-42",
+      "user": "jsmith",
+      "data": {
+        "process_name": "powershell.exe",
+        "process_id": 4521,
+        "parent_process": "cmd.exe",
+        "parent_pid": 3200,
+        "command_line": "powershell.exe -enc SGVsbG8gV29ybGQ=",
+        "working_directory": "C:\\Users\\jsmith\\Downloads",
+        "hash_sha256": "abc123def456..."
+      }
+    },
+    {
+      "id": "evt-002",
+      "timestamp": "2024-01-15T09:15:05Z",
+      "source": "sysmon",
+      "event_type": "NetworkConnect",
+      "host": "WORKSTATION-42",
+      "user": "jsmith",
+      "data": {
+        "process_name": "powershell.exe",
+        "process_id": 4521,
+        "destination_ip": "185.143.223.47",
+        "destination_port": 443,
+        "protocol": "tcp",
+        "initiated": true
+      }
+    },
+    {
+      "id": "evt-003",
+      "timestamp": "2024-01-15T09:15:10Z",
+      "source": "sysmon",
+      "event_type": "FileCreate",
+      "host": "WORKSTATION-42",
+      "user": "jsmith",
+      "data": {
+        "process_name": "powershell.exe",
+        "process_id": 4521,
+        "file_path": "C:\\Users\\jsmith\\AppData\\Local\\Temp\\payload.exe",
+        "hash_sha256": "def789ghi012..."
+      }
+    },
+    {
+      "id": "evt-004",
+      "timestamp": "2024-01-15T09:15:15Z",
+      "source": "sysmon",
+      "event_type": "ProcessCreate",
+      "host": "WORKSTATION-42",
+      "user": "jsmith",
+      "data": {
+        "process_name": "payload.exe",
+        "process_id": 5100,
+        "parent_process": "powershell.exe",
+        "parent_pid": 4521,
+        "command_line": "C:\\Users\\jsmith\\AppData\\Local\\Temp\\payload.exe --install",
+        "working_directory": "C:\\Users\\jsmith\\AppData\\Local\\Temp"
+      }
+    },
+    {
+      "id": "evt-005",
+      "timestamp": "2024-01-15T09:15:20Z",
+      "source": "sysmon",
+      "event_type": "RegistryValueSet",
+      "host": "WORKSTATION-42",
+      "user": "jsmith",
+      "data": {
+        "process_name": "payload.exe",
+        "process_id": 5100,
+        "registry_key": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+        "registry_value": "WindowsUpdate",
+        "registry_data": "C:\\Users\\jsmith\\AppData\\Local\\Temp\\payload.exe"
+      }
+    },
+    {
+      "id": "evt-006",
+      "timestamp": "2024-01-15T09:20:00Z",
+      "source": "windows",
+      "event_type": "SecurityLog",
+      "host": "WORKSTATION-42",
+      "user": "jsmith",
+      "data": {
+        "event_id": 4688,
+        "description": "A new process has been created",
+        "process_name": "whoami.exe",
+        "creator_process": "payload.exe"
+      }
+    },
+    {
+      "id": "evt-007",
+      "timestamp": "2024-01-15T09:20:05Z",
+      "source": "windows",
+      "event_type": "SecurityLog",
+      "host": "WORKSTATION-42",
+      "user": "jsmith",
+      "data": {
+        "event_id": 4688,
+        "description": "A new process has been created",
+        "process_name": "net.exe",
+        "command_line": "net user",
+        "creator_process": "payload.exe"
+      }
+    },
+    {
+      "id": "evt-008",
+      "timestamp": "2024-01-15T09:20:10Z",
+      "source": "windows",
+      "event_type": "SecurityLog",
+      "host": "WORKSTATION-42",
+      "user": "jsmith",
+      "data": {
+        "event_id": 4688,
+        "description": "A new process has been created",
+        "process_name": "net.exe",
+        "command_line": "net localgroup administrators",
+        "creator_process": "payload.exe"
+      }
+    },
+    {
+      "id": "evt-009",
+      "timestamp": "2024-01-15T09:25:00Z",
+      "source": "sysmon",
+      "event_type": "NetworkConnect",
+      "host": "WORKSTATION-42",
+      "user": "jsmith",
+      "data": {
+        "process_name": "payload.exe",
+        "process_id": 5100,
+        "destination_ip": "185.143.223.47",
+        "destination_port": 443,
+        "protocol": "tcp",
+        "bytes_sent": 15234
+      }
+    },
+    {
+      "id": "evt-010",
+      "timestamp": "2024-01-15T09:30:00Z",
+      "source": "edr",
+      "event_type": "Alert",
+      "host": "WORKSTATION-42",
+      "user": "system",
+      "data": {
+        "alert_id": "EDR-2024-001",
+        "severity": "HIGH",
+        "title": "Suspicious Process Chain Detected",
+        "description": "Encoded PowerShell spawned unknown executable with network activity",
+        "process_chain": ["cmd.exe", "powershell.exe", "payload.exe"],
+        "confidence": 0.92
+      }
+    }
+  ],
+  "benign_events": [
+    {
+      "id": "benign-001",
+      "timestamp": "2024-01-15T08:00:00Z",
+      "source": "windows",
+      "event_type": "SecurityLog",
+      "host": "WORKSTATION-42",
+      "user": "jsmith",
+      "data": {
+        "event_id": 4624,
+        "description": "An account was successfully logged on",
+        "logon_type": 2,
+        "source_ip": "local"
+      }
+    },
+    {
+      "id": "benign-002",
+      "timestamp": "2024-01-15T08:05:00Z",
+      "source": "sysmon",
+      "event_type": "ProcessCreate",
+      "host": "WORKSTATION-42",
+      "user": "jsmith",
+      "data": {
+        "process_name": "outlook.exe",
+        "parent_process": "explorer.exe",
+        "command_line": "\"C:\\Program Files\\Microsoft Office\\root\\Office16\\OUTLOOK.EXE\""
+      }
+    },
+    {
+      "id": "benign-003",
+      "timestamp": "2024-01-15T08:10:00Z",
+      "source": "sysmon",
+      "event_type": "NetworkConnect",
+      "host": "WORKSTATION-42",
+      "user": "jsmith",
+      "data": {
+        "process_name": "outlook.exe",
+        "destination_ip": "52.96.0.100",
+        "destination_port": 443,
+        "destination_hostname": "outlook.office365.com"
+      }
+    }
+  ]
+}

