@@ -132,3 +132,45 @@ jobs:
             fi
           done
           echo "All lab READMEs present"
+
+  integration:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+    # Only run on push to main/develop or if API key is configured
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: Check if API key is available
+        id: check_key
+        run: |
+          if [ -n "${{ secrets.ANTHROPIC_API_KEY }}" ]; then
+            echo "has_key=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_key=false" >> $GITHUB_OUTPUT
+            echo "Skipping integration tests - no API key configured"
+          fi
+
+      - name: Run integration tests
+        if: steps.check_key.outputs.has_key == 'true'
+        run: |
+          pytest tests/test_integration.py -v --tb=short
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Skip integration tests (no API key)
+        if: steps.check_key.outputs.has_key == 'false'
+        run: |
+          echo "Integration tests skipped - set ANTHROPIC_API_KEY secret to enable"

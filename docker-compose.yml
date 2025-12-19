@@ -1,0 +1,108 @@
+# AI for the Win - Docker Compose Configuration
+version: '3.8'
+
+services:
+  # =============================================================================
+  # Development Environment
+  # =============================================================================
+  dev:
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/app
+      - pip-cache:/root/.cache/pip
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - VIRUSTOTAL_API_KEY=${VIRUSTOTAL_API_KEY:-}
+      - SHODAN_API_KEY=${SHODAN_API_KEY:-}
+      - DEBUG=true
+      - LOG_LEVEL=DEBUG
+    command: bash
+    stdin_open: true
+    tty: true
+
+  # =============================================================================
+  # Test Runner
+  # =============================================================================
+  test:
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/app
+    environment:
+      - SKIP_API_TESTS=true
+    command: pytest tests/ -v --tb=short
+
+  # =============================================================================
+  # Test with Coverage
+  # =============================================================================
+  test-coverage:
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/app
+      - ./coverage:/app/coverage
+    environment:
+      - SKIP_API_TESTS=true
+    command: pytest tests/ -v --cov=labs --cov-report=html:coverage/html --cov-report=term
+
+  # =============================================================================
+  # Jupyter Notebook Server
+  # =============================================================================
+  notebook:
+    build:
+      context: .
+      target: notebook
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/app
+      - jupyter-data:/root/.jupyter
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - JUPYTER_TOKEN=security_labs
+
+  # =============================================================================
+  # Linting and Formatting
+  # =============================================================================
+  lint:
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/app
+    command: >
+      sh -c "
+        echo '=== Running Black ===' &&
+        black --check labs/ tests/ templates/ &&
+        echo '=== Running Flake8 ===' &&
+        flake8 labs/ tests/ templates/ --max-line-length=100 &&
+        echo '=== Running MyPy ===' &&
+        mypy labs/ --ignore-missing-imports
+      "
+
+  # =============================================================================
+  # Format Code
+  # =============================================================================
+  format:
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/app
+    command: black labs/ tests/ templates/
+
+volumes:
+  pip-cache:
+  jupyter-data:
+
+# Usage:
+# - Development shell: docker-compose run dev
+# - Run tests: docker-compose run test
+# - Run with coverage: docker-compose run test-coverage
+# - Jupyter notebook: docker-compose up notebook
+# - Lint code: docker-compose run lint
+# - Format code: docker-compose run format
