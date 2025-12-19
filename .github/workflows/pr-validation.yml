@@ -1,0 +1,79 @@
+name: PR Validation
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  validate:
+    name: Validate PR
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: Run quick tests
+        run: pytest tests/ -v --tb=short -x -q
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+
+      - name: Check for large files
+        run: |
+          # Warn about files larger than 1MB
+          find . -type f -size +1M -not -path "./.git/*" | head -20
+
+      - name: Check for secrets
+        run: |
+          # Basic check for potential secrets
+          if grep -rE "(api[_-]?key|secret[_-]?key|password)\s*[:=]\s*['\"][^'\"]{8,}" --include="*.py" --include="*.json" --include="*.yaml" --include="*.yml" .; then
+            echo "Warning: Potential secrets detected. Please review."
+          fi
+        continue-on-error: true
+
+  lab-solutions-check:
+    name: Verify Lab Solutions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Check solution files syntax
+        run: |
+          for solution in labs/lab*/solution/main.py; do
+            if [ -f "$solution" ]; then
+              echo "Checking syntax: $solution"
+              python -m py_compile "$solution"
+            fi
+          done
+          echo "All solution files have valid syntax"
+
+      - name: Check starter files syntax
+        run: |
+          for starter in labs/lab*/starter/main.py; do
+            if [ -f "$starter" ]; then
+              echo "Checking syntax: $starter"
+              python -m py_compile "$starter"
+            fi
+          done
+          echo "All starter files have valid syntax"

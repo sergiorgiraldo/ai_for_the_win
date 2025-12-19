@@ -368,7 +368,7 @@ capstone-project-name/
 - [Lab Solutions](../labs/) - Reference implementations
 - [Tool Guides](../setup/guides/) - Development environment
 - [Sample Data](../labs/*/data/) - Test datasets
-- [Community Discord](#) - Get help from peers
+- [GitHub Discussions](https://github.com/depalmar/ai_for_the_win/discussions) - Get help from peers
 
 ---
 
