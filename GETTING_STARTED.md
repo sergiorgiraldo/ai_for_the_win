@@ -1,0 +1,292 @@
+# Getting Started Guide
+
+Welcome to **AI for the Win**! This guide will help you get set up and choose the right learning path.
+
+---
+
+## Before You Begin
+
+### Check Your Background
+
+Answer these questions to find your starting point:
+
+| Question | Yes | No |
+|----------|-----|----|
+| Can you write Python functions and use pip? | Continue below | [Learn Python first](https://www.python.org/about/gettingstarted/) |
+| Do you know what ML classification means? | Start at Lab 01 | Start at "ML Foundations" section |
+| Have you used an LLM API (OpenAI, Claude)? | Jump to Lab 04 | Do Labs 01-03 first |
+| Can you explain what RAG means? | Jump to Lab 05 | Do Labs 04, 06 first |
+
+---
+
+## Quick Setup (5 minutes)
+
+### Step 1: Clone and Enter
+
+```bash
+git clone https://github.com/depalmar/ai_for_the_win.git
+cd ai_for_the_win
+```
+
+### Step 2: Create Virtual Environment
+
+```bash
+# Create environment
+python3 -m venv venv
+
+# Activate it
+source venv/bin/activate      # Linux/Mac
+# or
+.\venv\Scripts\activate       # Windows
+```
+
+### Step 3: Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Step 4: Configure API Keys
+
+```bash
+# Copy example environment file
+cp .env.example .env
+
+# Edit with your keys (at least one LLM provider)
+nano .env   # or use any editor
+```
+
+Required keys (choose at least one):
+- `ANTHROPIC_API_KEY` - Get from [Anthropic Console](https://console.anthropic.com/)
+- `OPENAI_API_KEY` - Get from [OpenAI Platform](https://platform.openai.com/)
+- `GOOGLE_API_KEY` - Get from [Google AI Studio](https://aistudio.google.com/)
+
+Optional (for threat intel labs):
+- `VIRUSTOTAL_API_KEY`
+- `ABUSEIPDB_API_KEY`
+
+### Step 5: Verify Setup
+
+```bash
+python scripts/verify_setup.py
+```
+
+This will check:
+- Python version (3.9+ required)
+- Required packages installed
+- API keys configured
+- Sample data accessible
+
+---
+
+## Choose Your Path
+
+### Path A: Complete Beginner (Start Here)
+
+If you're new to ML/AI for security, follow this order:
+
+```
+Week 1-2: Foundation Labs
+┌─────────────────────────────────────────────────────────────┐
+│  Lab 01          Lab 02          Lab 03                     │
+│  Phishing    ──► Malware     ──► Anomaly                    │
+│  Classifier      Clustering      Detection                  │
+│                                                             │
+│  Learn: Text     Learn: PE       Learn: Network             │
+│  classification  analysis,       features,                  │
+│  with ML         clustering      unsupervised ML            │
+└─────────────────────────────────────────────────────────────┘
+
+Week 3-4: LLM Introduction
+┌─────────────────────────────────────────────────────────────┐
+│  Lab 04          Lab 06                                     │
+│  Log         ──► Security                                   │
+│  Analysis        RAG                                        │
+│                                                             │
+│  Learn: Prompt   Learn: Vector                              │
+│  engineering,    databases,                                 │
+│  structured      retrieval                                  │
+│  outputs                                                    │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Why this order?**
+- Lab 01 teaches text classification (emails → phishing/not)
+- Lab 02 builds on 01 with unsupervised learning (no labels needed)
+- Lab 03 applies anomaly detection to network data
+- Lab 04 introduces LLMs for log analysis
+- Lab 06 shows how to give LLMs context with RAG
+
+### Path B: Know ML, New to LLMs
+
+Skip the ML foundations and dive into LLM-powered security tools:
+
+```
+Lab 04 ──► Lab 06 ──► Lab 05 ──► Lab 07
+  │          │          │          │
+  ▼          ▼          ▼          ▼
+Prompts    RAG       Agents     Code Gen
+```
+
+### Path C: Know LLMs, Want Security Focus
+
+Jump straight to advanced security applications:
+
+```
+Lab 05 ──► Lab 09 ──► Lab 10 ──► Lab 11
+  │          │          │          │
+  ▼          ▼          ▼          ▼
+Threat    Detection    IR       Ransomware
+Intel     Pipeline   Copilot   Response
+```
+
+### Path D: DFIR Specialist
+
+Focus on incident response and forensics:
+
+```
+Lab 03 ──► Lab 04 ──► Lab 09 ──► Lab 11 ──► Lab 12
+  │          │          │          │          │
+  ▼          ▼          ▼          ▼          ▼
+Anomaly   Log       Pipeline  Ransomware  Purple
+Detect   Analysis            Detection    Team
+```
+
+---
+
+## Your First Lab (Lab 01)
+
+Let's run your first lab to make sure everything works:
+
+```bash
+# Navigate to Lab 01
+cd labs/lab01-phishing-classifier
+
+# Run the solution to verify setup
+python solution/main.py
+```
+
+Expected output:
+```
+Loading phishing email dataset...
+Loaded 5000 emails (2500 phishing, 2500 legitimate)
+Training Random Forest classifier...
+Model accuracy: 0.95
+Precision: 0.94, Recall: 0.96, F1: 0.95
+```
+
+Now try the starter code:
+```bash
+# Open starter code and fill in the TODOs
+python starter/main.py
+```
+
+---
+
+## Understanding the Lab Structure
+
+Each lab follows this pattern:
+
+```
+labXX-topic-name/
+├── README.md         # Start here - objectives, instructions, hints
+├── starter/          # Your workspace - fill in the TODOs
+│   └── main.py
+├── solution/         # Reference implementation - peek if stuck
+│   └── main.py
+├── data/             # Sample datasets
+│   └── *.csv
+└── tests/            # Verify your solution (optional)
+    └── test_*.py
+```
+
+**Workflow:**
+1. Read `README.md` completely
+2. Work on `starter/main.py` - fill in TODOs
+3. Run and test your code
+4. If stuck, check hints in README
+5. Compare with `solution/main.py` when done
+
+---
+
+## Common First-Time Issues
+
+### "ModuleNotFoundError: No module named 'xxx'"
+
+```bash
+# Make sure you're in the virtual environment
+source venv/bin/activate
+
+# Install the missing package
+pip install xxx
+```
+
+### "ANTHROPIC_API_KEY not set"
+
+```bash
+# Check if .env file exists
+ls -la .env
+
+# If not, create it
+cp .env.example .env
+
+# Add your key
+echo "ANTHROPIC_API_KEY=sk-ant-..." >> .env
+```
+
+### "Rate limit exceeded"
+
+You're making too many API calls. Add delays:
+```python
+import time
+time.sleep(1)  # Wait 1 second between calls
+```
+
+Or use a local model (Ollama):
+```bash
+# Install Ollama
+curl -fsSL https://ollama.com/install.sh | sh
+
+# Pull a model
+ollama pull llama3.1
+
+# Use in code
+llm = setup_llm(provider="ollama")
+```
+
+---
+
+## Next Steps
+
+After completing your first lab:
+
+1. **Track Progress**: Use the checklist in `labs/README.md`
+2. **Join Discussions**: Open GitHub Discussions for questions
+3. **Try Interactive Demos**: Run `python demo/launcher.py`
+4. **Plan Your Path**: See [LEARNING_GUIDE.md](./LEARNING_GUIDE.md) for detailed paths
+
+---
+
+## Quick Reference
+
+| Task | Command |
+|------|---------|
+| Activate environment | `source venv/bin/activate` |
+| Run a lab solution | `python labs/labXX-name/solution/main.py` |
+| Run tests | `pytest tests/ -v` |
+| Check setup | `python scripts/verify_setup.py` |
+| Launch demos | `python demo/launcher.py` |
+| Update dependencies | `pip install -r requirements.txt --upgrade` |
+
+---
+
+## Getting Help
+
+- **Setup Issues**: See [troubleshooting-guide.md](./setup/guides/troubleshooting-guide.md)
+- **Lab Questions**: Check the lab's README hints section
+- **General Questions**: Open a GitHub Discussion
+- **Bugs**: Open a GitHub Issue
+
+---
+
+Ready? Start with Lab 01: `cd labs/lab01-phishing-classifier`

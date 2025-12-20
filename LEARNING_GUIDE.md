@@ -2,56 +2,69 @@
 
 A structured path from beginner to advanced AI-powered security tools.
 
+> 📖 **Quick setup needed?** See [GETTING_STARTED.md](./GETTING_STARTED.md) first.
+
+---
+
+## How This Course is Organized
+
+The 12 labs are designed to build on each other. Here's the recommended flow:
+
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        LEARNING PROGRESSION                                  │
+│                        RECOMMENDED LEARNING PATH                            │
 │                                                                             │
-│   BEGINNER          INTERMEDIATE           ADVANCED           EXPERT        │
-│   ─────────         ────────────           ────────           ──────        │
+│   FOUNDATION (ML)      CORE (LLM)          ADVANCED            EXPERT       │
+│   ───────────────      ──────────          ────────            ──────       │
 │                                                                             │
-│   Lab 01 ──────────► Lab 02 ──────────► Lab 08 ──────────► Lab 11          │
-│   Phishing          Malware              Vuln Scanner        Ransomware     │
-│   Classifier        Clustering           AI                  Detection      │
-│        │                 │                    │                   │         │
-│        ▼                 ▼                    ▼                   ▼         │
-│   Lab 03 ──────────► Lab 04 ──────────► Lab 09 ──────────► Lab 12          │
-│   Anomaly           LLM Log              Detection           Purple         │
-│   Detection         Analysis             Pipeline            Team           │
-│        │                 │                    │                             │
-│        └────────────► Lab 06 ──────────► Lab 10                            │
-│                       Security            IR Copilot                        │
-│                       RAG                     │                             │
-│                         │                     │                             │
-│                         └──────► Lab 05 ◄─────┘                             │
-│                                  Threat                                     │
-│                                  Intel Agent                                │
-│                                      │                                      │
-│                                      ▼                                      │
-│                                  Lab 07                                     │
-│                                  YARA Gen                                   │
+│   Lab 01 ────────────► Lab 04 ────────────► Lab 05 ────────────► Lab 11    │
+│   Phishing             Log Analysis         Threat Intel         Ransomware │
+│   (classify emails)    (parse with LLM)     (AI agents)          (DFIR)     │
+│        │                    │                    │                   │      │
+│        ▼                    ▼                    ▼                   ▼      │
+│   Lab 02               Lab 06               Lab 08               Lab 12     │
+│   Malware              Security             Vuln Scanner         Purple     │
+│   Clustering           RAG                  AI                   Team       │
+│        │                    │                    │                          │
+│        ▼                    ▼                    ▼                          │
+│   Lab 03               Lab 07               Lab 09                          │
+│   Anomaly              YARA                 Detection                       │
+│   Detection            Generator            Pipeline                        │
+│                                                  │                          │
+│                                                  ▼                          │
+│                                              Lab 10                         │
+│                                              IR Copilot                     │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
+### Key Transitions
+
+| From | To | What Changes |
+|------|-----|--------------|
+| Lab 03 → Lab 04 | **ML to LLM** | You go from building ML models to using LLMs with prompts |
+| Lab 07 → Lab 05 | **Tasks to Agents** | You go from single-task LLM to autonomous multi-step agents |
+| Lab 10 → Lab 11 | **General to DFIR** | You apply all skills to real-world incident response |
+
 ---
 
-## Quick Start
+## Quick Start - Which Path?
 
-### Which Path Should I Take?
-
-| Your Background | Start With | Estimated Time |
-|-----------------|------------|----------------|
-| New to ML/AI | Lab 01 → Lab 03 | 4-6 hours |
-| Know ML, new to LLMs | Lab 04 → Lab 06 | 4-6 hours |
-| Know LLMs, new to agents | Lab 05 → Lab 07 | 4-6 hours |
-| Ready for production systems | Lab 08 → Lab 10 | 8-12 hours |
-| Advanced DFIR focus | Lab 11 → Lab 12 | 8-10 hours |
+| Your Background | Start With | What You'll Learn | Time |
+|-----------------|------------|-------------------|------|
+| New to ML/AI | Lab 01 → 02 → 03 | Classification, clustering, anomaly detection | 3-4 hours |
+| Know ML, new to LLMs | Lab 04 → 06 → 07 | Prompt engineering, RAG, code generation | 4-5 hours |
+| Know LLMs, want agents | Lab 05 → 08 → 10 | ReAct agents, orchestration, copilots | 5-6 hours |
+| Production systems | Lab 09 → 10 | Multi-stage pipelines, conversational AI | 4-5 hours |
+| DFIR specialist | Lab 11 → 12 | Ransomware detection, purple team | 8-10 hours |
 
 ---
 
 ## Labs by Difficulty
 
-### 🟢 Beginner Labs (Start Here)
+### 🟢 Foundation Labs (Start Here)
+
+These three labs teach core ML concepts. Do them in order.
 
 #### Lab 01: Phishing Email Classifier
 **Difficulty:** ⭐ Easy | **Time:** 45-60 min | **Prerequisites:** Basic Python
@@ -76,8 +89,35 @@ Phishing remains the #1 attack vector. Understanding how ML classifies malicious
 
 ---
 
+#### Lab 02: Malware Sample Clustering
+**Difficulty:** ⭐⭐ Easy-Medium | **Time:** 60-75 min | **Prerequisites:** Lab 01
+
+**What You'll Learn:**
+- Feature engineering for malware analysis
+- K-Means and DBSCAN clustering
+- t-SNE/UMAP visualization
+- Cluster interpretation
+
+**Key Concepts:**
+```
+Malware Samples → Extract Features → Cluster → Visualize → Analyze
+       │               │               │          │           │
+       ▼               ▼               ▼          ▼           ▼
+   PE files,       Imports,        K-Means    t-SNE      Family
+   scripts        entropy,         DBSCAN     plots      groupings
+                  strings
+```
+
+**Why Clustering?**
+New malware variants are released constantly. Clustering helps identify families and track evolution without needing labels for every sample.
+
+**Bridge from Lab 01:**
+In Lab 01, you learned supervised learning (labeled data). Lab 02 teaches unsupervised learning - finding patterns without labels.
+
+---
+
 #### Lab 03: Network Anomaly Detection
-**Difficulty:** ⭐ Easy | **Time:** 60-75 min | **Prerequisites:** Lab 01
+**Difficulty:** ⭐⭐ Easy-Medium | **Time:** 60-75 min | **Prerequisites:** Lab 02
 
 **What You'll Learn:**
 - Network flow feature engineering
@@ -100,33 +140,31 @@ Network Flows → Feature Engineering → Anomaly Score → Alert
 - Port scanning
 - DDoS indicators
 
----
-
-### 🟡 Intermediate Labs
-
-#### Lab 02: Malware Sample Clustering
-**Difficulty:** ⭐⭐ Intermediate | **Time:** 60-75 min | **Prerequisites:** Lab 01
-
-**What You'll Learn:**
-- Feature engineering for malware analysis
-- K-Means and DBSCAN clustering
-- t-SNE/UMAP visualization
-- Cluster interpretation
-
-**Key Concepts:**
-```
-Malware Samples → Extract Features → Cluster → Visualize → Analyze
-       │               │               │          │           │
-       ▼               ▼               ▼          ▼           ▼
-   PE files,       Imports,        K-Means    t-SNE      Family
-   scripts        entropy,         DBSCAN     plots      groupings
-                  strings
-```
-
-**Why Clustering?**
-New malware variants are released constantly. Clustering helps identify families and track evolution without needing labels for every sample.
+**Bridge from Lab 02:**
+Lab 02 taught clustering (grouping similar items). Lab 03 uses anomaly detection (finding outliers). Both are unsupervised, but anomaly detection focuses on "what doesn't belong."
 
 ---
+
+### 🌉 Transition: From ML to LLMs
+
+**Congratulations!** After completing Labs 01-03, you understand:
+- Supervised learning (classification with labels)
+- Unsupervised learning (clustering without labels)
+- Anomaly detection (finding outliers)
+
+**What's Next?**
+Labs 04-07 introduce Large Language Models (LLMs). Instead of training models on data, you'll:
+- Write prompts that guide AI behavior
+- Parse natural language into structured data
+- Build systems that combine search + generation (RAG)
+
+**Key Difference:**
+- ML (Labs 01-03): You train models on your data
+- LLMs (Labs 04-07): You use pre-trained models with clever prompts
+
+---
+
+### 🟡 Core Skills Labs (LLM-Powered)
 
 #### Lab 04: LLM-Powered Log Analysis
 **Difficulty:** ⭐⭐ Intermediate | **Time:** 60-90 min | **Prerequisites:** API key
@@ -215,6 +253,26 @@ Sample ──► Static Analysis ──► Extract Patterns ──► LLM ──
              imports,            indicators       rule       detection
              sections                            syntax      rule
 ```
+
+---
+
+### 🌉 Transition: From Tasks to Agents
+
+**After Labs 04-07, you know how to:**
+- Write effective prompts for security tasks
+- Build RAG systems for knowledge retrieval
+- Generate code (YARA rules) with LLMs
+
+**What's Next?**
+Labs 05-10 introduce AI agents - systems that can:
+- Reason about problems step-by-step
+- Choose and use tools autonomously
+- Maintain context across interactions
+- Orchestrate complex workflows
+
+**Key Difference:**
+- Single-task LLM (Labs 04-07): One prompt → one response
+- AI Agents (Labs 05-10): Multi-step reasoning with tool use
 
 ---
 

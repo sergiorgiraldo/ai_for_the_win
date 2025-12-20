@@ -2,54 +2,110 @@
 
 Practical labs for building AI-powered security tools.
 
-> 📖 **New to the course?** See the [Learning Guide](../LEARNING_GUIDE.md) for recommended paths and educational content.
+> 📖 **New to the course?** Start with [GETTING_STARTED.md](../GETTING_STARTED.md) for setup, then see [LEARNING_GUIDE.md](../LEARNING_GUIDE.md) for learning paths.
 
 ---
 
-## Labs by Difficulty (Recommended Order)
+## Labs in Recommended Order
 
-### 🟢 Beginner - Start Here
+Follow this progression for the best learning experience. Labs build on each other.
 
-| # | Lab | Topic | Time | Key Skills |
-|---|-----|-------|------|------------|
-| 01 | [Phishing Classifier](./lab01-phishing-classifier/) | Email classification with ML | 45-60 min | TF-IDF, Random Forest, Metrics |
-| 03 | [Anomaly Detection](./lab03-anomaly-detection/) | Network anomaly detection | 60-75 min | Isolation Forest, Feature Engineering |
+### 🟢 Foundation: ML Basics (Week 1-2)
 
-### 🟡 Intermediate - Core Skills
+Start here if you're new to ML for security. These labs teach core concepts.
 
-| # | Lab | Topic | Time | Key Skills |
-|---|-----|-------|------|------------|
-| 02 | [Malware Clustering](./lab02-malware-clustering/) | Unsupervised malware analysis | 60-75 min | K-Means, t-SNE, PE Analysis |
-| 04 | [LLM Log Analysis](./lab04-llm-log-analysis/) | Log parsing with LLMs | 60-90 min | Prompt Engineering, IOC Extraction |
-| 06 | [Security RAG](./lab06-security-rag/) | RAG for security docs | 75-90 min | Embeddings, ChromaDB, Retrieval |
-| 07 | [YARA Generator](./lab07-yara-generator/) | AI-generated detection rules | 60-75 min | Binary Analysis, Rule Generation |
+| # | Lab | Topic | Time | What You'll Learn |
+|---|-----|-------|------|-------------------|
+| 01 | [Phishing Classifier](./lab01-phishing-classifier/) | Text classification | 45-60 min | TF-IDF, Random Forest, precision/recall |
+| 02 | [Malware Clustering](./lab02-malware-clustering/) | Unsupervised learning | 60-75 min | K-Means, t-SNE, PE file features |
+| 03 | [Anomaly Detection](./lab03-anomaly-detection/) | Outlier detection | 60-75 min | Isolation Forest, network features |
 
-### 🟠 Advanced - Production Systems
+**Progression:**
+```
+Lab 01 (Text ML) → Lab 02 (Clustering) → Lab 03 (Anomaly Detection)
+     ↓                  ↓                      ↓
+ "Classify           "Group              "Find unusual
+  emails"            malware"             network traffic"
+```
 
-| # | Lab | Topic | Time | Key Skills |
-|---|-----|-------|------|------------|
-| 05 | [Threat Intel Agent](./lab05-threat-intel-agent/) | Autonomous investigation | 90-120 min | ReAct Agents, Tool Design, Memory |
-| 08 | [Vuln Scanner AI](./lab08-vuln-scanner-ai/) | AI-enhanced scanning | 90-120 min | CVSS, Risk Prioritization |
-| 09 | [Detection Pipeline](./lab09-detection-pipeline/) | Multi-stage detection | 120-150 min | ML Filtering, LLM Enrichment |
-| 10 | [IR Copilot](./lab10-ir-copilot/) | Incident response assistant | 120-150 min | Conversational AI, Orchestration |
-
-### 🔴 Expert - DFIR Specialization
-
-| # | Lab | Topic | Time | Key Skills |
-|---|-----|-------|------|------------|
-| 11 | [Ransomware Detection](./lab11-ransomware-detection/) | Ransomware DFIR | 4-5 hrs | Entropy, Behavioral Detection |
-| 12 | [Purple Team](./lab12-ransomware-simulation/) | Adversary emulation | 4-5 hrs | Safe Simulation, Gap Analysis |
+**Bridge to LLMs:** After Lab 03, you understand ML classification and anomaly detection. Lab 04 introduces how LLMs can enhance these with natural language understanding.
 
 ---
 
-## 🎯 Quick Paths
+### 🟡 Core Skills: LLM Security Tools (Week 3-4)
 
-| Your Goal | Labs | Time |
-|-----------|------|------|
-| **Just getting started** | 01 → 03 → 04 | 3-4 hours |
-| **Learn LLM security tools** | 04 → 06 → 05 | 4-5 hours |
-| **Build detection systems** | 03 → 09 → 11 | 6-8 hours |
-| **Complete curriculum** | All 12 labs | 20-30 hours |
+Learn to apply Large Language Models to security problems.
+
+| # | Lab | Topic | Time | What You'll Learn |
+|---|-----|-------|------|-------------------|
+| 04 | [LLM Log Analysis](./lab04-llm-log-analysis/) | Prompt engineering | 60-90 min | Structured outputs, IOC extraction |
+| 06 | [Security RAG](./lab06-security-rag/) | Vector search + LLM | 75-90 min | Embeddings, ChromaDB, retrieval |
+| 07 | [YARA Generator](./lab07-yara-generator/) | AI code generation | 60-75 min | Binary analysis, rule generation |
+
+**Progression:**
+```
+Lab 04 (Prompts) → Lab 06 (RAG) → Lab 07 (Code Gen)
+     ↓                 ↓              ↓
+ "Parse logs      "Search docs     "Generate
+  with LLM"        with AI"         YARA rules"
+```
+
+**Bridge to Agents:** Labs 04-07 teach you to use LLMs for specific tasks. Lab 05 combines these into an autonomous agent that can reason and use tools.
+
+---
+
+### 🟠 Advanced: Autonomous Systems (Week 5-6)
+
+Build AI agents and multi-stage pipelines.
+
+| # | Lab | Topic | Time | What You'll Learn |
+|---|-----|-------|------|-------------------|
+| 05 | [Threat Intel Agent](./lab05-threat-intel-agent/) | AI agents | 90-120 min | ReAct pattern, tools, memory |
+| 08 | [Vuln Scanner AI](./lab08-vuln-scanner-ai/) | Risk prioritization | 90-120 min | CVSS, business context |
+| 09 | [Detection Pipeline](./lab09-detection-pipeline/) | ML + LLM pipeline | 120-150 min | Multi-stage detection |
+| 10 | [IR Copilot](./lab10-ir-copilot/) | Conversational AI | 120-150 min | Orchestration, confirmation |
+
+**Progression:**
+```
+Lab 05 (Agents) → Lab 08 (Vuln) → Lab 09 (Pipeline) → Lab 10 (Copilot)
+     ↓                ↓                ↓                   ↓
+ "Autonomous       "Prioritize      "Combine           "Interactive
+  investigation"    risks"           ML + LLM"          assistant"
+```
+
+---
+
+### 🔴 Expert: DFIR Specialization (Week 7-8)
+
+Deep dive into incident response and threat simulation.
+
+| # | Lab | Topic | Time | What You'll Learn |
+|---|-----|-------|------|-------------------|
+| 11 | [Ransomware Detection](./lab11-ransomware-detection/) | Behavioral detection | 4-5 hrs | Entropy, TTPs, response |
+| 12 | [Purple Team](./lab12-ransomware-simulation/) | Adversary emulation | 4-5 hrs | Safe simulation, gap analysis |
+
+**Progression:**
+```
+Lab 11 (Detect) → Lab 12 (Simulate)
+     ↓                ↓
+ "Detect           "Validate
+  ransomware"       detections"
+```
+
+---
+
+## 🎯 Quick Paths by Goal
+
+Choose based on your objectives:
+
+| Your Goal | Labs | Time | Prerequisites |
+|-----------|------|------|---------------|
+| **"I'm brand new"** | 01 → 02 → 03 → 04 | 4-5 hours | Python basics |
+| **"I know ML, teach me LLMs"** | 04 → 06 → 05 | 4-5 hours | ML experience |
+| **"I want to build agents"** | 04 → 05 → 10 | 5-6 hours | API key |
+| **"SOC/Detection focus"** | 01 → 03 → 09 → 11 | 8-10 hours | None |
+| **"DFIR specialist"** | 04 → 05 → 11 → 12 | 10-12 hours | Security background |
+| **"Complete everything"** | All 12 labs | 20-30 hours | Dedication |
 
 ---
 

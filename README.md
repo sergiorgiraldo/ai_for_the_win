@@ -8,21 +8,63 @@
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/depalmar/ai_for_the_win/blob/main/notebooks/lab01_phishing_classifier.ipynb)
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue?logo=docker)](./Dockerfile)
 
-A comprehensive 24-week training program for security practitioners who want to build AI-powered tools for threat detection, incident response, and security automation.
+A hands-on training program for security practitioners who want to build AI-powered tools for threat detection, incident response, and security automation. **12 labs**, **4 capstone projects**, from beginner to expert.
+
+---
+
+## Get Started in 5 Minutes
+
+```bash
+# 1. Clone and setup
+git clone https://github.com/depalmar/ai_for_the_win.git
+cd ai_for_the_win
+python -m venv venv && source venv/bin/activate
+pip install -r requirements.txt
+
+# 2. Configure API key (get one from console.anthropic.com)
+cp .env.example .env
+echo "ANTHROPIC_API_KEY=your-key-here" >> .env
+
+# 3. Verify setup
+python scripts/verify_setup.py
+
+# 4. Run your first lab
+cd labs/lab01-phishing-classifier
+python solution/main.py
+```
+
+> 📖 **First time?** Read [GETTING_STARTED.md](./GETTING_STARTED.md) for detailed setup instructions.
+
+---
+
+## Learning Paths
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
+│                        CHOOSE YOUR PATH                                 │
+├─────────────────────────────────────────────────────────────────────────┤
 │                                                                         │
-│   Week 1-8          Week 9-16           Week 17-24                      │
-│   ─────────         ──────────          ───────────                     │
-│   ML Foundations    LLM & Agents        Production Systems              │
+│   🟢 FOUNDATION        🟡 LLM TOOLS         🟠 ADVANCED                 │
+│   Labs 01-03           Labs 04-07           Labs 05,08-10               │
+│   ─────────────        ───────────          ────────────                │
+│   • Text ML            • Prompt Eng         • AI Agents                 │
+│   • Clustering         • RAG Systems        • Detection Pipelines       │
+│   • Anomaly Det        • Code Generation    • IR Automation             │
 │                                                                         │
-│   • Classification  • Prompt Eng        • Detection Pipelines           │
-│   • Clustering      • RAG Systems       • IR Automation                 │
-│   • Anomaly Det     • AI Agents         • Capstone Projects             │
+│                    🔴 EXPERT: Labs 11-12                                │
+│                    ──────────────────────                               │
+│                    • Ransomware DFIR                                    │
+│                    • Purple Team Simulation                             │
 │                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
+
+| Your Background | Recommended Path | Time |
+|-----------------|------------------|------|
+| New to ML/AI | Labs 01 → 02 → 03 → 04 | 4-5 hours |
+| Know ML, new to LLMs | Labs 04 → 06 → 05 | 4-5 hours |
+| Want to build agents | Labs 04 → 05 → 10 | 5-6 hours |
+| DFIR focus | Labs 04 → 05 → 11 → 12 | 10-12 hours |
 
 ---
 
@@ -217,11 +259,13 @@ Track your progress through the labs:
 
 | Category | Tools |
 |----------|-------|
-| **AI/ML** | Claude API, LangChain, scikit-learn, NumPy, Pandas |
-| **Vector DB** | ChromaDB, embeddings |
-| **Security** | YARA, Sigma, MITRE ATT&CK |
+| **LLM Providers** | Claude, GPT-4, Gemini, Ollama (local) |
+| **LLM Frameworks** | LangChain, LangGraph, LiteLLM, Instructor |
+| **ML/AI** | scikit-learn, PyTorch, Hugging Face Transformers |
+| **Vector DB** | ChromaDB, sentence-transformers |
+| **Security** | YARA, Sigma, MITRE ATT&CK, pefile |
+| **Web/UI** | FastAPI, Gradio, Streamlit |
 | **Development** | Python 3.9+, pytest, Docker, GitHub Actions |
-| **Notebooks** | Jupyter, Google Colab |
 
 ---
 
@@ -289,9 +333,13 @@ Copy `.env.example` to `.env` and configure:
 
 | Variable | Description | Required |
 |----------|-------------|----------|
-| `ANTHROPIC_API_KEY` | Claude API key | Yes (for LLM labs) |
-| `VIRUSTOTAL_API_KEY` | VirusTotal API | Optional |
-| `ABUSEIPDB_API_KEY` | AbuseIPDB API | Optional |
+| `ANTHROPIC_API_KEY` | Claude API key | One LLM key required |
+| `OPENAI_API_KEY` | OpenAI GPT-4 key | One LLM key required |
+| `GOOGLE_API_KEY` | Google Gemini key | One LLM key required |
+| `VIRUSTOTAL_API_KEY` | VirusTotal API | Optional (threat intel) |
+| `ABUSEIPDB_API_KEY` | AbuseIPDB API | Optional (threat intel) |
+
+> **Note:** You only need ONE LLM provider key. All labs support multiple providers.
 
 ---
 
