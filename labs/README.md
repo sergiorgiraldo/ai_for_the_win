@@ -118,6 +118,7 @@ Deep dive into incident response, threat simulation, and offensive security anal
 | 17 | [Adversarial ML](./lab17-adversarial-ml/) | Attack/Defense | Evasion, poisoning, robust ML defenses |
 | 18 | [Fine-Tuning for Security](./lab18-fine-tuning-security/) | Custom models | LoRA, security embeddings, deployment |
 | 19 | [Cloud Security AI](./lab19-cloud-security-ai/) | Multi-cloud | CloudTrail, AWS/Azure/GCP threat detection |
+| 20 | [LLM Red Teaming](./lab20-llm-red-teaming/) | Offensive AI Security | Prompt injection, jailbreaking, agentic attacks |
 
 **Progression:**
 ```
@@ -131,13 +132,13 @@ Lab 14 (C2 Traffic) → Lab 15 (Lateral Movement) → Lab 16 (Attribution) → L
  "Detect C2            "Track attacker           "Profile             "Attack/defend
   communications"        movement"                threat actors"        ML models"
 
-Lab 18 (Fine-Tuning) → Lab 19 (Cloud Security)
-     ↓                      ↓
- "Build custom          "Secure cloud
-  security models"       environments"
+Lab 18 (Fine-Tuning) → Lab 19 (Cloud Security) → Lab 20 (LLM Red Team)
+     ↓                      ↓                          ↓
+ "Build custom          "Secure cloud             "Attack AI
+  security models"       environments"             systems"
 ```
 
-**Bridge from Core:** Labs 11-19 build on detection skills from Labs 09-10 and apply them to advanced DFIR, adversarial ML, and cloud security scenarios. Lab 17 teaches how to attack and defend the ML models you built in earlier labs. Labs 18-19 cover advanced topics in custom model training and multi-cloud security.
+**Bridge from Core:** Labs 11-20 build on detection skills from Labs 09-10 and apply them to advanced DFIR, adversarial ML, and cloud security scenarios. Lab 17 teaches how to attack and defend ML models. Labs 18-19 cover custom model training and multi-cloud security. Lab 20 focuses on offensive security for LLM applications - prompt injection, jailbreaking, and exploiting agentic AI systems.
 
 ---
 
@@ -153,10 +154,11 @@ Choose based on your objectives:
 | **"I want to build agents"** | 04 → 05 → 10 | API key |
 | **"SOC/Detection focus"** | 01 → 03 → 09 → 11 → 15 | Python + ML basics |
 | **"DFIR specialist"** | 04 → 05 → 11 → 13 → 14 | Security background |
-| **"Red Team/Offensive"** | 12 → 14 → 15 → 16 | Security experience |
+| **"Red Team/Offensive"** | 12 → 14 → 15 → 16 → 20 | Security experience |
 | **"Threat Intel Analyst"** | 05 → 06 → 14 → 16 | TI fundamentals |
-| **"ML Security/Adversarial"** | 01 → 02 → 09 → 17 | ML fundamentals |
-| **"Complete everything"** | All 22 labs | Dedication |
+| **"ML Security/Adversarial"** | 01 → 02 → 09 → 17 → 20 | ML fundamentals |
+| **"LLM Security/Red Team"** | 04 → 05 → 17 → 20 | LLM + security basics |
+| **"Complete everything"** | All 23 labs | Dedication |
 
 ---
 
@@ -651,6 +653,26 @@ Detection capabilities:
 
 ---
 
+### Lab 20: LLM Red Teaming
+
+**Attack AI systems - prompt injection, jailbreaking, and agentic exploits.**
+
+Skills learned:
+- Prompt injection attacks (direct and indirect)
+- System prompt extraction techniques
+- Jailbreaking and safety bypass methods
+- Agentic AI exploitation (goal hijacking, tool abuse)
+- Defense strategies for LLM applications
+
+Attack capabilities:
+- Extract secrets from LLM applications
+- Bypass safety guardrails
+- Hijack autonomous AI agents
+- Exploit RAG systems with poisoned data
+- Build red team testing frameworks
+
+---
+
 ## 💡 Tips for Success
 
 ### Before Starting
@@ -747,6 +769,7 @@ Track your progress:
 - [ ] Lab 17: Adversarial ML
 - [ ] Lab 18: Fine-Tuning for Security
 - [ ] Lab 19: Cloud Security AI
+- [ ] Lab 20: LLM Red Teaming
 
 ---
 

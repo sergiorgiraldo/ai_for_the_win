@@ -50,6 +50,7 @@ These walkthroughs provide:
 | [Lab 17](./lab17-walkthrough.md) | Adversarial ML | Expert |
 | [Lab 18](./lab18-walkthrough.md) | Fine-Tuning for Security | Expert |
 | [Lab 19](./lab19-walkthrough.md) | Cloud Security AI | Expert |
+| [Lab 20](./lab20-walkthrough.md) | LLM Red Teaming | Expert |
 
 ## How to Use These Walkthroughs
 
