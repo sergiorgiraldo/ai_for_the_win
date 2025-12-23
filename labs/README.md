@@ -14,11 +14,11 @@ Follow this progression for the best learning experience. Labs build on each oth
 
 **New to Python, ML, or LLMs?** Start here before Lab 01.
 
-| # | Lab | Topic | Time | What You'll Learn |
-|---|-----|-------|------|-------------------|
-| 00a | [Python for Security](./lab00a-python-security-fundamentals/) | Python basics | 2-3 hrs | Variables, files, APIs, security examples |
-| 00b | [ML Concepts Primer](./lab00b-ml-concepts-primer/) | ML theory | 1-2 hrs | Supervised/unsupervised, features, evaluation |
-| 00c | [Prompt Engineering Mastery](./lab00c-prompt-engineering-mastery/) | LLM prompting | 3-4 hrs | Prompt design, hallucination detection, AI Studio, Plotly |
+| # | Lab | Topic | What You'll Learn |
+|---|-----|-------|-------------------|
+| 00a | [Python for Security](./lab00a-python-security-fundamentals/) | Python basics | Variables, files, APIs, security examples |
+| 00b | [ML Concepts Primer](./lab00b-ml-concepts-primer/) | ML theory | Supervised/unsupervised, features, evaluation |
+| 00c | [Prompt Engineering Mastery](./lab00c-prompt-engineering-mastery/) | LLM prompting | Prompt design, hallucination detection, AI Studio, Plotly |
 
 **Who should do these:**
 - No Python experience → Start with **00a**
@@ -42,11 +42,11 @@ Lab 00a (Python) → Lab 00b (ML Concepts) → Lab 00c (Prompting) → Lab 01
 
 Start here if you're new to ML for security. These labs teach core concepts.
 
-| # | Lab | Topic | Time | What You'll Learn |
-|---|-----|-------|------|-------------------|
-| 01 | [Phishing Classifier](./lab01-phishing-classifier/) | Text classification | 45-60 min | TF-IDF, Random Forest, precision/recall |
-| 02 | [Malware Clustering](./lab02-malware-clustering/) | Unsupervised learning | 60-75 min | K-Means, t-SNE, PE file features |
-| 03 | [Anomaly Detection](./lab03-anomaly-detection/) | Outlier detection | 60-75 min | Isolation Forest, network features |
+| # | Lab | Topic | What You'll Learn |
+|---|-----|-------|-------------------|
+| 01 | [Phishing Classifier](./lab01-phishing-classifier/) | Text classification | TF-IDF, Random Forest, precision/recall |
+| 02 | [Malware Clustering](./lab02-malware-clustering/) | Unsupervised learning | K-Means, t-SNE, PE file features |
+| 03 | [Anomaly Detection](./lab03-anomaly-detection/) | Outlier detection | Isolation Forest, network features |
 
 **Progression:**
 ```
@@ -64,11 +64,11 @@ Lab 01 (Text ML) → Lab 02 (Clustering) → Lab 03 (Anomaly Detection)
 
 Learn to apply Large Language Models to security problems.
 
-| # | Lab | Topic | Time | What You'll Learn |
-|---|-----|-------|------|-------------------|
-| 04 | [LLM Log Analysis](./lab04-llm-log-analysis/) | Prompt engineering | 60-90 min | Structured outputs, IOC extraction |
-| 06 | [Security RAG](./lab06-security-rag/) | Vector search + LLM | 75-90 min | Embeddings, ChromaDB, retrieval |
-| 07 | [YARA Generator](./lab07-yara-generator/) | AI code generation | 60-75 min | Binary analysis, rule generation |
+| # | Lab | Topic | What You'll Learn |
+|---|-----|-------|-------------------|
+| 04 | [LLM Log Analysis](./lab04-llm-log-analysis/) | Prompt engineering | Structured outputs, IOC extraction |
+| 06 | [Security RAG](./lab06-security-rag/) | Vector search + LLM | Embeddings, ChromaDB, retrieval |
+| 07 | [YARA Generator](./lab07-yara-generator/) | AI code generation | Binary analysis, rule generation |
 
 **Progression:**
 ```
@@ -86,12 +86,12 @@ Lab 04 (Prompts) → Lab 06 (RAG) → Lab 07 (Code Gen)
 
 Build AI agents and multi-stage pipelines.
 
-| # | Lab | Topic | Time | What You'll Learn |
-|---|-----|-------|------|-------------------|
-| 05 | [Threat Intel Agent](./lab05-threat-intel-agent/) | AI agents | 90-120 min | ReAct pattern, tools, memory |
-| 08 | [Vuln Scanner AI](./lab08-vuln-scanner-ai/) | Risk prioritization | 90-120 min | CVSS, business context |
-| 09 | [Detection Pipeline](./lab09-detection-pipeline/) | ML + LLM pipeline | 120-150 min | Multi-stage detection |
-| 10 | [IR Copilot](./lab10-ir-copilot/) | Conversational AI | 120-150 min | Orchestration, confirmation |
+| # | Lab | Topic | What You'll Learn |
+|---|-----|-------|-------------------|
+| 05 | [Threat Intel Agent](./lab05-threat-intel-agent/) | AI agents | ReAct pattern, tools, memory |
+| 08 | [Vuln Scanner AI](./lab08-vuln-scanner-ai/) | Risk prioritization | CVSS, business context |
+| 09 | [Detection Pipeline](./lab09-detection-pipeline/) | ML + LLM pipeline | Multi-stage detection |
+| 10 | [IR Copilot](./lab10-ir-copilot/) | Conversational AI | Orchestration, confirmation |
 
 **Progression:**
 ```
@@ -107,15 +107,17 @@ Lab 05 (Agents) → Lab 08 (Vuln) → Lab 09 (Pipeline) → Lab 10 (Copilot)
 
 Deep dive into incident response, threat simulation, and offensive security analysis.
 
-| # | Lab | Topic | Time | What You'll Learn |
-|---|-----|-------|------|-------------------|
-| 11 | [Ransomware Detection](./lab11-ransomware-detection/) | Behavioral detection | 4-5 hrs | Entropy, TTPs, response |
-| 12 | [Purple Team](./lab12-ransomware-simulation/) | Adversary emulation | 4-5 hrs | Safe simulation, gap analysis |
-| 13 | [Memory Forensics AI](./lab13-memory-forensics-ai/) | Memory analysis | 4-5 hrs | Volatility3, process injection, credential dumping |
-| 14 | [C2 Traffic Analysis](./lab14-c2-traffic-analysis/) | Network forensics | 4-5 hrs | Beaconing, DNS tunneling, encrypted C2 |
-| 15 | [Lateral Movement Detection](./lab15-lateral-movement-detection/) | Attack detection | 4-5 hrs | Auth anomalies, remote execution, graph analysis |
-| 16 | [Threat Actor Profiling](./lab16-threat-actor-profiling/) | Attribution | 4-5 hrs | TTP analysis, clustering, actor profiles |
-| 17 | [Adversarial ML](./lab17-adversarial-ml/) | Attack/Defense | 5-6 hrs | Evasion, poisoning, robust ML defenses |
+| # | Lab | Topic | What You'll Learn |
+|---|-----|-------|-------------------|
+| 11 | [Ransomware Detection](./lab11-ransomware-detection/) | Behavioral detection | Entropy, TTPs, response |
+| 12 | [Purple Team](./lab12-ransomware-simulation/) | Adversary emulation | Safe simulation, gap analysis |
+| 13 | [Memory Forensics AI](./lab13-memory-forensics-ai/) | Memory analysis | Volatility3, process injection, credential dumping |
+| 14 | [C2 Traffic Analysis](./lab14-c2-traffic-analysis/) | Network forensics | Beaconing, DNS tunneling, encrypted C2 |
+| 15 | [Lateral Movement Detection](./lab15-lateral-movement-detection/) | Attack detection | Auth anomalies, remote execution, graph analysis |
+| 16 | [Threat Actor Profiling](./lab16-threat-actor-profiling/) | Attribution | TTP analysis, clustering, actor profiles |
+| 17 | [Adversarial ML](./lab17-adversarial-ml/) | Attack/Defense | Evasion, poisoning, robust ML defenses |
+| 18 | [Fine-Tuning for Security](./lab18-fine-tuning-security/) | Custom models | LoRA, security embeddings, deployment |
+| 19 | [Cloud Security AI](./lab19-cloud-security-ai/) | Multi-cloud | CloudTrail, AWS/Azure/GCP threat detection |
 
 **Progression:**
 ```
@@ -128,9 +130,14 @@ Lab 14 (C2 Traffic) → Lab 15 (Lateral Movement) → Lab 16 (Attribution) → L
      ↓                      ↓                          ↓                      ↓
  "Detect C2            "Track attacker           "Profile             "Attack/defend
   communications"        movement"                threat actors"        ML models"
+
+Lab 18 (Fine-Tuning) → Lab 19 (Cloud Security)
+     ↓                      ↓
+ "Build custom          "Secure cloud
+  security models"       environments"
 ```
 
-**Bridge from Core:** Labs 11-17 build on detection skills from Labs 09-10 and apply them to advanced DFIR and ML security scenarios. Lab 17 teaches how to attack and defend the ML models you built in earlier labs.
+**Bridge from Core:** Labs 11-19 build on detection skills from Labs 09-10 and apply them to advanced DFIR, adversarial ML, and cloud security scenarios. Lab 17 teaches how to attack and defend the ML models you built in earlier labs. Labs 18-19 cover advanced topics in custom model training and multi-cloud security.
 
 ---
 
@@ -138,18 +145,18 @@ Lab 14 (C2 Traffic) → Lab 15 (Lateral Movement) → Lab 16 (Attribution) → L
 
 Choose based on your objectives:
 
-| Your Goal | Labs | Time | Prerequisites |
-|-----------|------|------|---------------|
-| **"I'm completely new"** | 00a → 00b → 00c → 01 | 8-10 hours | Nothing! |
-| **"I know Python, new to ML"** | 00b → 00c → 01 → 02 | 6-7 hours | Python basics |
-| **"I know ML, teach me LLMs"** | 00c → 04 → 06 → 05 | 6-8 hours | ML experience |
-| **"I want to build agents"** | 04 → 05 → 10 | 5-6 hours | API key |
-| **"SOC/Detection focus"** | 01 → 03 → 09 → 11 → 15 | 10-12 hours | Python + ML basics |
-| **"DFIR specialist"** | 04 → 05 → 11 → 13 → 14 | 15-18 hours | Security background |
-| **"Red Team/Offensive"** | 12 → 14 → 15 → 16 | 16-20 hours | Security experience |
-| **"Threat Intel Analyst"** | 05 → 06 → 14 → 16 | 12-15 hours | TI fundamentals |
-| **"ML Security/Adversarial"** | 01 → 02 → 09 → 17 | 10-12 hours | ML fundamentals |
-| **"Complete everything"** | All 20 labs | 50-60 hours | Dedication |
+| Your Goal | Labs | Prerequisites |
+|-----------|------|---------------|
+| **"I'm completely new"** | 00a → 00b → 00c → 01 | Nothing! |
+| **"I know Python, new to ML"** | 00b → 00c → 01 → 02 | Python basics |
+| **"I know ML, teach me LLMs"** | 00c → 04 → 06 → 05 | ML experience |
+| **"I want to build agents"** | 04 → 05 → 10 | API key |
+| **"SOC/Detection focus"** | 01 → 03 → 09 → 11 → 15 | Python + ML basics |
+| **"DFIR specialist"** | 04 → 05 → 11 → 13 → 14 | Security background |
+| **"Red Team/Offensive"** | 12 → 14 → 15 → 16 | Security experience |
+| **"Threat Intel Analyst"** | 05 → 06 → 14 → 16 | TI fundamentals |
+| **"ML Security/Adversarial"** | 01 → 02 → 09 → 17 | ML fundamentals |
+| **"Complete everything"** | All 22 labs | Dedication |
 
 ---
 
@@ -606,6 +613,44 @@ Security capabilities:
 
 ---
 
+### Lab 18: Fine-Tuning for Security
+
+**Build custom security-focused AI models.**
+
+Skills learned:
+- Custom embedding training for security data
+- LoRA (Low-Rank Adaptation) fine-tuning
+- Security-specific model evaluation
+- Model deployment best practices
+
+Key capabilities:
+- Train embeddings on security datasets
+- Fine-tune LLMs for security tasks
+- Create specialized classification models
+- Deploy models in production environments
+- Evaluate security-specific metrics
+
+---
+
+### Lab 19: Cloud Security AI
+
+**Build AI-powered multi-cloud security tools.**
+
+Skills learned:
+- AWS CloudTrail log analysis
+- Azure and GCP security monitoring
+- Multi-cloud threat detection patterns
+- Cloud-native security automation
+
+Detection capabilities:
+- Suspicious IAM activity detection
+- Resource enumeration alerts
+- Privilege escalation detection
+- Cross-cloud attack correlation
+- Cloud misconfiguration identification
+
+---
+
 ## 💡 Tips for Success
 
 ### Before Starting
@@ -700,6 +745,8 @@ Track your progress:
 - [ ] Lab 15: Lateral Movement Detection
 - [ ] Lab 16: Threat Actor Profiling
 - [ ] Lab 17: Adversarial ML
+- [ ] Lab 18: Fine-Tuning for Security
+- [ ] Lab 19: Cloud Security AI
 
 ---
 

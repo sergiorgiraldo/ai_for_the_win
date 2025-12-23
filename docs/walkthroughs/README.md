@@ -12,15 +12,44 @@ These walkthroughs provide:
 
 ## Walkthrough Index
 
-| Lab | Walkthrough | Difficulty | Time |
-|-----|-------------|------------|------|
-| [Lab 01](./lab01-walkthrough.md) | Phishing Classifier | Beginner | 20 min |
-| [Lab 02](./lab02-walkthrough.md) | Malware Clustering | Beginner | 25 min |
-| Lab 03 | Anomaly Detection | Beginner | Coming Soon |
-| [Lab 04](./lab04-walkthrough.md) | LLM Log Analysis | Intermediate | 30 min |
-| [Lab 05](./lab05-walkthrough.md) | Threat Intel Agent | Intermediate | 35 min |
-| Lab 06-10 | LLM & Production Labs | Intermediate | Coming Soon |
-| Lab 11-17 | DFIR & Expert Labs | Expert | Coming Soon |
+### Foundation Labs
+
+| Lab | Walkthrough | Difficulty |
+|-----|-------------|------------|
+| [Lab 01](./lab01-walkthrough.md) | Phishing Classifier | Beginner |
+| [Lab 02](./lab02-walkthrough.md) | Malware Clustering | Beginner |
+| [Lab 03](./lab03-walkthrough.md) | Anomaly Detection | Beginner |
+
+### LLM & Agent Labs
+
+| Lab | Walkthrough | Difficulty |
+|-----|-------------|------------|
+| [Lab 04](./lab04-walkthrough.md) | LLM Log Analysis | Intermediate |
+| [Lab 05](./lab05-walkthrough.md) | Threat Intel Agent | Intermediate |
+| [Lab 06](./lab06-walkthrough.md) | Security RAG | Intermediate |
+| [Lab 07](./lab07-walkthrough.md) | YARA Generator | Intermediate |
+
+### Production Systems
+
+| Lab | Walkthrough | Difficulty |
+|-----|-------------|------------|
+| [Lab 08](./lab08-walkthrough.md) | Vulnerability Prioritizer | Advanced |
+| [Lab 09](./lab09-walkthrough.md) | Detection Pipeline | Advanced |
+| [Lab 10](./lab10-walkthrough.md) | IR Copilot | Advanced |
+
+### DFIR & Expert Labs
+
+| Lab | Walkthrough | Difficulty |
+|-----|-------------|------------|
+| [Lab 11](./lab11-walkthrough.md) | Ransomware Detection | Expert |
+| [Lab 12](./lab12-walkthrough.md) | Purple Team Simulation | Expert |
+| [Lab 13](./lab13-walkthrough.md) | Memory Forensics AI | Expert |
+| [Lab 14](./lab14-walkthrough.md) | C2 Traffic Analysis | Expert |
+| [Lab 15](./lab15-walkthrough.md) | Lateral Movement Detection | Expert |
+| [Lab 16](./lab16-walkthrough.md) | Threat Actor Profiling | Expert |
+| [Lab 17](./lab17-walkthrough.md) | Adversarial ML | Expert |
+| [Lab 18](./lab18-walkthrough.md) | Fine-Tuning for Security | Expert |
+| [Lab 19](./lab19-walkthrough.md) | Cloud Security AI | Expert |
 
 ## How to Use These Walkthroughs
 
@@ -55,16 +84,31 @@ Text ML   Clustering  Anomaly
 
 ### LLM Track
 ```
-Lab 04 → Lab 05 → Lab 06
+Lab 04 → Lab 05 → Lab 06 → Lab 07
+  |         |         |         |
+  v         v         v         v
+Prompts   Agents     RAG      YARA
+```
+
+### Production Track
+```
+Lab 08 → Lab 09 → Lab 10
   |         |         |
   v         v         v
-Prompts   Agents     RAG
+Vuln      Pipeline   IR Copilot
 ```
 
 ### Expert Track
 ```
-Lab 11 → Lab 13 → Lab 14
+Lab 11 → Lab 12 → Lab 13 → Lab 14 → Lab 15 → Lab 16
+  |         |         |         |         |         |
+  v         v         v         v         v         v
+Ransomware  Purple   Memory    C2      Lateral   Actor
+Detection   Team     Forensics Traffic Movement  Profiling
+
+Lab 17 → Lab 18 → Lab 19
   |         |         |
   v         v         v
-DFIR     Memory    Network
+Adversarial Fine-     Cloud
+ML          Tuning    Security
 ```
