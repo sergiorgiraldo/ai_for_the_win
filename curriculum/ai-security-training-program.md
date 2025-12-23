@@ -1,7 +1,7 @@
 # AI Development Training Program: Offensive Security & DFIR
 
 [![24 Weeks](https://img.shields.io/badge/Duration-24%20Weeks-blue.svg)]()
-[![22 Labs](https://img.shields.io/badge/Labs-22-green.svg)]()
+[![23 Labs](https://img.shields.io/badge/Labs-23-green.svg)]()
 [![4 Capstones](https://img.shields.io/badge/Capstones-4-orange.svg)]()
 
 ## 🎯 Program Mission
@@ -49,7 +49,7 @@ Develop security practitioners who can architect, build, and deploy AI-powered t
 
 | Resource | Description |
 |----------|-------------|
-| [Labs](../labs/) | 22 hands-on implementation labs |
+| [Labs](../labs/) | 23 hands-on implementation labs |
 | [Capstone Projects](../capstone-projects/) | 4 comprehensive final projects |
 | [Templates](../templates/) | Reusable agent and integration templates |
 | [Setup Guide](../setup/dev-environment-setup.md) | Development environment setup |
@@ -155,11 +155,30 @@ Develop security practitioners who can architect, build, and deploy AI-powered t
   - Prompt injection and jailbreaking
 
 - **Hands-On Labs**
-  - Craft adversarial samples to evade malware detection
+  - [Lab 17 - Adversarial ML](../labs/lab17-adversarial-ml/): Craft adversarial samples to evade malware detection
+  - [Lab 20 - LLM Red Teaming](../labs/lab20-llm-red-teaming/): Prompt injection, jailbreaking, agentic exploits
   - Perform model extraction on a black-box classifier
-  - Develop prompt injection payloads for LLM applications
 
-#### Module 2.5: Social Engineering with AI
+#### Module 2.5: LLM Red Teaming
+
+- **Attack Techniques**
+
+  - Direct and indirect prompt injection
+  - System prompt extraction
+  - Jailbreaking and safety bypass
+  - Agentic AI exploitation (goal hijacking, tool abuse)
+  - RAG poisoning attacks
+
+- **Defense Strategies**
+  - Input sanitization and validation
+  - Structured prompt design
+  - Output filtering
+  - Tool sandboxing for agents
+
+- **Hands-On Labs**
+  - [Lab 20 - LLM Red Teaming](../labs/lab20-llm-red-teaming/): Complete offensive AI security lab
+
+#### Module 2.6: Social Engineering with AI
 
 - **Capabilities**
 
