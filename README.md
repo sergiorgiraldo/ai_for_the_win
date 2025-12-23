@@ -61,15 +61,15 @@ python solution/main.py
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-| Your Background | Recommended Path | Time |
-|-----------------|------------------|------|
-| Completely new (no Python) | Labs 00a → 00b → 00c → 01 | 8-10 hours |
-| Know Python, new to ML | Labs 00b → 00c → 01 → 02 | 6-8 hours |
-| Know ML, new to LLMs | Labs 00c → 04 → 06 → 05 | 7-9 hours |
-| Want to build agents | Labs 00c → 04 → 05 → 10 | 8-10 hours |
-| DFIR focus | Labs 04 → 05 → 11 → 13 → 14 | 15-18 hours |
-| Red Team/Offensive | Labs 12 → 14 → 15 → 16 | 16-20 hours |
-| Threat Intel Analyst | Labs 05 → 06 → 14 → 16 | 12-15 hours |
+| Your Background | Recommended Path |
+|-----------------|------------------|
+| Completely new (no Python) | Labs 00a → 00b → 00c → 01 |
+| Know Python, new to ML | Labs 00b → 00c → 01 → 02 |
+| Know ML, new to LLMs | Labs 00c → 04 → 06 → 05 |
+| Want to build agents | Labs 00c → 04 → 05 → 10 |
+| DFIR focus | Labs 04 → 05 → 11 → 13 → 14 |
+| Red Team/Offensive | Labs 12 → 14 → 15 → 16 |
+| Threat Intel Analyst | Labs 05 → 06 → 14 → 16 |
 
 ---
 
@@ -168,7 +168,7 @@ Run labs directly in your browser - no setup required:
 | Lab 04: Log Analysis | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/depalmar/ai_for_the_win/blob/main/notebooks/lab04_llm_log_analysis.ipynb) |
 | Lab 05: Threat Intel Agent | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/depalmar/ai_for_the_win/blob/main/notebooks/lab05_threat_intel_agent.ipynb) |
 | Lab 06: Security RAG | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/depalmar/ai_for_the_win/blob/main/notebooks/lab06_security_rag.ipynb) |
-| All 19 labs available | [Browse notebooks →](./notebooks/) |
+| All 22 labs available | [Browse notebooks →](./notebooks/) |
 
 ---
 
@@ -176,7 +176,7 @@ Run labs directly in your browser - no setup required:
 
 ```
 ai_for_the_win/
-├── labs/                          # 19 hands-on labs
+├── labs/                          # 22 hands-on labs
 │   ├── lab00a-python-security-fundamentals/ # Python basics for security
 │   ├── lab00b-ml-concepts-primer/ # ML theory before coding
 │   ├── lab00c-prompt-engineering-mastery/ # Prompt design & verification
@@ -306,12 +306,12 @@ Track your progress through the labs:
 
 Choose one to demonstrate mastery:
 
-| Project | Difficulty | Duration | Focus |
-|---------|------------|----------|-------|
-| **Security Analyst Copilot** | Advanced | 40-60 hrs | LLM agents, IR automation |
-| **Automated Threat Hunter** | Advanced | 40-60 hrs | ML detection, pipelines |
-| **Malware Analysis Assistant** | Intermediate | 30-40 hrs | Static analysis, YARA |
-| **Vulnerability Intel Platform** | Intermediate | 30-40 hrs | RAG, prioritization |
+| Project | Difficulty | Focus |
+|---------|------------|-------|
+| **Security Analyst Copilot** | Advanced | LLM agents, IR automation |
+| **Automated Threat Hunter** | Advanced | ML detection, pipelines |
+| **Malware Analysis Assistant** | Intermediate | Static analysis, YARA |
+| **Vulnerability Intel Platform** | Intermediate | RAG, prioritization |
 
 Each project includes starter code, requirements, and evaluation criteria.
 

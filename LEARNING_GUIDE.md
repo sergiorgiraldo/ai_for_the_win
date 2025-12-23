@@ -8,7 +8,7 @@ A structured path from beginner to advanced AI-powered security tools.
 
 ## How This Course is Organized
 
-The 12 labs are designed to build on each other. Here's the recommended flow:
+The 22 labs are designed to build on each other, progressing from foundational ML concepts through advanced DFIR and adversarial ML. Here's the recommended flow:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -50,13 +50,15 @@ The 12 labs are designed to build on each other. Here's the recommended flow:
 
 ## Quick Start - Which Path?
 
-| Your Background | Start With | What You'll Learn | Time |
-|-----------------|------------|-------------------|------|
-| New to ML/AI | Lab 01 → 02 → 03 | Classification, clustering, anomaly detection | 3-4 hours |
-| Know ML, new to LLMs | Lab 04 → 06 → 07 | Prompt engineering, RAG, code generation | 4-5 hours |
-| Know LLMs, want agents | Lab 05 → 08 → 10 | ReAct agents, orchestration, copilots | 5-6 hours |
-| Production systems | Lab 09 → 10 | Multi-stage pipelines, conversational AI | 4-5 hours |
-| DFIR specialist | Lab 11 → 12 | Ransomware detection, purple team | 8-10 hours |
+| Your Background | Start With | What You'll Learn |
+|-----------------|------------|-------------------|
+| New to ML/AI | Lab 01 → 02 → 03 | Classification, clustering, anomaly detection |
+| Know ML, new to LLMs | Lab 04 → 06 → 07 | Prompt engineering, RAG, code generation |
+| Know LLMs, want agents | Lab 05 → 08 → 10 | ReAct agents, orchestration, copilots |
+| Production systems | Lab 09 → 10 | Multi-stage pipelines, conversational AI |
+| DFIR specialist | Lab 11 → 13 → 14 | Ransomware, memory forensics, C2 detection |
+| Red Team/Offensive | Lab 12 → 15 → 16 | Purple team, lateral movement, attribution |
+| ML Security | Lab 17 → 18 → 19 | Adversarial ML, fine-tuning, cloud security |
 
 ---
 
@@ -67,7 +69,7 @@ The 12 labs are designed to build on each other. Here's the recommended flow:
 These three labs teach core ML concepts. Do them in order.
 
 #### Lab 01: Phishing Email Classifier
-**Difficulty:** ⭐ Easy | **Time:** 45-60 min | **Prerequisites:** Basic Python
+**Difficulty:** ⭐ Easy | **Prerequisites:** Basic Python
 
 **What You'll Learn:**
 - Text preprocessing and feature extraction
@@ -90,7 +92,7 @@ Phishing remains the #1 attack vector. Understanding how ML classifies malicious
 ---
 
 #### Lab 02: Malware Sample Clustering
-**Difficulty:** ⭐⭐ Easy-Medium | **Time:** 60-75 min | **Prerequisites:** Lab 01
+**Difficulty:** ⭐⭐ Easy-Medium | **Prerequisites:** Lab 01
 
 **What You'll Learn:**
 - Feature engineering for malware analysis
@@ -117,7 +119,7 @@ In Lab 01, you learned supervised learning (labeled data). Lab 02 teaches unsupe
 ---
 
 #### Lab 03: Network Anomaly Detection
-**Difficulty:** ⭐⭐ Easy-Medium | **Time:** 60-75 min | **Prerequisites:** Lab 02
+**Difficulty:** ⭐⭐ Easy-Medium | **Prerequisites:** Lab 02
 
 **What You'll Learn:**
 - Network flow feature engineering
@@ -167,7 +169,7 @@ Labs 04-07 introduce Large Language Models (LLMs). Instead of training models on
 ### 🟡 Core Skills Labs (LLM-Powered)
 
 #### Lab 04: LLM-Powered Log Analysis
-**Difficulty:** ⭐⭐ Intermediate | **Time:** 60-90 min | **Prerequisites:** API key
+**Difficulty:** ⭐⭐ Intermediate | **Prerequisites:** API key
 
 **What You'll Learn:**
 - Prompt engineering for security
@@ -202,7 +204,7 @@ Labs 04-07 introduce Large Language Models (LLMs). Instead of training models on
 ---
 
 #### Lab 06: Security RAG System
-**Difficulty:** ⭐⭐ Intermediate | **Time:** 75-90 min | **Prerequisites:** Lab 04
+**Difficulty:** ⭐⭐ Intermediate | **Prerequisites:** Lab 04
 
 **What You'll Learn:**
 - Document chunking strategies
@@ -236,7 +238,7 @@ Labs 04-07 introduce Large Language Models (LLMs). Instead of training models on
 ---
 
 #### Lab 07: AI YARA Rule Generator
-**Difficulty:** ⭐⭐ Intermediate | **Time:** 60-75 min | **Prerequisites:** Lab 02, Lab 04
+**Difficulty:** ⭐⭐ Intermediate | **Prerequisites:** Lab 02, Lab 04
 
 **What You'll Learn:**
 - Binary analysis basics
@@ -279,7 +281,7 @@ Labs 05-10 introduce AI agents - systems that can:
 ### 🟠 Advanced Labs
 
 #### Lab 05: Threat Intelligence Agent
-**Difficulty:** ⭐⭐⭐ Advanced | **Time:** 90-120 min | **Prerequisites:** Lab 04
+**Difficulty:** ⭐⭐⭐ Advanced | **Prerequisites:** Lab 04
 
 **What You'll Learn:**
 - ReAct agent pattern (Reasoning + Acting)
@@ -318,7 +320,7 @@ Labs 05-10 introduce AI agents - systems that can:
 ---
 
 #### Lab 08: Vulnerability Scanner AI
-**Difficulty:** ⭐⭐⭐ Advanced | **Time:** 90-120 min | **Prerequisites:** Lab 04, Lab 05
+**Difficulty:** ⭐⭐⭐ Advanced | **Prerequisites:** Lab 04, Lab 05
 
 **What You'll Learn:**
 - Vulnerability assessment automation
@@ -338,7 +340,7 @@ Assets ──► Scan ──► Vulns ──► AI Analysis ──► Prioritize
 ---
 
 #### Lab 09: Threat Detection Pipeline
-**Difficulty:** ⭐⭐⭐ Advanced | **Time:** 120-150 min | **Prerequisites:** Lab 03, Lab 04
+**Difficulty:** ⭐⭐⭐ Advanced | **Prerequisites:** Lab 03, Lab 04
 
 **What You'll Learn:**
 - Multi-stage detection architecture
@@ -367,7 +369,7 @@ Assets ──► Scan ──► Vulns ──► AI Analysis ──► Prioritize
 ---
 
 #### Lab 10: IR Copilot Agent
-**Difficulty:** ⭐⭐⭐ Advanced | **Time:** 120-150 min | **Prerequisites:** Lab 05, Lab 06
+**Difficulty:** ⭐⭐⭐ Advanced | **Prerequisites:** Lab 05, Lab 06
 
 **What You'll Learn:**
 - Conversational agent design
@@ -391,7 +393,7 @@ Analyst ◄──► IR Copilot ◄──► Tools
 ### 🔴 Expert Labs
 
 #### Lab 11: Ransomware Detection & Response
-**Difficulty:** ⭐⭐⭐⭐ Expert | **Time:** 4-5 hours | **Prerequisites:** Labs 04, 05, 09
+**Difficulty:** ⭐⭐⭐⭐ Expert | **Prerequisites:** Labs 04, 05, 09
 
 **What You'll Learn:**
 - Shannon entropy for encryption detection
@@ -425,7 +427,7 @@ Threat Score = (Behavioral × 0.4) + (Entropy × 0.3) + (IOC × 0.3)
 ---
 
 #### Lab 12: Purple Team Simulation
-**Difficulty:** ⭐⭐⭐⭐ Expert | **Time:** 4-5 hours | **Prerequisites:** Lab 11
+**Difficulty:** ⭐⭐⭐⭐ Expert | **Prerequisites:** Lab 11
 
 **What You'll Learn:**
 - Purple team methodologies
@@ -454,6 +456,123 @@ Threat Score = (Behavioral × 0.4) + (Entropy × 0.3) + (IOC × 0.3)
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
+
+---
+
+#### Lab 13: Memory Forensics AI
+**Difficulty:** ⭐⭐⭐⭐ Expert | **Prerequisites:** Lab 11
+
+**What You'll Learn:**
+- Memory dump analysis with Volatility3
+- Process injection detection
+- Credential dumping identification
+- LLM-powered artifact interpretation
+
+**Detection Capabilities:**
+- Process injection (hollowing, DLL injection)
+- Credential harvesting (Mimikatz patterns)
+- Rootkit and hiding techniques
+- Malicious code in memory
+
+---
+
+#### Lab 14: C2 Traffic Analysis
+**Difficulty:** ⭐⭐⭐⭐ Expert | **Prerequisites:** Lab 03, Lab 11
+
+**What You'll Learn:**
+- Beaconing detection algorithms
+- DNS tunneling identification
+- Encrypted C2 traffic patterns
+- JA3/JA3S fingerprinting
+
+**Detection Signals:**
+- Regular beacon intervals with low jitter
+- Long DNS subdomain names with encoded data
+- Unusual TLS certificate patterns
+- Known C2 framework signatures
+
+---
+
+#### Lab 15: Lateral Movement Detection
+**Difficulty:** ⭐⭐⭐⭐ Expert | **Prerequisites:** Lab 14
+
+**What You'll Learn:**
+- Authentication anomaly detection
+- Remote execution technique identification
+- Graph-based attack path analysis
+- Windows security event correlation
+
+**Detection Targets:**
+- PsExec / SMB execution
+- WMI remote commands
+- WinRM / PowerShell remoting
+- Pass-the-hash / Pass-the-ticket
+
+---
+
+#### Lab 16: Threat Actor Profiling
+**Difficulty:** ⭐⭐⭐⭐ Expert | **Prerequisites:** Lab 05, Lab 14
+
+**What You'll Learn:**
+- TTP extraction and encoding
+- Campaign clustering for attribution
+- Malware code similarity analysis
+- LLM-powered profile generation
+
+**Analysis Methods:**
+- MITRE ATT&CK technique mapping
+- Diamond Model analysis
+- Similarity scoring and clustering
+- Infrastructure overlap detection
+
+---
+
+#### Lab 17: Adversarial Machine Learning
+**Difficulty:** ⭐⭐⭐⭐⭐ Expert | **Prerequisites:** Labs 01-03, Lab 09
+
+**What You'll Learn:**
+- Evasion attacks (FGSM, PGD)
+- Data poisoning and backdoors
+- Adversarial training for robustness
+- Defense strategies for ML models
+
+**Why This Matters:**
+As ML becomes central to security, attackers will target these models. Understanding adversarial ML helps you build robust detection systems.
+
+---
+
+#### Lab 18: Fine-Tuning for Security
+**Difficulty:** ⭐⭐⭐⭐⭐ Expert | **Prerequisites:** Labs 04-07
+
+**What You'll Learn:**
+- Custom embedding training
+- LoRA (Low-Rank Adaptation) fine-tuning
+- Security-specific model evaluation
+- Model deployment best practices
+
+**Use Cases:**
+- Security-specific text embeddings
+- Custom malware classification
+- Domain-adapted log analysis
+- Specialized threat detection
+
+---
+
+#### Lab 19: Cloud Security AI
+**Difficulty:** ⭐⭐⭐⭐⭐ Expert | **Prerequisites:** Lab 04, Lab 09
+
+**What You'll Learn:**
+- AWS CloudTrail log analysis
+- Azure and GCP security monitoring
+- Multi-cloud threat detection
+- Cloud-native security automation
+
+**Detection Targets:**
+- IAM privilege escalation
+- Resource enumeration
+- Data exfiltration patterns
+- Cryptomining indicators
+- Misconfiguration exploitation
 
 ---
 
@@ -543,24 +662,37 @@ Week 3: Lab 06, Lab 07
 Week 4: Lab 08
 ```
 
-### Path C: DFIR Track (4 weeks)
+### Path C: DFIR Track
 Focus on incident response and forensics
 
 ```
-Week 1: Lab 03, Lab 04
-Week 2: Lab 05, Lab 09
-Week 3: Lab 11
-Week 4: Lab 12
+Foundation: Lab 03, Lab 04
+Detection: Lab 05, Lab 09, Lab 11
+Forensics: Lab 13, Lab 14
+Advanced: Lab 15, Lab 16
 ```
 
-### Path D: Complete Program (8 weeks)
-All labs in optimal order
+### Path D: ML Security Track
+Focus on adversarial ML and model security
 
 ```
-Week 1-2: Lab 01, Lab 03, Lab 02
-Week 3-4: Lab 04, Lab 06, Lab 07
-Week 5-6: Lab 05, Lab 08, Lab 09
-Week 7-8: Lab 10, Lab 11, Lab 12
+ML Basics: Lab 01, Lab 02, Lab 03
+Detection: Lab 09
+Adversarial: Lab 17
+Advanced: Lab 18, Lab 19
+```
+
+### Path E: Complete Program
+All 22 labs in optimal order
+
+```
+Intro: Lab 00a, 00b, 00c (optional)
+Foundation: Lab 01, Lab 02, Lab 03
+Core LLM: Lab 04, Lab 06, Lab 07
+Agents: Lab 05, Lab 08, Lab 09, Lab 10
+DFIR: Lab 11, Lab 12, Lab 13
+Advanced DFIR: Lab 14, Lab 15, Lab 16
+ML Security: Lab 17, Lab 18, Lab 19
 ```
 
 ---
@@ -590,8 +722,12 @@ After completing each section, you should be able to:
 ### After Expert Labs
 - [ ] Detect ransomware using behavioral and static analysis
 - [ ] Plan and execute purple team exercises
-- [ ] Generate detection rules from simulations
-- [ ] Measure and improve detection coverage
+- [ ] Analyze memory dumps for malicious artifacts
+- [ ] Detect C2 communications and lateral movement
+- [ ] Profile threat actors using TTPs and attribution techniques
+- [ ] Attack and defend ML models with adversarial techniques
+- [ ] Fine-tune models for security-specific tasks
+- [ ] Implement multi-cloud security detection
 
 ---
 
