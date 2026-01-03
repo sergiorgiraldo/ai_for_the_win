@@ -57,9 +57,7 @@
 
 | Goal | Go To |
 |------|-------|
-| **SIEM integration patterns** | [Integration Patterns](../resources/integrations/) |
-| **Alert enrichment** | [Integration Patterns](../resources/integrations/) |
-| **All integrations** | [Integrations Index](../resources/integrations/) |
+| **SIEM/SOAR patterns** | [Integration Patterns](../resources/integrations/) |
 
 ### Go Deeper
 
