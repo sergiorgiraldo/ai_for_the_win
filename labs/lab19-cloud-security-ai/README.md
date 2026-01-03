@@ -39,6 +39,14 @@
 | **Prerequisites** | Labs 04-05, Cloud fundamentals |
 | **Skills** | Multi-cloud security, AI analysis, IaC security |
 
+### New to Cloud Security?
+
+If you're not familiar with AWS/Azure/GCP, IAM, or CloudTrail, complete [Lab 19a: Cloud Security Fundamentals](../lab19a-cloud-security-fundamentals/) first. It covers:
+- Cloud service models (IaaS, PaaS, SaaS)
+- IAM concepts across all three major clouds
+- Key security logging services (CloudTrail, Activity Log, Audit Logs)
+- Common cloud attack patterns
+
 ---
 
 ## 🎯 Learning Objectives
@@ -737,7 +745,7 @@ Automate CIS benchmark checks across all cloud providers.
 
 ---
 
-> **Stuck?** See the [Lab 19 Walkthrough](../../docs/walkthroughs/lab19-walkthrough.md) for step-by-step guidance.
+> **Stuck?** See the [Lab 19 Walkthrough](../../docs/walkthroughs/lab19-cloud-security-ai-walkthrough.md) for step-by-step guidance.
 
 **Congratulations!** You've completed all the AI Security labs.
 

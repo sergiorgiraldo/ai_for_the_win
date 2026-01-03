@@ -36,6 +36,17 @@ By completing this lab, you will:
 pip install langchain langchain-anthropic langgraph python-dotenv requests rich
 ```
 
+### Recommended Reading
+
+This lab uses LangChain and LangGraph. If you're new to these frameworks:
+
+| Resource | What You'll Learn | When to Read |
+|----------|-------------------|--------------|
+| [LangChain Guide](../../docs/guides/langchain-guide.md) | Chains, prompts, agents basics | Before starting |
+| [Security Fundamentals](../../docs/guides/security-fundamentals-for-beginners.md) | IOCs, threat intel concepts | If new to security |
+
+> 💡 **Quick Context**: LangChain is a framework for building LLM applications. LangGraph adds stateful workflows. This lab teaches you to combine them into an autonomous threat intel agent.
+
 ---
 
 ## 📖 Background
@@ -628,6 +639,6 @@ def _execute_tool(self, tool_name: str, args: dict) -> str:
 
 ---
 
-> **Stuck?** See the [Lab 05 Walkthrough](../../docs/walkthroughs/lab05-walkthrough.md) for step-by-step guidance.
+> **Stuck?** See the [Lab 05 Walkthrough](../../docs/walkthroughs/lab05-threat-intel-agent-walkthrough.md) for step-by-step guidance.
 
 **Next Lab**: [Lab 06 - RAG for Security Docs](../lab06-security-rag/)

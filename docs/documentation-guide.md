@@ -42,6 +42,7 @@
 | **Fix common errors** | [Troubleshooting Guide](./guides/troubleshooting-guide.md) |
 | **Error handling patterns** | [Error Handling Guide](./guides/error-handling-guide.md) |
 | **Cost management** | [Cost Management Guide](./guides/cost-management.md) |
+| **Using AI for help** | [Using AI for Learning](./guides/using-ai-for-learning.md) |
 
 ### Find Resources
 
@@ -58,7 +59,6 @@
 |------|-------|
 | **Splunk integration** | [Splunk Guide](../resources/integrations/splunk-integration.md) |
 | **Elastic/ELK integration** | [Elastic Guide](../resources/integrations/elastic-integration.md) |
-| **Palo Alto XSIAM/XDR** | [XSIAM/XDR Guide](../resources/integrations/xsiam-xdr-integration.md) |
 | **All integrations** | [Integrations Index](../resources/integrations/) |
 
 ### Go Deeper
@@ -70,6 +70,15 @@
 | **LLM output parsing** | [Structured Output Guide](./guides/structured-output-parsing.md) |
 | **LLM testing/evaluation** | [LLM Evaluation Guide](./guides/llm-evaluation-testing.md) |
 | **Prompt injection defense** | [Security Best Practices](./guides/prompt-injection-defense.md) |
+| **Windows internals** | [Windows Internals Quick Reference](./guides/windows-internals-quickref.md) |
+
+### For Beginners
+
+| Goal | Go To |
+|------|-------|
+| **Security basics** | [Security Fundamentals for Beginners](./guides/security-fundamentals-for-beginners.md) |
+| **Using AI to learn** | [Using AI for Learning](./guides/using-ai-for-learning.md) |
+| **Cloud security basics** | [Lab 19a: Cloud Security Fundamentals](../labs/lab19a-cloud-security-fundamentals/) |
 
 ---
 
@@ -91,9 +100,9 @@ If you're stuck on a lab, these walkthroughs provide step-by-step solutions:
 
 | Labs | Walkthroughs |
 |------|--------------|
-| Labs 01-05 | [lab01](./walkthroughs/lab01-walkthrough.md), [lab02](./walkthroughs/lab02-walkthrough.md), [lab03](./walkthroughs/lab03-walkthrough.md), [lab04](./walkthroughs/lab04-walkthrough.md), [lab05](./walkthroughs/lab05-walkthrough.md) |
-| Labs 06-10 | [lab06](./walkthroughs/lab06-walkthrough.md), [lab07](./walkthroughs/lab07-walkthrough.md), [lab08](./walkthroughs/lab08-walkthrough.md), [lab09](./walkthroughs/lab09-walkthrough.md), [lab10](./walkthroughs/lab10-walkthrough.md) |
-| Labs 11-16 | [lab11](./walkthroughs/lab11-walkthrough.md), [lab12](./walkthroughs/lab12-walkthrough.md), [lab13](./walkthroughs/lab13-walkthrough.md), [lab14](./walkthroughs/lab14-walkthrough.md), [lab15](./walkthroughs/lab15-walkthrough.md), [lab16](./walkthroughs/lab16-walkthrough.md) |
+| Labs 01-05 | [lab01](./walkthroughs/lab01-phishing-classifier-walkthrough.md), [lab02](./walkthroughs/lab02-malware-clustering-walkthrough.md), [lab03](./walkthroughs/lab03-anomaly-detection-walkthrough.md), [lab04](./walkthroughs/lab04-llm-log-analysis-walkthrough.md), [lab05](./walkthroughs/lab05-threat-intel-agent-walkthrough.md) |
+| Labs 06-10 | [lab06](./walkthroughs/lab06-security-rag-walkthrough.md), [lab07](./walkthroughs/lab07-yara-generator-walkthrough.md), [lab08](./walkthroughs/lab08-vuln-scanner-ai-walkthrough.md), [lab09](./walkthroughs/lab09-detection-pipeline-walkthrough.md), [lab10](./walkthroughs/lab10-ir-copilot-walkthrough.md) |
+| Labs 11-16 | [lab11](./walkthroughs/lab11-ransomware-detection-walkthrough.md), [lab12](./walkthroughs/lab12-ransomware-simulation-walkthrough.md), [lab13](./walkthroughs/lab13-memory-forensics-ai-walkthrough.md), [lab14](./walkthroughs/lab14-c2-traffic-analysis-walkthrough.md), [lab15](./walkthroughs/lab15-lateral-movement-walkthrough.md), [lab16](./walkthroughs/lab16-threat-actor-profiling-walkthrough.md) |
 | All walkthroughs | [Browse all](./walkthroughs/) |
 
 ---
@@ -119,7 +128,7 @@ Root
 ├── resources/                   # Reference materials
 │   ├── tools-and-resources.md   # 80+ tools/APIs/datasets
 │   ├── prompt-library/          # Ready-to-use prompts
-│   └── integrations/            # SIEM/SOAR integrations (Cortex XSIAM, Splunk, etc.)
+│   └── integrations/            # SIEM/SOAR integrations (Splunk, Elastic, etc.)
 │
 ├── labs/                        # 24 hands-on labs
 │   └── labXX-name/README.md

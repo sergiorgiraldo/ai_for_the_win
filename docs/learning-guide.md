@@ -374,6 +374,8 @@ Labs 04-07 introduce Large Language Models (LLMs). Instead of training models on
 3. **Constraints:** "Return ONLY valid JSON"
 4. **Context:** Include MITRE ATT&CK knowledge
 
+> 🌉 **Bridge to Agents:** After Lab 04, do **Lab 04b: Your First AI Agent** before Lab 05. Lab 04b teaches tool calling basics that make Lab 05's full ReAct agent much easier to understand.
+
 ---
 
 #### Lab 06: Security RAG System
@@ -538,6 +540,8 @@ Assets ──► Scan ──► Vulns ──► AI Analysis ──► Prioritize
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
+
+> 🌉 **Production Ready:** After Lab 09, consider **Lab 09b: Monitoring AI Systems** to learn how to monitor your detection pipeline in production (drift detection, alerting, metrics).
 
 ---
 
@@ -914,7 +918,7 @@ As you work through the labs, these resources will help you go deeper:
 | [Security Prompts](../resources/prompt-library/security-prompts.md) | 500+ ready-to-use prompts for security analysis |
 | [Tools & APIs](../resources/tools-and-resources.md) | 80+ security tools, APIs, and datasets |
 | [Lab Walkthroughs](./walkthroughs/) | Step-by-step solutions when you're stuck |
-| [SIEM Integrations](../resources/integrations/) | Splunk, Elastic, XSIAM integration examples |
+| [SIEM Integrations](../resources/integrations/) | Splunk, Elastic integration examples |
 | [Setup Guides](./guides/) | LangChain, Cursor, Claude Code, ADK guides |
 | [Documentation Guide](./documentation-guide.md) | Find any resource quickly |
 
