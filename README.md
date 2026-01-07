@@ -4,6 +4,13 @@
 
 # AI for the Win
 
+to update the fork:
+
+# git remote add upstream https://github.com/depalmar/ai_for_the_win.git
+git fetch upstream
+git merge upstream/main
+git push origin main
+
 ### Build AI-Powered Security Tools | Hands-On Learning
 
 [![CI](https://github.com/depalmar/ai_for_the_win/actions/workflows/ci.yml/badge.svg)](https://github.com/depalmar/ai_for_the_win/actions/workflows/ci.yml)
